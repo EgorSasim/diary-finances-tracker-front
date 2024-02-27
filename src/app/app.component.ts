@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { SharedModule } from './shared.module';
 
 @Component({
-  selector: 'app-root',
+  selector: 'dft-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [SharedModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'diary-finances-tracker';
-}
+export class AppComponent {}
