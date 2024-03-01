@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgxMaterialThemingModule } from '@lithiumjs/ngx-material-theming';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -20,5 +21,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [translateModule, CommonModule, RouterOutlet, HttpClientModule],
+  exports: [NgxMaterialThemingModule],
 })
 export class SharedModule {}

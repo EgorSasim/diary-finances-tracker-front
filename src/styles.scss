@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
+
+@include mat.core();
+
+@import "./assets/themes/purple.scss";
+@import "./assets/themes/blue.scss";
+@import "./assets/themes/green.scss";
+@import "./assets/themes/orange.scss";
+@import "./assets/themes/red.scss";
+@import "./assets/themes/yellow.scss";
+
+@include mat-theming.all-static-component-dimensions();
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+@use "@lithiumjs/ngx-material-theming" as mat-theming;
+
+@include mat-theming.declare-theme(
+  $name: "purple",
+  $primary: mat.define-palette(mat.$deep-purple-palette),
+  $accent: mat.define-palette(mat.$indigo-palette),
+  $warn: mat.define-palette(mat.$blue-palette)
+);
+
+@include mat-theming.declare-theme(
+  $name: "purple-dark",
+  $primary: mat.define-palette(mat.$deep-purple-palette),
+  $accent: mat.define-palette(mat.$indigo-palette),
+  $warn: mat.define-palette(mat.$blue-palette),
+  $is-dark: true
+);
