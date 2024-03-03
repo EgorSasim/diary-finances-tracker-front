@@ -1,0 +1,15 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+<mat-menu #menu="matMenu" direction="horizontal">
+  <button
+    *ngFor="let theme of themesInfoKeys; let i = index"
+    [style.backgroundColor]="themesInfoValues[i].hexColor"
+    class="theme-selector__choose-theme-circle"
+    (click)="changeTheme(theme)"
+  ></button>
+</mat-menu>

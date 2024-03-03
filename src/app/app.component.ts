@@ -1,12 +1,12 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { SharedModule } from './shared.module';
-import { TmpModule } from './components/tmp/tmp.module';
 import { ThemesService } from './common/services/themes/themes.service';
+import { DEFAULT_THEME } from './common/services/themes/themes.constants';
 
 @Component({
   selector: 'dft-root',
   standalone: true,
-  imports: [SharedModule, TmpModule],
+  imports: [SharedModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -14,6 +14,10 @@ export class AppComponent implements AfterViewInit {
   constructor(private themesService: ThemesService) {}
 
   public ngAfterViewInit(): void {
-    this.themesService.setDefaultThemeColor();
+    this.setDefaultTheme();
+  }
+
+  private setDefaultTheme(): void {
+    this.themesService.setTheme(DEFAULT_THEME);
   }
 }
