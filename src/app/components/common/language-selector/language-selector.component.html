@@ -1,0 +1,15 @@
+<h1>{{ "app.greeting" | translate }}</h1>
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>language</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  @for (lang of languages; track $index) {
+  <button mat-menu-item (click)="setLanguage(lang)">
+    <span>{{ lang }}</span>
+  </button>
+  }
+</mat-menu>

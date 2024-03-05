@@ -15,12 +15,7 @@ export class ThemeSelectorComponent {
 
   constructor(private themesService: ThemesService) {}
 
-  public changeTheme(theme: string): void {
-    console.log('theme: ', theme);
-    this.setTheme(theme as Theme);
-  }
-
-  private setTheme(theme: Theme): void {
-    this.themesService.setTheme(theme);
+  public setTheme(theme: string): void {
+    this.themesService.setTheme(theme as Theme);
   }
 }

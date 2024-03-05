@@ -10,6 +10,6 @@
     *ngFor="let theme of themesInfoKeys; let i = index"
     [style.backgroundColor]="themesInfoValues[i].hexColor"
     class="theme-selector__choose-theme-circle"
-    (click)="changeTheme(theme)"
+    (click)="setTheme(theme)"
   ></button>
 </mat-menu>
