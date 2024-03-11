@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { THEMES_INFO } from './theme-selector.constants';
-import { Theme } from '../../../common/services/themes/themes.constants';
-import { ThemesService } from '../../../common/services/themes/themes.service';
+import { ThemesService } from '../../common/services/themes/themes.service';
+import { Theme } from '../../common/services/themes/themes.constants';
 
 @Component({
   selector: 'dft-theme-selector',

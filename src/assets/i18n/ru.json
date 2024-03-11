@@ -1,3 +1,9 @@
 {
-  "app.greeting": "Добро пожаловать в приложение \"Ежедневник и финансовый трекер\""
+  "app.signIn": "Войти",
+  "app.signUp": "Зарегистрироваться",
+  "auth.email": "Введите email",
+  "auth.password": "Введите пароль",
+  "auth.name": "Введите имя",
+  "form.required": "Required field",
+  "form.invalidEmail": "Invalid email"
 }

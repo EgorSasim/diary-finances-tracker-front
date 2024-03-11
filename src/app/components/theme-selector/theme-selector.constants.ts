@@ -1,4 +1,4 @@
-import { Theme } from '../../../common/services/themes/themes.constants';
+import { Theme } from '../../common/services/themes/themes.constants';
 
 export const THEMES_INFO: {
   [key in Theme]: { hexColor: string };

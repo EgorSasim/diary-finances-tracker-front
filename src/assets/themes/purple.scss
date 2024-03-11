@@ -5,7 +5,7 @@
   $name: "purple",
   $primary: mat.define-palette(mat.$deep-purple-palette),
   $accent: mat.define-palette(mat.$indigo-palette),
-  $warn: mat.define-palette(mat.$blue-palette)
+  $warn: mat.define-palette(mat.$red-palette)
 );
 
 @include mat-theming.declare-theme(
