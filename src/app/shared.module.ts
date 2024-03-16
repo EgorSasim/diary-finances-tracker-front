@@ -24,7 +24,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  imports: [translateModule, CommonModule, RouterOutlet, HttpClientModule],
+  imports: [translateModule, CommonModule, RouterOutlet],
   exports: [NgxMaterialThemingModule, RouterOutlet],
 })
 export class SharedModule {}
