@@ -5,9 +5,9 @@ import {
   Output,
 } from '@angular/core';
 import { SignUpBuiler } from './sign-up.builder';
-import { getControlErrorMessage } from '../../../common/helpers/form-errors';
+import { getControlErrorMessage } from '../../../helpers/form-errors';
 import { AbstractControl } from '@angular/forms';
-import { PLACEHOLDERS } from '../../../common/constants/placeholders';
+import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { SignUp } from './sign-up.typings';
 
 @Component({

@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgxMaterialThemingModule } from '@lithiumjs/ngx-material-theming';

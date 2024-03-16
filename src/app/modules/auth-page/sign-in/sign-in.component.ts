@@ -4,9 +4,9 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { PLACEHOLDERS } from '../../../common/constants/placeholders';
+import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { AbstractControl } from '@angular/forms';
-import { getControlErrorMessage } from '../../../common/helpers/form-errors';
+import { getControlErrorMessage } from '../../../helpers/form-errors';
 import { SignInBuiler } from './sign-in.builder';
 import { SignIn } from './sign-in.typings';
 

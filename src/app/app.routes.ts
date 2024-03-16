@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { AuthPageComponent } from './modules/auth-page/auth-page.component';
 
 export const routes: Routes = [
   {
@@ -10,8 +10,6 @@ export const routes: Routes = [
     path: 'auth-page',
     component: AuthPageComponent,
     loadChildren: () =>
-      import('./components/auth-page/auth-page.module').then(
-        (m) => m.AuthModule
-      ),
+      import('./modules/auth-page/auth-page.module').then((m) => m.AuthModule),
   },
 ];

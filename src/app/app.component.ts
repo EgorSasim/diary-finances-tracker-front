@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { SharedModule } from './shared.module';
-import { ThemesService } from './common/services/themes/themes.service';
-import { DEFAULT_THEME } from './common/services/themes/themes.constants';
+import { ThemesService } from './services/themes/themes.service';
+import { DEFAULT_THEME } from './services/themes/themes.constants';
 
 @Component({
   selector: 'dft-root',

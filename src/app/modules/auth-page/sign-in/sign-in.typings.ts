@@ -1,4 +1,4 @@
-import { ConvertToForm } from '../../../common/typings/forms';
+import { ConvertToForm } from '../../../typings/forms';
 
 export interface SignIn {
   email: string;
