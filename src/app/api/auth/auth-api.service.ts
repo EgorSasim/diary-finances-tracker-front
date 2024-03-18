@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, takeUntil, tap } from 'rxjs';
 import { SignIn } from '../../modules/auth-page/sign-in/sign-in.typings';

@@ -1,0 +1,21 @@
+<span
+  [class.mod-default]="data.type === 'Default'"
+  [class.mod-error]="data.type === 'Error'"
+  [class.mod-warn]="data.type === 'Warn'"
+  [class.mod-center-text]="data.centerText"
+  matSnackBarLabel
+>
+  {{ data.snackText }}
+</span>
+@if (data.snackCloseButtonText; as buttonText) {
+<span matSnackBarActions>
+  <button
+    mat-button
+    matSnackBarAction
+    class="dft-snack-bar__close"
+    (click)="snackBarRef.dismissWithAction()"
+  >
+    {{ buttonText }}
+  </button>
+</span>
+}

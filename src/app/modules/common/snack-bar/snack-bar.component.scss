@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mod-error {
+  color: red;
+}
+
+.mod-default {
+  color: black;
+}
+
+.mod-warn {
+  color: yellow;
+}
+
+.dft-snack-bar__close {
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.mod-center-text {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
