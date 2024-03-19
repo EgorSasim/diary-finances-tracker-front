@@ -10,7 +10,6 @@ import {
 import { Injectable, Injector, Provider, inject } from '@angular/core';
 import {
   MatSnackBar,
-  MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
@@ -29,22 +28,20 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     httpRequest: HttpRequest<any>,
     httpHandler: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('INTERCEPT');
     return httpHandler.handle(httpRequest).pipe(
       catchError((error: HttpErrorResponse) => {
         const errCode: HttpErrorCode = error?.error?.['message'];
-        if (errCode) {
-          const translateService = this.injector.get(TranslateService);
-          console.log('errCode: ', errCode);
-          translateService
-            .get(HTTP_ERROR_MESSAGES[errCode])
-            .subscribe((err) => {
-              console.log('err: ', err);
-              this.showSnack(err);
-            });
-        } else {
-          this.showSnack('Error');
-        }
+        const translateService = this.injector.get(TranslateService);
+        translateService
+          .get(
+            errCode && HTTP_ERROR_MESSAGES?.[errCode]
+              ? HTTP_ERROR_MESSAGES[errCode]
+              : 'app.error'
+          )
+          .subscribe((err) => {
+            this.showSnack(err);
+          });
+
         return of(new HttpResponse({ status: error.status, body: {} }));
       })
     );

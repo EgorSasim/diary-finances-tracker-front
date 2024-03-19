@@ -37,7 +37,10 @@ export class AuthPageComponent {
     this.isLoading.next(true);
     this.authPageService
       .signUp(signUpData)
-      .pipe(tap(() => this.isLoading.next(true)))
+      .pipe(
+        tap(() => this.isLoading.next(true)),
+        takeUntilDestroyed(this.destroyRef)
+      )
       .subscribe();
   }
 }

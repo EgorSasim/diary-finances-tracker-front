@@ -9,26 +9,20 @@ import {
   AUTH_SIGN_UP_PATH,
 } from './auth-api.constants';
 import { SignUp } from '../../modules/auth-page/sign-up/sign-up.typings';
-import { TokenService } from '../../services/token/token.service';
 import { AccessToken } from '../../services/token/token.typings';
 
 @Injectable()
 export class AuthApiService {
-  constructor(
-    private httpClient: HttpClient,
-    private tokenService: TokenService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   public signIn(signInData: SignIn): Observable<AccessToken> {
-    return this.httpClient
-      .post<AccessToken>(
-        API_PATH + '/' + AUTH_API_PATH + '/' + AUTH_SIGN_IN_PATH,
-        signInData,
-        {
-          responseType: 'json',
-        }
-      )
-      .pipe(tap((token: AccessToken) => this.tokenService.setToken(token)));
+    return this.httpClient.post<AccessToken>(
+      API_PATH + '/' + AUTH_API_PATH + '/' + AUTH_SIGN_IN_PATH,
+      signInData,
+      {
+        responseType: 'json',
+      }
+    );
   }
 
   public signUp(signUpData: SignUp): Observable<AccessToken> {

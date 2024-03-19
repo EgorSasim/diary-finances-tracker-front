@@ -1,10 +1,12 @@
 {
   "app.signIn": "Sign in",
   "app.signUp": "Sign up",
+  "app.error": "Error",
   "auth.email": "Enter email",
   "auth.password": "Enter password",
   "auth.name": "Enter name",
   "form.required": "Required field",
   "form.invalidEmail": "Invalid email",
-  "http.error.userDuplicate": "User with such email already exists"
+  "http.error.userDuplicate": "User with such email already exists",
+  "http.error.invalidCreds": "Incorrect email or password"
 }

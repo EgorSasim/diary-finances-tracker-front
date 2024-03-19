@@ -20,6 +20,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { httpErrorInterceptorToken } from './interceptors/http-error.interceptor';
 import { routes } from './app.routes';
 import { ThemeSelectorModule } from './modules/theme-selector/theme-selector.module';
+import { Languages } from './modules/language-selector/language-selector.constants';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,7 +40,7 @@ function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'ru',
+      defaultLanguage: Languages.Ru,
     }),
     ThemeSelectorModule,
   ],

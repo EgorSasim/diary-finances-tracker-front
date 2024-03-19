@@ -1,10 +1,12 @@
 {
   "app.signIn": "Войти",
   "app.signUp": "Зарегистрироваться",
+  "app.error": "Ошибка",
   "auth.email": "Введите email",
   "auth.password": "Введите пароль",
   "auth.name": "Введите имя",
-  "form.required": "Required field",
-  "form.invalidEmail": "Invalid email",
-  "http.error.userDuplicate": "Пользователь с такой почтой уже существует"
+  "form.required": "Обязательное поле",
+  "form.invalidEmail": "Невалидная email",
+  "http.error.userDuplicate": "Пользователь с таким email уже существует",
+  "http.error.invalidCreds": "Неверный пароль или email"
 }
