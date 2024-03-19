@@ -4,8 +4,9 @@ import { ACCESS_TOKEN_NAME } from './token.constants';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
-  public getToken(): AccessToken {
-    return { accessToken: localStorage.getItem('token') || '' };
+  public getToken(): string {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_NAME) || '';
+    return accessToken;
   }
 
   public setToken(token: AccessToken): void {

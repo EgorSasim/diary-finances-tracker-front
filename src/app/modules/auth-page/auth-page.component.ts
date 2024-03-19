@@ -5,7 +5,7 @@ import { AuthPageService } from './auth-page.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { AuthApiService } from '../../api/auth/auth-api.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { HttpErrorResponse } from '@angular/common/http';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'dft-auth-page',
@@ -19,7 +19,8 @@ export class AuthPageComponent {
 
   constructor(
     private authPageService: AuthPageService,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    private tokenService: TokenService
   ) {}
 
   public signIn(signInData: SignIn): void {
@@ -30,7 +31,11 @@ export class AuthPageComponent {
         tap(() => this.isLoading.next(true)),
         takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe();
+      .subscribe({
+        next: (token) => {
+          this.tokenService.setToken(token);
+        },
+      });
   }
 
   public signUp(signUpData: SignUp): void {
@@ -41,6 +46,10 @@ export class AuthPageComponent {
         tap(() => this.isLoading.next(true)),
         takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe();
+      .subscribe({
+        next: (token) => {
+          this.tokenService.setToken(token);
+        },
+      });
   }
 }

@@ -21,6 +21,7 @@ import { httpErrorInterceptorToken } from './interceptors/http-error.interceptor
 import { routes } from './app.routes';
 import { ThemeSelectorModule } from './modules/theme-selector/theme-selector.module';
 import { Languages } from './modules/language-selector/language-selector.constants';
+import { tokenInterceptorToken } from './interceptors/token.interceptor';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,6 +49,7 @@ function HttpLoaderFactory(http: HttpClient) {
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
+    tokenInterceptorToken,
     httpErrorInterceptorToken,
   ],
   declarations: [AppComponent],

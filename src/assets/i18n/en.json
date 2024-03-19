@@ -8,5 +8,6 @@
   "form.required": "Required field",
   "form.invalidEmail": "Invalid email",
   "http.error.userDuplicate": "User with such email already exists",
-  "http.error.invalidCreds": "Incorrect email or password"
+  "http.error.invalidCreds": "Incorrect email or password",
+  "http.error.expiredToken": "Session timed out"
 }

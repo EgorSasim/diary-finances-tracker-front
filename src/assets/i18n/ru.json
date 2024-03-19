@@ -8,5 +8,6 @@
   "form.required": "Обязательное поле",
   "form.invalidEmail": "Невалидная email",
   "http.error.userDuplicate": "Пользователь с таким email уже существует",
-  "http.error.invalidCreds": "Неверный пароль или email"
+  "http.error.invalidCreds": "Неверный пароль или email",
+  "http.error.expiredToken": "Время сессии истекло"
 }

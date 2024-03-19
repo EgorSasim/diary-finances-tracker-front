@@ -6,6 +6,7 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpResponse,
+  HttpStatusCode,
 } from '@angular/common/http';
 import { Injectable, Injector, Provider, inject } from '@angular/core';
 import {
@@ -19,10 +20,15 @@ import { SnackBarComponent } from '../modules/common/snack-bar/snack-bar.compone
 import { TranslateService } from '@ngx-translate/core';
 import { HTTP_ERROR_MESSAGES } from '../constants/http';
 import { AuthPageService } from '../modules/auth-page/auth-page.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private matSnackBar: MatSnackBar, private injector: Injector) {}
+  constructor(
+    private matSnackBar: MatSnackBar,
+    private injector: Injector,
+    private router: Router
+  ) {}
 
   public intercept(
     httpRequest: HttpRequest<any>,
@@ -41,6 +47,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           .subscribe((err) => {
             this.showSnack(err);
           });
+        if (error.status === HttpStatusCode.Unauthorized) {
+          this.router.navigate(['auth-page']);
+        }
 
         return of(new HttpResponse({ status: error.status, body: {} }));
       })

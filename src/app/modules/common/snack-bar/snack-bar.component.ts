@@ -20,7 +20,5 @@ import {
 export class SnackBarComponent {
   public snackBarRef = inject(MatSnackBarRef);
 
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: SnackBarInputData) {
-    console.log('data: ', data);
-  }
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: SnackBarInputData) {}
 }

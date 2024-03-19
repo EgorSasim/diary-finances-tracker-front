@@ -14,14 +14,10 @@ export class AuthPageService {
   ) {}
 
   public signIn(signInData: SignIn): Observable<AccessToken> {
-    return this.authApiService
-      .signIn(signInData)
-      .pipe(tap((token: AccessToken) => this.tokenService.setToken(token)));
+    return this.authApiService.signIn(signInData);
   }
 
   public signUp(signUpData: SignUp): Observable<AccessToken> {
-    return this.authApiService
-      .signUp(signUpData)
-      .pipe(tap((token: AccessToken) => this.tokenService.setToken(token)));
+    return this.authApiService.signUp(signUpData);
   }
 }
