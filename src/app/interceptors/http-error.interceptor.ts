@@ -7,7 +7,7 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { Injectable, Injector, Provider } from '@angular/core';
+import { Injectable, Injector, Provider, inject } from '@angular/core';
 import {
   MatSnackBar,
   MatSnackBarConfig,
@@ -17,6 +17,9 @@ import {
 import { Observable, catchError, of } from 'rxjs';
 import { HttpErrorCode } from '../typings/http';
 import { SnackBarComponent } from '../modules/common/snack-bar/snack-bar.component';
+import { TranslateService } from '@ngx-translate/core';
+import { HTTP_ERROR_MESSAGES } from '../constants/http';
+import { AuthPageService } from '../modules/auth-page/auth-page.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -31,11 +34,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         const errCode: HttpErrorCode = error?.error?.['message'];
         if (errCode) {
-          // const translateService = this.injector.get(TranslateService);
-          // translateService
-          //   .get(HTTP_ERROR_MESSAGES[errCode])
-          //   .subscribe((err) => this.showSnack(err));
-          this.showSnack(errCode);
+          const translateService = this.injector.get(TranslateService);
+          console.log('errCode: ', errCode);
+          translateService
+            .get(HTTP_ERROR_MESSAGES[errCode])
+            .subscribe((err) => {
+              console.log('err: ', err);
+              this.showSnack(err);
+            });
         } else {
           this.showSnack('Error');
         }
