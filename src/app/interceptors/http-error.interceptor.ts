@@ -14,13 +14,14 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { Observable, catchError, of } from 'rxjs';
+import { EMPTY, Observable, catchError, of } from 'rxjs';
 import { HttpErrorCode } from '../typings/http';
 import { SnackBarComponent } from '../modules/common/snack-bar/snack-bar.component';
 import { TranslateService } from '@ngx-translate/core';
 import { HTTP_ERROR_MESSAGES } from '../constants/http';
 import { AuthPageService } from '../modules/auth-page/auth-page.service';
 import { Router } from '@angular/router';
+import { ROUTE_PATH } from '../constants/routes-pathes';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -48,10 +49,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             this.showSnack(err);
           });
         if (error.status === HttpStatusCode.Unauthorized) {
-          this.router.navigate(['auth-page']);
+          this.router.navigate([ROUTE_PATH.auth]);
         }
 
-        return of(new HttpResponse({ status: error.status, body: {} }));
+        return EMPTY;
       })
     );
   }

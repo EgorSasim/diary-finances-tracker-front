@@ -1,22 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, takeUntil, tap } from 'rxjs';
-import { SignIn } from '../../modules/auth-page/sign-in/sign-in.typings';
+import { Observable } from 'rxjs';
 import { API_PATH } from '../api.constants';
 import {
   AUTH_API_PATH,
   AUTH_SIGN_IN_PATH,
   AUTH_SIGN_UP_PATH,
 } from './auth-api.constants';
-import { SignUp } from '../../modules/auth-page/sign-up/sign-up.typings';
 import { AccessToken } from '../../services/token/token.typings';
+import {
+  AccessTokenDto,
+  SignInDto,
+  SignUpDto,
+} from './auth-api.service.typings';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthApiService {
   constructor(private httpClient: HttpClient) {}
 
-  public signIn(signInData: SignIn): Observable<AccessToken> {
-    return this.httpClient.post<AccessToken>(
+  public signIn(signInData: SignInDto): Observable<AccessTokenDto> {
+    return this.httpClient.post<AccessTokenDto>(
       API_PATH + '/' + AUTH_API_PATH + '/' + AUTH_SIGN_IN_PATH,
       signInData,
       {
@@ -25,8 +28,8 @@ export class AuthApiService {
     );
   }
 
-  public signUp(signUpData: SignUp): Observable<AccessToken> {
-    return this.httpClient.post<AccessToken>(
+  public signUp(signUpData: SignUpDto): Observable<AccessTokenDto> {
+    return this.httpClient.post<AccessTokenDto>(
       API_PATH + '/' + AUTH_API_PATH + '/' + AUTH_SIGN_UP_PATH,
       signUpData,
       { responseType: 'json' }

@@ -22,6 +22,7 @@ import { routes } from './app.routes';
 import { ThemeSelectorModule } from './modules/theme-selector/theme-selector.module';
 import { Languages } from './modules/language-selector/language-selector.constants';
 import { tokenInterceptorToken } from './interceptors/token.interceptor';
+import { HeaderModule } from './modules/header/header.module';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +30,7 @@ function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [
+    HeaderModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     CommonModule,

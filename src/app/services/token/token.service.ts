@@ -10,6 +10,6 @@ export class TokenService {
   }
 
   public setToken(token: AccessToken): void {
-    localStorage.setItem(ACCESS_TOKEN_NAME, token.accessToken);
+    localStorage.setItem(ACCESS_TOKEN_NAME, token);
   }
 }
