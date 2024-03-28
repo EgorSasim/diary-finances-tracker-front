@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UserApiService } from '../../api/user/user-api.service';
 import { UserService } from '../../services/user/user.service';
-import { Observable } from 'rxjs';
 import { User } from '../../services/user/user.typings';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class HomePageService {
+export class HeaderService {
   constructor(private userService: UserService) {}
 
   public getUserInfo(): Observable<User> {

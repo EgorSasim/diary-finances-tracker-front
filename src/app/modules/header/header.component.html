@@ -1,2 +1,17 @@
-<mat-toolbar color="primary"> </mat-toolbar>
+<mat-toolbar class="dft-header" color="primary">
+  <div class="dft-header__left-side">
+    <img class="dft-header__logo-image" src="assets/images/logo/logo1.ico" />
+  </div>
+  <div class="dft-header__right-side">
+    <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>person</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #userMenu>
+  <button mat-menu-item disabled>{{ (user$ | async)?.name }}</button>
+  <button mat-menu-item disabled>{{ (user$ | async)?.email }}</button>
+  <button mat-menu-item>second button</button>
+</mat-menu>
 <router-outlet></router-outlet>

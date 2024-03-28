@@ -1,0 +1,21 @@
+.dft-header {
+  display: flex;
+  flex-grow: 100%;
+  padding: 0 1.8rem;
+}
+
+.dft-header__left-side {
+  flex-grow: 1;
+}
+
+.dft-header__right-side {
+  flex-grow: 1;
+  display: flex;
+  justify-content: right;
+}
+
+.dft-header__logo-image {
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+}
