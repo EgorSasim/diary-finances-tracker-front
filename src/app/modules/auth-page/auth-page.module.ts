@@ -5,7 +5,8 @@ import { SignInModule } from './sign-in/sign-in.module';
 import { SignUpModule } from './sign-up/sign-up.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeSelectorModule } from '../theme-selector/theme-selector.module';
-import { AuthApiService } from '../../api/auth/auth-api.service';
+import { SpinnerModule } from '../common/spinner/spinner.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AuthPageComponent],
@@ -15,6 +16,8 @@ import { AuthApiService } from '../../api/auth/auth-api.service';
     SignUpModule,
     TranslateModule,
     ThemeSelectorModule,
+    SpinnerModule,
+    CommonModule,
   ],
 })
 export class AuthModule {}

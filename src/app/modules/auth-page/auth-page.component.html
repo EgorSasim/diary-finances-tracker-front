@@ -12,3 +12,7 @@
     ></dft-sign-up>
   </mat-tab>
 </mat-tab-group>
+
+@if (isLoading$ | async) {
+<dft-spinner></dft-spinner>
+}
