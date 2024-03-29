@@ -19,7 +19,6 @@ import { HttpErrorCode } from '../typings/http';
 import { SnackBarComponent } from '../modules/common/snack-bar/snack-bar.component';
 import { TranslateService } from '@ngx-translate/core';
 import { HTTP_ERROR_MESSAGES } from '../constants/http';
-import { AuthPageService } from '../modules/auth-page/auth-page.service';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../constants/routes-pathes';
 

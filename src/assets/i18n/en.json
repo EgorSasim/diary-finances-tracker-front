@@ -4,6 +4,7 @@
   "app.error": "Error",
   "app.edit": "Edit",
   "auth.email": "Enter email",
+  "app.logOut": "Log out",
   "auth.password": "Enter password",
   "auth.name": "Enter name",
   "form.required": "Required field",

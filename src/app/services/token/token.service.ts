@@ -9,6 +9,10 @@ export class TokenService {
     return accessToken;
   }
 
+  public removeToken(): void {
+    localStorage.removeItem(ACCESS_TOKEN_NAME);
+  }
+
   public setToken(token: AccessToken): void {
     localStorage.setItem(ACCESS_TOKEN_NAME, token);
   }
