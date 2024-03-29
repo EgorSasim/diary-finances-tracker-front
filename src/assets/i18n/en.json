@@ -2,6 +2,7 @@
   "app.signIn": "Sign in",
   "app.signUp": "Sign up",
   "app.error": "Error",
+  "app.edit": "Edit",
   "auth.email": "Enter email",
   "auth.password": "Enter password",
   "auth.name": "Enter name",

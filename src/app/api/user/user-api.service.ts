@@ -12,6 +12,8 @@ export class UserApiService {
   constructor(private httpClient: HttpClient) {}
 
   public getUserInfo(): Observable<UserDto> {
-    return this.httpClient.get<UserDto>(`${API_PATH}/${USER_API_PATH}`);
+    return this.httpClient.get<UserDto>(`${API_PATH}/${USER_API_PATH}`, {
+      responseType: 'json',
+    });
   }
 }

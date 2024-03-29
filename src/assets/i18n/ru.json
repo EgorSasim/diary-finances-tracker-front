@@ -2,6 +2,7 @@
   "app.signIn": "Войти",
   "app.signUp": "Зарегистрироваться",
   "app.error": "Ошибка",
+  "app.edit": "Редактировать",
   "auth.email": "Введите email",
   "auth.password": "Введите пароль",
   "auth.name": "Введите имя",
