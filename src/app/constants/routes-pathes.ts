@@ -1,5 +1,6 @@
 export const ROUTE_PATH = {
   auth: 'auth',
-  withHeader: 'withHeader',
+  withHeader: 'with-header',
+  withSideBar: 'with-side-bar',
   home: 'home',
 };

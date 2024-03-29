@@ -23,6 +23,7 @@ import { ThemeSelectorModule } from './modules/theme-selector/theme-selector.mod
 import { Languages } from './modules/language-selector/language-selector.constants';
 import { tokenInterceptorToken } from './interceptors/token.interceptor';
 import { HeaderModule } from './modules/header/header.module';
+import { SideBarModule } from './modules/side-bar/side-bar.module';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,6 +32,7 @@ function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   imports: [
     HeaderModule,
+    SideBarModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     CommonModule,
