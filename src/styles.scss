@@ -20,4 +20,6 @@ body {
   overflow-x: hidden;
 }
 
-$headerHeight: 3rem;
+:root {
+  --header-height: 4rem;
+}

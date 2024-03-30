@@ -1,3 +1,5 @@
+$headerHeight: var(--header-height);
+
 .dft-side-bar__content {
-  height: 100%;
+  height: calc(100vh - $headerHeight);
 }
