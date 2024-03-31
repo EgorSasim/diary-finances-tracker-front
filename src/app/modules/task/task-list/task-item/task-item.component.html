@@ -1,0 +1,14 @@
+@if (taskItem; as task) {
+<div class="task-item">
+  <div ellipsis class="task-item__element mod-title">{{ task.title }}</div>
+  <div class="task-item__element">
+    {{ task.endDate | date : "M/dd/yyy" }}
+  </div>
+  <div class="task-item__element">{{ task.priority }}</div>
+  <div class="task-item__element mod-button">
+    <button mat-icon-button (click)="removeTask(task.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+}

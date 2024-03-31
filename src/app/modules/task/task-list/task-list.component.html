@@ -1,0 +1,9 @@
+<mat-list>
+  @for (item of taskItems; track item.id) {
+  <mat-list-item
+    ><dft-task-item [taskItem]="item"></dft-task-item
+  ></mat-list-item>
+  @if (!$last) {
+  <mat-divider></mat-divider>
+  } }
+</mat-list>
