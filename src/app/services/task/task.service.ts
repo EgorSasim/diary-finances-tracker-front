@@ -10,4 +10,8 @@ export class TaskService {
   public getAllTasks(): Observable<Task[]> {
     return this.taskApiServivce.getAllTasks();
   }
+
+  public createTask(task: Task): Observable<unknown> {
+    return this.taskApiServivce.createTask(task);
+  }
 }

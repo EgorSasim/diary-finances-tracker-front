@@ -1,3 +1,5 @@
+import { ConvertToForm } from '../../typings/forms';
+
 export interface Task {
   id: number;
   title: string;
@@ -20,3 +22,7 @@ export interface TaskReccurance {
 }
 
 type TaskReccuranceType = 'Daily' | 'Weekly' | 'Monthly';
+
+export type TaskForm = ConvertToForm<Task>;
+export type TaskCreateForm = Omit<TaskForm, 'id'>;
+export type TaskEditForm = TaskForm;
