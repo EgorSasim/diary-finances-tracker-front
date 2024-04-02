@@ -6,9 +6,20 @@
   </div>
   <div class="task-item__element">{{ task.priority }}</div>
   <div class="task-item__element mod-button">
-    <button mat-icon-button (click)="removeTask(task.id)">
-      <mat-icon>delete</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
   </div>
 </div>
 }
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="editTask(taskItem.id)">
+    <mat-icon>edit</mat-icon>
+    <span>{{ "app.edit" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="removeTask(taskItem.id)">
+    <mat-icon>delete</mat-icon>
+    <span>{{ "app.remove" | translate }}</span>
+  </button>
+</mat-menu>

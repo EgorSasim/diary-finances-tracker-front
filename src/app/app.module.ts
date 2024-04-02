@@ -24,6 +24,7 @@ import { Languages } from './modules/language-selector/language-selector.constan
 import { tokenInterceptorToken } from './interceptors/token.interceptor';
 import { HeaderModule } from './modules/header/header.module';
 import { SideBarModule } from './modules/side-bar/side-bar.module';
+import { ModalsModule } from './modals.module';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,6 +34,7 @@ function HttpLoaderFactory(http: HttpClient) {
   imports: [
     HeaderModule,
     SideBarModule,
+    ModalsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     CommonModule,

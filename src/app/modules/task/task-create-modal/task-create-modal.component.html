@@ -1,3 +1,23 @@
-<h1>Task Create modal!!!</h1>
-<button (click)="onClose('result')"></button>
-<button (click)="onClose()"></button>
+<div class="dft-task-create-modal">
+  <main class="dft-task-create-modal__main">
+    <mat-form-field class="dft-task-create-modal__title-control">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </main>
+  <footer class="dft-task-create-modal__footer">
+    <button mat-raised-button color="warn" (click)="onClose()">
+      {{ "app.cancel" | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="onClose()">
+      {{ "app.add" | translate }}
+    </button>
+  </footer>
+</div>

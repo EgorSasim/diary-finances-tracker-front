@@ -12,7 +12,7 @@ export interface Task {
   reccurance?: TaskReccurance;
 }
 
-type TaskPriority = 'Low' | 'Medium' | 'High';
+export type TaskPriority = 'Low' | 'Medium' | 'High';
 
 export interface TaskReccurance {
   interval: number;

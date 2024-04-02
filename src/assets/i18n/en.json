@@ -1,11 +1,15 @@
 {
+  "app.add": "Add",
+  "app.cancel": "Cancel",
   "app.signIn": "Sign in",
   "app.signUp": "Sign up",
   "app.error": "Error",
   "app.edit": "Edit",
   "auth.email": "Enter email",
   "app.logOut": "Log out",
+  "app.remove": "Remove",
   "app.task": "Task",
+  "app.title": "Title",
   "app.space": "Space",
   "app.note": "Note",
   "auth.password": "Enter password",
@@ -14,5 +18,8 @@
   "form.invalidEmail": "Invalid email",
   "http.error.userDuplicate": "User with such email already exists",
   "http.error.invalidCreds": "Incorrect email or password",
-  "http.error.expiredToken": "Session timed out"
+  "http.error.expiredToken": "Session timed out",
+  "task.priority.high": "High",
+  "task.priority.low": "Low",
+  "task.priority.medium": "Medium"
 }

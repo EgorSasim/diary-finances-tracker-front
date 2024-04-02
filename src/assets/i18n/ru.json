@@ -1,10 +1,14 @@
 {
+  "app.add": "Добавить",
+  "app.cancel": "Отменить",
   "app.signIn": "Войти",
   "app.signUp": "Зарегистрироваться",
   "app.error": "Ошибка",
   "app.edit": "Редактировать",
   "app.logOut": "Выйти",
+  "app.remove": "Удалить",
   "app.task": "Задача",
+  "app.title": "Заголовок",
   "app.space": "Пространство",
   "app.note": "Запись",
   "auth.email": "Введите email",
@@ -14,5 +18,8 @@
   "form.invalidEmail": "Невалидная email",
   "http.error.userDuplicate": "Пользователь с таким email уже существует",
   "http.error.invalidCreds": "Неверный пароль или email",
-  "http.error.expiredToken": "Время сессии истекло"
+  "http.error.expiredToken": "Время сессии истекло",
+  "task.priority.high": "Высокий",
+  "task.priority.low": "Низкий",
+  "task.priority.medium": "Средний"
 }
