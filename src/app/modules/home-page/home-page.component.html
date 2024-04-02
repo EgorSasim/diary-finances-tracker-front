@@ -1,4 +1,4 @@
-<dft-task-list></dft-task-list>
+<dft-task-list [taskItems]="tasks$ | async"></dft-task-list>
 <dft-create-entity-menu-button
   class="home-page__add-entity"
   (createTask)="showCreateTaskModal()"

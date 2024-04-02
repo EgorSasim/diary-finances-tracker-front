@@ -3,7 +3,7 @@ import { ConvertToForm } from '../../typings/forms';
 export interface Task {
   id: number;
   title: string;
-  readonly creationDate: Date;
+  creationDate: Date;
   description?: string;
   priority?: TaskPriority;
   startDate?: Date;

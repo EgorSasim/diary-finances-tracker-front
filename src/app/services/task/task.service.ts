@@ -12,6 +12,11 @@ export class TaskService {
   }
 
   public createTask(task: Task): Observable<unknown> {
+    task.creationDate = new Date(Date.now());
     return this.taskApiServivce.createTask(task);
+  }
+
+  public getTask(taskId: number): Observable<Task> {
+    return this.taskApiServivce.getTask(taskId);
   }
 }

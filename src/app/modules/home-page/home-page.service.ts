@@ -20,4 +20,8 @@ export class HomePageService {
   public createTask(task: Task): Observable<unknown> {
     return this.taskService.createTask(task);
   }
+
+  public getAllTasks(): Observable<Task[]> {
+    return this.taskService.getAllTasks();
+  }
 }
