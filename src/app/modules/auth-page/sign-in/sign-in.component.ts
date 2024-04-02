@@ -25,7 +25,7 @@ export class SignInComponent {
   constructor(private signInBuilder: SignInBuiler) {}
 
   public getErrorMessage(control: AbstractControl): string {
-    return getControlErrorMessage(control);
+    return getControlErrorMessage(control).errorText;
   }
 
   public confirm(): void {

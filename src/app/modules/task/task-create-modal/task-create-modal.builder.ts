@@ -13,7 +13,7 @@ export class TaskCreateModalBuilder {
       creationDate: new FormControl(null),
       title: new FormControl('', [
         Validators.required,
-        Validators.minLength(TASK_TITLE_MAX_LENGTH),
+        Validators.maxLength(TASK_TITLE_MAX_LENGTH),
       ]),
       description: new FormControl('', [
         Validators.maxLength(TASK_DESCRIPTION_MAX_LENGTH),

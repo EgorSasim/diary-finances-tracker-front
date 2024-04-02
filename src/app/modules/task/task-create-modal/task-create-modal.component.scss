@@ -1,6 +1,6 @@
 .dft-task-create-modal {
   height: 30rem;
-  width: 40rem;
+  width: 52rem;
   padding: 2rem;
 }
 
@@ -10,6 +10,22 @@
 
 .dft-task-create-modal__title-control {
   width: 100%;
+}
+
+.dft-task-create-modal__two-sides-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.dft-task-create-modal__side-control {
+  width: 100%;
+}
+
+.dft-task-create-modal__wrap-side {
+  width: 45%;
 }
 
 .dft-task-create-modal__footer {

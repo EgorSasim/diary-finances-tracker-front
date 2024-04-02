@@ -24,5 +24,5 @@ export interface TaskReccurance {
 type TaskReccuranceType = 'Daily' | 'Weekly' | 'Monthly';
 
 export type TaskForm = ConvertToForm<Task>;
-export type TaskCreateForm = Omit<TaskForm, 'id'>;
-export type TaskEditForm = TaskForm;
+export type TaskCreateForm = Required<Omit<TaskForm, 'id'>>;
+export type TaskEditForm = Required<TaskForm>;

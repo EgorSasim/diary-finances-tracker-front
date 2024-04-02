@@ -1,16 +1,47 @@
+@if (formGroup?.controls) {
 <div class="dft-task-create-modal">
   <main class="dft-task-create-modal__main">
     <mat-form-field class="dft-task-create-modal__title-control">
       <mat-label>{{ "app.title" | translate }}</mat-label>
-      <input matInput />
+      <input matInput [formControl]="formGroup.controls.title" />
+      @if (formGroup.controls.title.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+      }
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Select</mat-label>
-      <mat-select>
-        <mat-option value="one">First option</mat-option>
-        <mat-option value="two">Second option</mat-option>
-      </mat-select>
-    </mat-form-field>
+
+    <div class="dft-task-create-modal__two-sides-wrap">
+      <div class="dft-task-create-modal__wrap-side">
+        <mat-form-field class="dft-task-create-modal__side-control">
+          <mat-label>{{ "app.priority" | translate }}</mat-label>
+          <mat-select
+            matNativeControl
+            [formControl]="formGroup.controls.priority"
+          >
+            <mat-option>{{ "app.notSelected" | translate }}</mat-option>
+            @for (priorityName of priorityNames; track $index) {
+            <mat-option value="{{ priorities[$index] }}">{{
+              priorityName | translate
+            }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="dft-task-create-modal__wrap-side">
+        <mat-form-field class="dft-task-create-modal__side-control">
+          <mat-label>{{ "app.enterStartAndEndDate" | translate }}</mat-label>
+          <mat-date-range-input [formGroup]="formGroup" [rangePicker]="picker">
+            <input matStartDate formControlName="startDate" />
+            <input matEndDate formControlName="endDate" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
   </main>
   <footer class="dft-task-create-modal__footer">
     <button mat-raised-button color="warn" (click)="onClose()">
@@ -21,3 +52,5 @@
     </button>
   </footer>
 </div>
+
+}

@@ -7,4 +7,10 @@ export type ConvertToForm<T> = {
 export enum FormErrorCode {
   Required = 'required',
   InvalidEmail = 'email',
+  MaxLength = 'maxlength',
+}
+
+export interface FormError {
+  errorText: string;
+  params?: { [key: string]: string };
 }

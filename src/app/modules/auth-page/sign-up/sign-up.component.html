@@ -1,3 +1,4 @@
+@if (formGroup?.controls) {
 <mat-form-field>
   <mat-label>{{ "auth.name" | translate }}</mat-label>
   <input
@@ -5,8 +6,10 @@
     [placeholder]="placeholders.name"
     [formControl]="formGroup.controls.name"
   />
-  @if (formGroup.controls.name; as name) {
-  <mat-error>{{ getErrorMessage(name) | translate }}</mat-error>
+  @if (formGroup.controls.name.errors) {
+  <mat-error>{{
+    getErrorMessage(formGroup.controls.name) | translate
+  }}</mat-error>
   }
 </mat-form-field>
 <mat-form-field>
@@ -16,18 +19,23 @@
     [placeholder]="placeholders.email"
     [formControl]="formGroup.controls.email"
   />
-  @if (formGroup.controls.email; as email) {
-  <mat-error>{{ getErrorMessage(email) | translate }}</mat-error>
+  @if (formGroup.controls.email.errors) {
+  <mat-error>{{
+    getErrorMessage(formGroup.controls.email) | translate
+  }}</mat-error>
   }
 </mat-form-field>
 <mat-form-field>
   <mat-label>{{ "auth.password" | translate }}</mat-label>
   <input matInput [formControl]="formGroup.controls.password" />
-  @if (formGroup.controls.password; as password) {
-  <mat-error>{{ getErrorMessage(password) | translate }}</mat-error>
+  @if (formGroup.controls.password.errors; as password) {
+  <mat-error>{{
+    getErrorMessage(formGroup.controls.password) | translate
+  }}</mat-error>
   }
 </mat-form-field>
 
 <button mat-raised-button color="primary" (click)="confirm()">
   {{ "app.signUp" | translate }}
 </button>
+}
