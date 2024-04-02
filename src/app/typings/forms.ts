@@ -8,6 +8,9 @@ export enum FormErrorCode {
   Required = 'required',
   InvalidEmail = 'email',
   MaxLength = 'maxlength',
+  MinLength = 'minlength',
+  MatDatepickerParse = 'matDatepickerParse',
+  MatStartDateInvalid = 'matStartDateInvalid',
 }
 
 export interface FormError {

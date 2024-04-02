@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { AbstractControl } from '@angular/forms';
 import { getControlErrorMessage } from '../../../helpers/form-errors';
 import { SignInBuiler } from './sign-in.builder';
@@ -20,7 +19,6 @@ import { SignIn } from './sign-in.typings';
 export class SignInComponent {
   @Output() public signIn: EventEmitter<SignIn> = new EventEmitter();
   public formGroup = this.signInBuilder.createFormGroup();
-  public readonly placeholders = PLACEHOLDERS;
 
   constructor(private signInBuilder: SignInBuiler) {}
 

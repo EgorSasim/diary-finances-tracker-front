@@ -39,15 +39,37 @@
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-date-range-picker #picker></mat-date-range-picker>
+          @if (formGroup.controls?.startDate?.errors) {
+          <mat-error>{{
+            getErrorMessage(formGroup.controls.startDate)
+          }}</mat-error>
+          } @if (formGroup.controls.endDate?.errors) {
+          <mat-error>{{
+            getErrorMessage(formGroup.controls.endDate)
+          }}</mat-error>
+          }
         </mat-form-field>
       </div>
     </div>
+    <mat-form-field class="dft-task-create-modal__description-control">
+      <mat-label>{{ "app.description" | translate }}</mat-label>
+      <textarea
+        matInput
+        placeholder="{{ 'app.placeholder.description' | translate }}"
+        [formControl]="formGroup.controls.description"
+      ></textarea>
+      @if(formGroup.controls.description.errors) {
+      <mat-error>{{
+        getErrorMessage(formGroup.controls.description)
+      }}</mat-error>
+      }
+    </mat-form-field>
   </main>
   <footer class="dft-task-create-modal__footer">
-    <button mat-raised-button color="warn" (click)="onClose()">
+    <button mat-raised-button color="warn" (click)="close()">
       {{ "app.cancel" | translate }}
     </button>
-    <button mat-raised-button color="primary" (click)="onClose()">
+    <button mat-raised-button color="primary" (click)="create()">
       {{ "app.add" | translate }}
     </button>
   </footer>

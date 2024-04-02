@@ -25,6 +25,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   exports: [TaskCreateModalComponent],
 })

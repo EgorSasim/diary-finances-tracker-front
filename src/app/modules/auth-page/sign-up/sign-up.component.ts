@@ -7,7 +7,6 @@ import {
 import { SignUpBuiler } from './sign-up.builder';
 import { getControlErrorMessage } from '../../../helpers/form-errors';
 import { AbstractControl } from '@angular/forms';
-import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { SignUp } from './sign-up.typings';
 
 @Component({
@@ -20,7 +19,6 @@ import { SignUp } from './sign-up.typings';
 export class SignUpComponent {
   @Output() public signUp: EventEmitter<SignUp> = new EventEmitter();
   public formGroup = this.signUpBuilder.createFormGroup();
-  public readonly placeholders = PLACEHOLDERS;
 
   constructor(private signUpBuilder: SignUpBuiler) {}
 

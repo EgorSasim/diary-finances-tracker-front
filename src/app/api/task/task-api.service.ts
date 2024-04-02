@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TASKS_API_PATH, TASK_API_PATH } from './task-api.constants';
+import { TASK_API_PATH } from './task-api.constants';
 import { TaskDto } from './task-api.typings';
 import { API_PATH } from '../api.constants';
 
@@ -12,7 +12,7 @@ export class TaskApiService {
   constructor(private httpClient: HttpClient) {}
 
   public getAllTasks(): Observable<TaskDto[]> {
-    return this.httpClient.get<TaskDto[]>(`${API_PATH}/${TASKS_API_PATH}`, {
+    return this.httpClient.get<TaskDto[]>(`${API_PATH}/${TASK_API_PATH}`, {
       responseType: 'json',
     });
   }

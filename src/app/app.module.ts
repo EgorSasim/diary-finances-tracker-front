@@ -4,7 +4,11 @@ import { RouterModule, RouterOutlet, provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgxMaterialThemingModule } from '@lithiumjs/ngx-material-theming';
 import { SnackBarModule } from './modules/common/snack-bar/snack-bar.module';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateCompiler,
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {
   HttpClient,
@@ -25,6 +29,7 @@ import { tokenInterceptorToken } from './interceptors/token.interceptor';
 import { HeaderModule } from './modules/header/header.module';
 import { SideBarModule } from './modules/side-bar/side-bar.module';
 import { ModalsModule } from './modals.module';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,6 +51,10 @@ function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
+      },
+      compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler,
       },
       defaultLanguage: Languages.Ru,
     }),

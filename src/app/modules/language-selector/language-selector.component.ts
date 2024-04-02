@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Languages } from './language-selector.constants';
+import {
+  LANG_NAME_TO_TRANSLATION_KEY,
+  Languages,
+} from './language-selector.constants';
 
 @Component({
   selector: 'dft-language-selector',
@@ -10,6 +13,7 @@ import { Languages } from './language-selector.constants';
 })
 export class LanguageSelectorComponent {
   public readonly languages = Object.values(Languages);
+  public readonly langNamesTranslationsNames = LANG_NAME_TO_TRANSLATION_KEY;
 
   constructor(private translateService: TranslateService) {}
 

@@ -25,13 +25,7 @@ export class TaskCreateModalComponent {
     private matDialogRef: MatDialogRef<TaskCreateModalComponent>,
     private taskCreateModalBuilder: TaskCreateModalBuilder,
     private translateService: TranslateService
-  ) {
-    this.formGroup.valueChanges.subscribe((val) => console.log(this.formGroup));
-  }
-
-  public onClose(data?: any): void {
-    this.matDialogRef.close(data);
-  }
+  ) {}
 
   public getErrorMessage(control: AbstractControl): string {
     const errMessage = getControlErrorMessage(control);
@@ -39,12 +33,19 @@ export class TaskCreateModalComponent {
       errMessage.errorText,
       errMessage.params
     );
-    // const interpolatedText = this.translateParser.interpolate(
-    //   errText,
-    //   errMessage.params
-    // );
 
-    console.log('err text: ', errText);
     return errText;
+  }
+
+  public create(): void {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
+    this.matDialogRef.close(this.formGroup.value);
+  }
+
+  public close(): void {
+    this.matDialogRef.close();
   }
 }

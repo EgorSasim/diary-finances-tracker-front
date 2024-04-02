@@ -34,6 +34,7 @@ export class HomePageComponent {
   }
 
   private handleTaskCreation(task: Task): void {
+    console.log('task: ', task);
     this.isLoading$.next(true);
     this.homePageService
       .createTask(task)
