@@ -6,6 +6,7 @@ import { CreateEntityMenuButtonModule } from '../common/create-entity-menu-butto
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
+import { SpinnerModule } from '../common/spinner/spinner.module';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatExpansionModule,
     TranslateModule,
     MatButtonModule,
+    SpinnerModule,
   ],
 })
 export class HomePageModule {}

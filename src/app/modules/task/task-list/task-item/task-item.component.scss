@@ -2,6 +2,10 @@
   width: 100%;
   display: flex;
   column-gap: 2rem;
+
+  &.mod-completed {
+    opacity: 0.5;
+  }
 }
 
 .task-item__element {

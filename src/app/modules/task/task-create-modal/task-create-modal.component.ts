@@ -63,7 +63,7 @@ export class TaskCreateModalComponent implements AfterViewInit {
   }
 
   private setTextAreaHeight(): void {
-    const height = '16rem';
+    const height = '12rem';
     this.renderer2.setStyle(this.textArea.nativeElement, 'height', height);
   }
 }

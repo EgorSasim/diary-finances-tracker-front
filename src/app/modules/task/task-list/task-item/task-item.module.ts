@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { EllipsisModule } from '../../../../directives/ellipsis/ellipsis.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
+import { CrossOutModule } from '../../../../directives/cross-out/cross-out.module';
 
 @NgModule({
   declarations: [TaskItemComponent],
@@ -16,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     EllipsisModule,
     MatMenuModule,
     TranslateModule,
+    CrossOutModule,
   ],
   exports: [TaskItemComponent],
 })

@@ -1,13 +1,22 @@
-<mat-accordion [class.small-width]="isOpened" class="dft-home-page__task-list">
-  <mat-expansion-panel
-    (opened)="setOpenedState(true)"
-    (closed)="setOpenedState(false)"
-  >
+@if (isLoading$ | async) {
+<dft-spinner></dft-spinner>
+}
+
+<mat-accordion
+  [class.small-width]="panel.expanded"
+  class="dft-home-page__task-list"
+>
+  <mat-expansion-panel #panel>
     <mat-expansion-panel-header>
       <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
     </mat-expansion-panel-header>
     @if ((tasks$ | async)?.length;) {
-    <dft-task-list [taskItems]="tasks$ | async"></dft-task-list>
+    <dft-task-list
+      [taskItems]="tasks$ | async"
+      (completeTask)="completeTask($event)"
+      (editTask)="goToTaskEditPage($event)"
+      (removeTask)="removeTask($event)"
+    ></dft-task-list>
     } @else {
     <span
       >{{ "app.noTodayTasks" | translate }}.

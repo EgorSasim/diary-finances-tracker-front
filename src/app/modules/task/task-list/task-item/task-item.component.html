@@ -1,10 +1,22 @@
 @if (taskItem; as task) {
-<div class="task-item">
+<div
+  class="task-item"
+  crossOut
+  [isCrossed]="task.completed"
+  [class.mod-completed]="task.completed"
+>
   <div ellipsis class="task-item__element mod-title">{{ task.title }}</div>
+  @if (task.endDate | date : "M/dd/yyy"; as date) {
   <div class="task-item__element">
-    {{ task.endDate | date : "M/dd/yyy" }}
+    {{ date }}
   </div>
-  <div class="task-item__element">{{ task.priority }}</div>
+  } @else {
+  <div class="task-item__element">-</div>
+  } @if (task.priority; as priority) {
+  <div class="task-item__element">{{ priority }}</div>
+  } @else {
+  <div class="task-item__element">-</div>
+  }
   <div class="task-item__element mod-button">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
@@ -14,9 +26,17 @@
 }
 
 <mat-menu #menu>
-  <button mat-menu-item (click)="editTask(taskItem.id)">
+  <button
+    mat-menu-item
+    (click)="completeTask(taskItem.id, !taskItem.completed)"
+  >
+    @if (taskItem.completed) {
+    <mat-icon>redo</mat-icon>
+    <span>{{ "app.reopen" | translate }}</span>
+    } @else {
     <mat-icon>done</mat-icon>
     <span>{{ "app.complete" | translate }}</span>
+    }
   </button>
   <button mat-menu-item (click)="editTask(taskItem.id)">
     <mat-icon>edit</mat-icon>

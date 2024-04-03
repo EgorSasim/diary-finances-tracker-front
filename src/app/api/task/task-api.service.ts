@@ -31,10 +31,13 @@ export class TaskApiService {
     return this.httpClient.delete(`${API_PATH}/${TASK_API_PATH}/${id}`);
   }
 
-  public updateTask(task: TaskDto): Observable<unknown> {
+  public updateTask(
+    id: TaskDto['id'],
+    updateParams: Partial<TaskDto>
+  ): Observable<unknown> {
     return this.httpClient.patch(
-      `${API_PATH}/${TASK_API_PATH}/${task.id}`,
-      task
+      `${API_PATH}/${TASK_API_PATH}/${id}`,
+      updateParams
     );
   }
 }

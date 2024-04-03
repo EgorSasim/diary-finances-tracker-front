@@ -18,7 +18,12 @@
   <mat-divider></mat-divider>
   } @for (item of taskItems; track item.id) {
   <mat-list-item
-    ><dft-task-item [taskItem]="item"></dft-task-item
+    ><dft-task-item
+      [taskItem]="item"
+      (edit)="editTaskEmit($event)"
+      (remove)="removeTaskEmit($event)"
+      (complete)="completeTaskEmit($event)"
+    ></dft-task-item
   ></mat-list-item>
   @if (!$last) {
   <mat-divider></mat-divider>
