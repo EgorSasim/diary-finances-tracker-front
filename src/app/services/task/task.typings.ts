@@ -10,6 +10,7 @@ export interface Task {
   endDate?: Date;
   reminder?: Date;
   reccurance?: TaskReccurance;
+  completed?: Boolean;
 }
 
 export type TaskPriority = 'Low' | 'Medium' | 'High';

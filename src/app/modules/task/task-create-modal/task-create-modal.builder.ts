@@ -23,6 +23,7 @@ export class TaskCreateModalBuilder {
       reminder: new FormControl(null),
       startDate: new FormControl(null),
       endDate: new FormControl(null),
+      completed: new FormControl(false),
     });
   }
 }

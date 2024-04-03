@@ -1,0 +1,22 @@
+.dft-task-list-header {
+  display: flex;
+  padding: 0 1rem;
+  font-weight: bold;
+}
+
+.dft-task-list-header__element {
+  flex: 1;
+  overflow: hidden;
+  max-width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.mod-name {
+    justify-content: left;
+  }
+
+  &.mod-settings {
+    justify-content: right;
+  }
+}

@@ -1,5 +1,22 @@
 <mat-list>
-  @for (item of taskItems; track item.id) {
+  @if (taskItems?.length) {
+  <mat-divider></mat-divider>
+  <div class="dft-task-list-header">
+    <div class="dft-task-list-header__element mod-name">
+      {{ "app.title" | translate }}
+    </div>
+    <div class="dft-task-list-header__element">
+      {{ "app.endDate" | translate }}
+    </div>
+    <div class="dft-task-list-header__element">
+      {{ "app.priority" | translate }}
+    </div>
+    <div class="dft-task-list-header__element mod-settings">
+      {{ "app.settings" | translate }}
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  } @for (item of taskItems; track item.id) {
   <mat-list-item
     ><dft-task-item [taskItem]="item"></dft-task-item
   ></mat-list-item>

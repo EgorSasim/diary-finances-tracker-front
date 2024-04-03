@@ -1,4 +1,21 @@
-<dft-task-list [taskItems]="tasks$ | async"></dft-task-list>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    @if ((tasks$ | async)?.length;) {
+    <dft-task-list [taskItems]="tasks$ | async"></dft-task-list>
+    } @else {
+    <span
+      >{{ "app.noTodayTasks" | translate }}.
+      <button mat-button color="primary" (click)="showCreateTaskModal()">
+        {{ "app.createTask" | translate }}
+      </button></span
+    >
+    }
+  </mat-expansion-panel>
+</mat-accordion>
+
 <dft-create-entity-menu-button
   class="home-page__add-entity"
   (createTask)="showCreateTaskModal()"

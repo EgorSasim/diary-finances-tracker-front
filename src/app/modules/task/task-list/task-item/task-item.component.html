@@ -15,6 +15,10 @@
 
 <mat-menu #menu>
   <button mat-menu-item (click)="editTask(taskItem.id)">
+    <mat-icon>done</mat-icon>
+    <span>{{ "app.complete" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="editTask(taskItem.id)">
     <mat-icon>edit</mat-icon>
     <span>{{ "app.edit" | translate }}</span>
   </button>
