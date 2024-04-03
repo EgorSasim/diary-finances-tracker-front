@@ -54,6 +54,8 @@
     <mat-form-field class="dft-task-create-modal__description-control">
       <mat-label>{{ "app.description" | translate }}</mat-label>
       <textarea
+        #textArea
+        class="dft-task-create-modal__description-control-input"
         matInput
         placeholder="{{ 'app.placeholder.description' | translate }}"
         [formControl]="formGroup.controls.description"

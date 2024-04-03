@@ -13,6 +13,7 @@ import { BehaviorSubject, Observable, take } from 'rxjs';
   providers: [HomePageService],
 })
 export class HomePageComponent {
+  public isOpened: boolean = false;
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public tasks$: Observable<Task[]>;
 
@@ -35,6 +36,10 @@ export class HomePageComponent {
           this.handleTaskCreation(task);
         }
       });
+  }
+
+  public setOpenedState(isOpened: boolean): void {
+    this.isOpened = isOpened;
   }
 
   private setAllTasks(): void {

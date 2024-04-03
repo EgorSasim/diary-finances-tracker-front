@@ -10,3 +10,13 @@
   bottom: 2rem;
   right: 2rem;
 }
+
+.dft-home-page__task-list {
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+
+  &.small-width {
+    width: 80%;
+  }
+}

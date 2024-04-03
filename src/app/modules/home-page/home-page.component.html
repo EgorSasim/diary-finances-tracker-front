@@ -1,5 +1,8 @@
-<mat-accordion>
-  <mat-expansion-panel>
+<mat-accordion [class.small-width]="isOpened" class="dft-home-page__task-list">
+  <mat-expansion-panel
+    (opened)="setOpenedState(true)"
+    (closed)="setOpenedState(false)"
+  >
     <mat-expansion-panel-header>
       <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
     </mat-expansion-panel-header>
