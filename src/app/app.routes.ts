@@ -4,6 +4,7 @@ import { HeaderComponent } from './modules/header/header.component';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 import { ROUTE_PATH } from './constants/routes-pathes';
 import { SideBarComponent } from './modules/side-bar/side-bar.component';
+import { TaskEditPageComponent } from './modules/task/task-edit-page/task-edit-page.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,14 @@ export const routes: Routes = [
             redirectTo: ROUTE_PATH.home,
           },
         ],
+      },
+      {
+        path: `${ROUTE_PATH.taskEditPage}/:id`,
+        component: TaskEditPageComponent,
+        loadChildren: () =>
+          import('./modules/task/task-edit-page/task-edit-page.module').then(
+            (m) => m.TaskEditPageModule
+          ),
       },
       {
         path: '**',

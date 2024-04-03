@@ -6,6 +6,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Task } from '../../services/task/task.typings';
 import { BehaviorSubject, Observable, finalize, switchMap, take } from 'rxjs';
 import { CompletedTaskItem } from '../task/task-list/task-item/task-item.typings';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '../../constants/routes-pathes';
 
 @Component({
   selector: 'dft-home-page',
@@ -21,7 +23,8 @@ export class HomePageComponent {
     private homePageService: HomePageService,
     private matDialog: MatDialog,
     private destroyRef: DestroyRef,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
   ) {
     this.updateTasks();
   }
@@ -53,8 +56,8 @@ export class HomePageComponent {
   }
 
   public goToTaskEditPage(id: number): void {
-    console.log('editTask', id);
-    this.isLoading$.next(true);
+    console.log('router navigate');
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
 
   public removeTask(id: number): void {

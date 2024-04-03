@@ -30,13 +30,10 @@
     mat-menu-item
     (click)="completeTask(taskItem.id, !taskItem.completed)"
   >
-    @if (taskItem.completed) {
-    <mat-icon>redo</mat-icon>
-    <span>{{ "app.reopen" | translate }}</span>
-    } @else {
-    <mat-icon>done</mat-icon>
-    <span>{{ "app.complete" | translate }}</span>
-    }
+    <mat-icon> @if (taskItem.completed) { redo } @else {done}</mat-icon>
+    <span
+      >{{ (taskItem.completed ? "app.reopen" : "app.complete") | translate }}
+    </span>
   </button>
   <button mat-menu-item (click)="editTask(taskItem.id)">
     <mat-icon>edit</mat-icon>
