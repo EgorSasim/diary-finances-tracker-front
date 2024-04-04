@@ -4,10 +4,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskCreateModalComponent } from '../task/task-create-modal/task-create-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Task } from '../../services/task/task.typings';
-import { BehaviorSubject, Observable, finalize, take } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  filter,
+  finalize,
+  switchMap,
+  take,
+  tap,
+} from 'rxjs';
 import { CompletedTaskItem } from '../task/task-list/task-item/task-item.typings';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
+import { NoteCreateModalComponent } from '../note/note-create-modal/note-create-modal.component';
+import { Note } from '../../services/note/note.typings';
 
 @Component({
   selector: 'dft-home-page',
@@ -33,12 +43,24 @@ export class HomePageComponent {
     const dialogRef = this.matDialog.open(TaskCreateModalComponent);
     dialogRef
       .afterClosed()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((task: Task) => {
-        if (task) {
-          this.handleTaskCreation(task);
-        }
-      });
+      .pipe(
+        filter((task) => !!task),
+        tap((task) => this.handleTaskCreation(task)),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
+  }
+
+  public showCreateNoteModal(): void {
+    const dialogRef = this.matDialog.open(NoteCreateModalComponent);
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((note) => !!note),
+        tap((note) => this.handleNoteCreation(note)),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
   }
 
   public completeTask(completedTaskItem: CompletedTaskItem): void {
@@ -90,6 +112,26 @@ export class HomePageComponent {
           this.updateTasks();
           this.changeDetectorRef.markForCheck();
         },
+      });
+  }
+
+  private handleNoteCreation(note: Note): void {
+    this.isLoading$.next(true);
+    this.homePageService
+      .createNote(note)
+      .pipe(
+        tap((note) => {
+          console.log('create note.....', note);
+          console.log('updated note list...');
+        }),
+        switchMap(() => {
+          console.log('get all notes.....');
+          return this.homePageService.getNotes();
+        }),
+        tap((notes) => console.log('notes; ', notes))
+      )
+      .subscribe(() => {
+        this.isLoading$.next(false);
       });
   }
 }

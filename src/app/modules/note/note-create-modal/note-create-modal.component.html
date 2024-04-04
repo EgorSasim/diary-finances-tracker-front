@@ -1,0 +1,25 @@
+@if(formGroup?.controls) {
+<div class="dft-note-create-modal">
+  <main>
+    <mat-form-field class="dft-note-create-modal__title-control">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="formGroup.controls.title" />
+      @if (formGroup.controls.title.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+      }
+    </mat-form-field>
+    <dft-text-area
+      [control]="formGroup.controls.description"
+      [height]="textAreaHeight"
+    ></dft-text-area>
+  </main>
+  <footer class="dft-note-create-modal__footer">
+    <button mat-raised-button color="warn" (click)="close()">
+      {{ "app.cancel" | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="create()">
+      {{ "app.add" | translate }}
+    </button>
+  </footer>
+</div>
+}

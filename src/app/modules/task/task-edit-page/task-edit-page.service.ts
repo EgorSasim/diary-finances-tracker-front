@@ -14,7 +14,7 @@ export class TaskEditPageService {
   public saveChanges(
     id: Task['id'],
     updateParams: Partial<Task>
-  ): Observable<void> {
+  ): Observable<Task> {
     return this.taskService.updateTask(id, updateParams);
   }
 }

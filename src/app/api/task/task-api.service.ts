@@ -23,19 +23,21 @@ export class TaskApiService {
     });
   }
 
-  public createTask(task: TaskDto): Observable<unknown> {
-    return this.httpClient.post(`${API_PATH}/${TASK_API_PATH}`, task);
+  public createTask(task: TaskDto): Observable<TaskDto> {
+    return this.httpClient.post<TaskDto>(`${API_PATH}/${TASK_API_PATH}`, task);
   }
 
-  public removeTask(id: TaskDto['id']): Observable<unknown> {
-    return this.httpClient.delete(`${API_PATH}/${TASK_API_PATH}/${id}`);
+  public removeTask(id: TaskDto['id']): Observable<TaskDto> {
+    return this.httpClient.delete<TaskDto>(
+      `${API_PATH}/${TASK_API_PATH}/${id}`
+    );
   }
 
   public updateTask(
     id: TaskDto['id'],
     updateParams: Partial<TaskDto>
-  ): Observable<unknown> {
-    return this.httpClient.patch(
+  ): Observable<TaskDto> {
+    return this.httpClient.patch<TaskDto>(
       `${API_PATH}/${TASK_API_PATH}/${id}`,
       updateParams
     );

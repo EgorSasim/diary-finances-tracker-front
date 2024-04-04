@@ -11,26 +11,23 @@ export class TaskService {
     return this.taskApiServivce.getAllTasks();
   }
 
-  public createTask(task: Task): Observable<unknown> {
+  public getTask(id: Task['id']): Observable<Task> {
+    return this.taskApiServivce.getTask(id);
+  }
+
+  public createTask(task: Task): Observable<Task> {
     task.creationDate = new Date(Date.now());
     return this.taskApiServivce.createTask(task);
   }
 
-  public getTask(taskId: number): Observable<Task> {
-    return this.taskApiServivce.getTask(taskId);
-  }
-
-  public removeTask(id: number): Observable<void> {
-    return this.taskApiServivce.removeTask(id) as Observable<void>;
+  public removeTask(id: Task['id']): Observable<Task> {
+    return this.taskApiServivce.removeTask(id);
   }
 
   public updateTask(
     id: Task['id'],
     updateParams: Partial<Task>
-  ): Observable<void> {
-    return this.taskApiServivce.updateTask(
-      id,
-      updateParams
-    ) as Observable<void>;
+  ): Observable<Task> {
+    return this.taskApiServivce.updateTask(id, updateParams);
   }
 }
