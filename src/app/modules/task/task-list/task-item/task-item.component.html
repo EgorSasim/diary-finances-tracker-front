@@ -13,7 +13,9 @@
   } @else {
   <div class="task-item__element">-</div>
   } @if (task.priority; as priority) {
-  <div class="task-item__element">{{ priority }}</div>
+  <div class="task-item__element">
+    {{ taskPriorityName[priority] | translate }}
+  </div>
   } @else {
   <div class="task-item__element">-</div>
   }

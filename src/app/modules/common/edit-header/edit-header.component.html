@@ -1,0 +1,13 @@
+<mat-toolbar color="basic" class="dft-edit-header">
+  <button mat-icon-button (click)="goBackEmit()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div class="dft-edit-header__controls">
+    <button mat-flat-button (click)="resetEmit()">
+      {{ "app.reset" | translate }}
+    </button>
+    <button mat-flat-button color="primary" (click)="saveEmit()">
+      {{ "app.save" | translate }}
+    </button>
+  </div>
+</mat-toolbar>

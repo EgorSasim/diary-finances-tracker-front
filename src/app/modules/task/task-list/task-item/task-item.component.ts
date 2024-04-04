@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { CompletedTaskItem, TaskItem } from './task-item.typings';
+import { TASK_PRIORITY_TO_NAME } from '../../../../constants/task-priorities';
 
 @Component({
   selector: 'dft-task-item',
@@ -18,6 +19,8 @@ export class TaskItemComponent {
   @Output() remove: EventEmitter<number> = new EventEmitter();
   @Output() edit: EventEmitter<number> = new EventEmitter();
   @Output() complete: EventEmitter<CompletedTaskItem> = new EventEmitter();
+
+  public readonly taskPriorityName = TASK_PRIORITY_TO_NAME;
 
   public removeTask(id: number): void {
     this.remove.emit(id);

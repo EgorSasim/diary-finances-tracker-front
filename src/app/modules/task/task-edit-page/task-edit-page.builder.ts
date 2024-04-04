@@ -7,7 +7,7 @@ import {
 } from '../../../services/task/task.constants';
 
 @Injectable()
-export class TaskEditBuilder {
+export class TaskEditPageBuilder {
   public createFormGroup(task: Task): FormGroup<TaskEditForm> {
     return new FormGroup<TaskEditForm>({
       id: new FormControl({ value: task.id, disabled: true }),

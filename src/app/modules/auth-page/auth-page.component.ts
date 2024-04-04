@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { SignIn } from './sign-in/sign-in.typings';
 import { SignUp } from './sign-up/sign-up.typings';
 import { AuthPageService } from './auth-page.service';
-import { BehaviorSubject, tap, finalize } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TokenService } from '../../services/token/token.service';
 import { Router } from '@angular/router';
@@ -29,15 +29,14 @@ export class AuthPageComponent {
     this.isLoading$.next(true);
     this.authPageService
       .signIn(signInData)
-      .pipe(
-        tap(() => this.isLoading$.next(true)),
-        finalize(() => this.isLoading$.next(false)),
-        takeUntilDestroyed(this.destroyRef)
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token) => {
           this.tokenService.setToken(token);
           this.navigateToHomePage();
+        },
+        complete: () => {
+          this.isLoading$.next(false);
         },
       });
   }
@@ -46,15 +45,14 @@ export class AuthPageComponent {
     this.isLoading$.next(true);
     this.authPageService
       .signUp(signUpData)
-      .pipe(
-        tap(() => this.isLoading$.next(true)),
-        finalize(() => this.isLoading$.next(false)),
-        takeUntilDestroyed(this.destroyRef)
-      )
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (token) => {
           this.tokenService.setToken(token);
           this.navigateToHomePage();
+        },
+        complete: () => {
+          this.isLoading$.next(false);
         },
       });
   }

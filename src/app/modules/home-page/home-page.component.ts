@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TaskCreateModalComponent } from '../task/task-create-modal/task-create-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Task } from '../../services/task/task.typings';
-import { BehaviorSubject, Observable, finalize, switchMap, take } from 'rxjs';
+import { BehaviorSubject, Observable, finalize, take } from 'rxjs';
 import { CompletedTaskItem } from '../task/task-list/task-item/task-item.typings';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';

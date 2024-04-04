@@ -1,7 +1,78 @@
-@defer { @if (task$ | async; as task) {
-<div>{{ task.title }}</div>
-} } @placeholder {
-<dft-spinner></dft-spinner>
-} @loading {
+@if(formGroup?.controls) {
+<dft-edit-header
+  class="dft-task-edit-page__header"
+  (reset)="resetFormValue()"
+  (back)="navigateBack()"
+  (save)="saveChanges()"
+></dft-edit-header>
+<main class="dft-task-edit-page__content">
+  <div class="dft-task-edit-page__content-sides">
+    <div class="dft-task-edit-page__content-side">
+      <mat-form-field>
+        <mat-label>{{ "app.title" | translate }}</mat-label>
+        <input matInput [formControl]="formGroup.controls.title" />
+        @if (formGroup.controls.title.errors) {
+        <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ "app.priority" | translate }}</mat-label>
+        <mat-select
+          matNativeControl
+          [formControl]="formGroup.controls.priority"
+        >
+          <mat-option>{{ "app.notSelected" | translate }}</mat-option>
+          @for (priorityName of priorityNames; track $index) {
+          <mat-option value="{{ priorities[$index] }}">{{
+            priorityName | translate
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="dft-task-edit-page__content-side">
+      <mat-form-field>
+        <mat-label>{{ "app.creationDate" | translate }}</mat-label>
+        <input
+          matInput
+          disabled
+          [formControl]="formGroup.controls.creationDate"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ "app.enterStartAndEndDate" | translate }}</mat-label>
+        <mat-date-range-input [formGroup]="formGroup" [rangePicker]="picker">
+          <input matStartDate formControlName="startDate" />
+          <input matEndDate formControlName="endDate" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+        @if (formGroup.controls?.startDate?.errors) {
+        <mat-error>{{
+          getErrorMessage(formGroup.controls.startDate)
+        }}</mat-error>
+        } @if (formGroup.controls.endDate?.errors) {
+        <mat-error>{{ getErrorMessage(formGroup.controls.endDate) }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+
+  <dft-text-area
+    [control]="formGroup.controls.description"
+    [height]="textAreaHeight"
+  ></dft-text-area>
+
+  <mat-slide-toggle
+    color="primary"
+    [formControl]="formGroup.controls.completed"
+    >{{ "app.complete" | translate }}</mat-slide-toggle
+  >
+</main>
+} @if(isLoading$ | async) {
 <dft-spinner></dft-spinner>
 }

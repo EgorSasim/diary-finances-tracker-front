@@ -1,0 +1,21 @@
+.dft-task-edit-page__header {
+  display: block;
+  padding-bottom: 2rem;
+}
+
+.dft-task-edit-page__content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.dft-task-edit-page__content-sides {
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.dft-task-edit-page__content-side {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

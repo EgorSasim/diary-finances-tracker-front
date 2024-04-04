@@ -10,4 +10,11 @@ export class TaskEditPageService {
   public getTask(id: number): Observable<Task> {
     return this.taskService.getTask(id);
   }
+
+  public saveChanges(
+    id: Task['id'],
+    updateParams: Partial<Task>
+  ): Observable<void> {
+    return this.taskService.updateTask(id, updateParams);
+  }
 }

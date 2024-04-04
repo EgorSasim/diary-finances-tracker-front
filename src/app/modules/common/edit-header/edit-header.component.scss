@@ -1,0 +1,12 @@
+.dft-edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.dft-edit-header__controls {
+  display: flex;
+  justify-content: right;
+  column-gap: 2rem;
+}
