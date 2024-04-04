@@ -45,18 +45,16 @@ export class HomePageComponent {
     this.isLoading$.next(true);
     this.homePageService
       .completeTask(completedTaskItem)
-      .pipe(
-        finalize(() => this.isLoading$.next(false)),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe(() => {
-        this.updateTasks();
-        this.changeDetectorRef.markForCheck();
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.updateTasks();
+          this.changeDetectorRef.markForCheck();
+        },
       });
   }
 
   public goToTaskEditPage(id: number): void {
-    console.log('router navigate');
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
 
@@ -64,13 +62,12 @@ export class HomePageComponent {
     this.isLoading$.next(true);
     this.homePageService
       .removeTask(id)
-      .pipe(
-        finalize(() => this.isLoading$.next(false)),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe(() => {
-        this.updateTasks();
-        this.changeDetectorRef.markForCheck();
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.updateTasks();
+          this.changeDetectorRef.markForCheck();
+        },
       });
   }
 
@@ -87,13 +84,12 @@ export class HomePageComponent {
     this.isLoading$.next(true);
     this.homePageService
       .createTask(task)
-      .pipe(
-        finalize(() => this.isLoading$.next(false)),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe(() => {
-        this.updateTasks();
-        this.changeDetectorRef.detectChanges();
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.updateTasks();
+          this.changeDetectorRef.markForCheck();
+        },
       });
   }
 }

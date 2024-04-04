@@ -14,8 +14,6 @@ export class CrossOutDirective implements OnInit, OnChanges {
   @Input() isCrossed = false;
   @HostBinding('style.text-decoration') textDecoration = '';
 
-  constructor(private elementRef: ElementRef) {}
-
   public ngOnInit(): void {
     this.updateElementCross();
   }

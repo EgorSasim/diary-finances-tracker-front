@@ -3,7 +3,7 @@
   class="task-item"
   crossOut
   [isCrossed]="task.completed"
-  [class.mod-completed]="task.completed"
+  [completed]="task.completed"
 >
   <div ellipsis class="task-item__element mod-title">{{ task.title }}</div>
   @if (task.endDate | date : "M/dd/yyy"; as date) {

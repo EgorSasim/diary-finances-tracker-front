@@ -1,16 +1,14 @@
-import { Directive, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[ellipsis]',
   host: { '(window:resize)': 'onResize($event)' },
 })
-export class EllipsisDirective implements OnInit {
+export class EllipsisDirective implements AfterViewInit {
   constructor(private elementRef: ElementRef) {}
 
-  public ngOnInit(): void {
-    setTimeout(() => {
-      this.onResize();
-    });
+  public ngAfterViewInit(): void {
+    this.onResize();
   }
 
   public onResize() {
