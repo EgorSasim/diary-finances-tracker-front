@@ -51,21 +51,11 @@
         </mat-form-field>
       </div>
     </div>
-    <mat-form-field class="dft-task-create-modal__description-control">
-      <mat-label>{{ "app.description" | translate }}</mat-label>
-      <textarea
-        #textArea
-        class="dft-task-create-modal__description-control-input"
-        matInput
-        placeholder="{{ 'app.placeholder.description' | translate }}"
-        [formControl]="formGroup.controls.description"
-      ></textarea>
-      @if(formGroup.controls.description.errors) {
-      <mat-error>{{
-        getErrorMessage(formGroup.controls.description)
-      }}</mat-error>
-      }
-    </mat-form-field>
+    <dft-text-area
+      class="dft-task-create-modal__description-control"
+      [control]="formGroup.controls.description"
+      [height]="textAreaHeight"
+    ></dft-text-area>
   </main>
   <footer class="dft-task-create-modal__footer">
     <button mat-raised-button color="warn" (click)="close()">

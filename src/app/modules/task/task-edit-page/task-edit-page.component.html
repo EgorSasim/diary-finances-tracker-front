@@ -1,1 +1,7 @@
-<p>task-edit-page works!</p>
+@defer { @if (task$ | async; as task) {
+<div>{{ task.title }}</div>
+} } @placeholder {
+<dft-spinner></dft-spinner>
+} @loading {
+<dft-spinner></dft-spinner>
+}

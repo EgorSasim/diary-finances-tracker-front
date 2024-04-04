@@ -12,6 +12,7 @@ import {
   MatNativeDateModule,
   provideNativeDateAdapter,
 } from '@angular/material/core';
+import { TextAreaModule } from '../../common/text-area/text-area.module';
 
 @NgModule({
   declarations: [TaskCreateModalComponent],
@@ -26,6 +27,7 @@ import {
     MatNativeDateModule,
     ReactiveFormsModule,
     CommonModule,
+    TextAreaModule,
   ],
   exports: [TaskCreateModalComponent],
 })

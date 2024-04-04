@@ -1,0 +1,16 @@
+@if(control) {
+<mat-form-field class="dft-text-area">
+  <mat-label>{{ "app.description" | translate }}</mat-label>
+  <textarea
+    #textArea
+    class="dft-text-area__input"
+    [class.mod-not-resize]="!resizable"
+    matInput
+    placeholder="{{ 'app.placeholder.description' | translate }}"
+    [formControl]="control"
+  ></textarea>
+  @if(control.errors) {
+  <mat-error>{{ getErrorMessage(control) }}</mat-error>
+  }
+</mat-form-field>
+}

@@ -12,8 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { TaskCreateForm } from '../../../services/task/task.typings';
 import { TaskCreateModalBuilder } from './task-create-modal.builder';
 import { TASK_PRIORITY_TO_NAME } from '../../../constants/task-priorities';
-import { getControlErrorMessage } from '../../../helpers/form-errors';
-import { TranslateService } from '@ngx-translate/core';
+import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 
 @Component({
   selector: 'dft-task-create-modal',
@@ -22,10 +21,10 @@ import { TranslateService } from '@ngx-translate/core';
   providers: [TaskCreateModalBuilder],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskCreateModalComponent implements AfterViewInit {
-  @ViewChild('textArea') public textArea: ElementRef;
+export class TaskCreateModalComponent {
   public readonly priorities = Object.keys(TASK_PRIORITY_TO_NAME);
   public readonly priorityNames = Object.values(TASK_PRIORITY_TO_NAME);
+  public readonly textAreaHeight: string = '12rem';
 
   public formGroup: FormGroup<TaskCreateForm> =
     this.taskCreateModalBuilder.createFormGroup();
@@ -33,21 +32,11 @@ export class TaskCreateModalComponent implements AfterViewInit {
   constructor(
     private matDialogRef: MatDialogRef<TaskCreateModalComponent>,
     private taskCreateModalBuilder: TaskCreateModalBuilder,
-    private translateService: TranslateService,
-    private renderer2: Renderer2
+    private formErrorMessageService: FormErrorMessageService
   ) {}
 
-  public ngAfterViewInit(): void {
-    this.setTextAreaHeight();
-  }
-
   public getErrorMessage(control: AbstractControl): string {
-    const errMessage = getControlErrorMessage(control);
-    const errText = this.translateService.instant(
-      errMessage.errorText,
-      errMessage.params
-    );
-    return errText;
+    return this.formErrorMessageService.getControlErrorMessage(control);
   }
 
   public create(): void {
@@ -60,10 +49,5 @@ export class TaskCreateModalComponent implements AfterViewInit {
 
   public close(): void {
     this.matDialogRef.close();
-  }
-
-  private setTextAreaHeight(): void {
-    const height = '12rem';
-    this.renderer2.setStyle(this.textArea.nativeElement, 'height', height);
   }
 }

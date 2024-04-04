@@ -5,9 +5,9 @@ import {
   Output,
 } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { getControlErrorMessage } from '../../../helpers/form-errors';
 import { SignInBuiler } from './sign-in.builder';
 import { SignIn } from './sign-in.typings';
+import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 
 @Component({
   selector: 'dft-sign-in',
@@ -20,10 +20,13 @@ export class SignInComponent {
   @Output() public signIn: EventEmitter<SignIn> = new EventEmitter();
   public formGroup = this.signInBuilder.createFormGroup();
 
-  constructor(private signInBuilder: SignInBuiler) {}
+  constructor(
+    private signInBuilder: SignInBuiler,
+    private formErrorMessageService: FormErrorMessageService
+  ) {}
 
   public getErrorMessage(control: AbstractControl): string {
-    return getControlErrorMessage(control).errorText;
+    return this.formErrorMessageService.getControlErrorMessage(control);
   }
 
   public confirm(): void {
