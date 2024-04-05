@@ -2,10 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
-  Input,
   inject,
 } from '@angular/core';
-import { SnackBarInputData, SnackBarType } from './snack-bar.typings';
+import { SnackBarInputData } from './snack-bar.typings';
 import {
   MAT_SNACK_BAR_DATA,
   MatSnackBarRef,

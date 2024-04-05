@@ -1,31 +1,16 @@
-<mat-list>
-  @if (taskItems?.length) {
-  <mat-divider></mat-divider>
-  <div class="dft-task-list-header">
-    <div class="dft-task-list-header__element mod-name">
-      {{ "app.title" | translate }}
-    </div>
-    <div class="dft-task-list-header__element">
-      {{ "app.endDate" | translate }}
-    </div>
-    <div class="dft-task-list-header__element">
-      {{ "app.priority" | translate }}
-    </div>
-    <div class="dft-task-list-header__element mod-settings">
-      {{ "app.settings" | translate }}
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-  } @for (item of taskItems; track item.id) {
-  <mat-list-item
-    ><dft-task-item
-      [taskItem]="item"
-      (edit)="editTaskEmit($event)"
-      (remove)="removeTaskEmit($event)"
-      (complete)="completeTaskEmit($event)"
-    ></dft-task-item
-  ></mat-list-item>
-  @if (!$last) {
-  <mat-divider></mat-divider>
-  } }
-</mat-list>
+@if (taskItems?.length) {
+<dft-list [columnNames]="columnNames">
+  <ng-container items>
+    @for (item of taskItems; track item.id) {
+    <mat-list-item
+      ><dft-task-item
+        [taskItem]="item"
+        (edit)="editTaskEmit($event)"
+        (remove)="removeTaskEmit($event)"
+        (complete)="completeTaskEmit($event)"
+      ></dft-task-item
+    ></mat-list-item>
+    }
+  </ng-container>
+</dft-list>
+}

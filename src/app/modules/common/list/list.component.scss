@@ -1,0 +1,21 @@
+.dft-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dft-list__header-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-grow: 1;
+
+  &.mod-first {
+    justify-content: left;
+  }
+
+  &.mod-last {
+    justify-content: right;
+  }
+}

@@ -1,0 +1,21 @@
+<mat-list>
+  @if (columnNames?.length) {
+  <mat-divider></mat-divider>
+  <mat-list-item>
+    <div class="dft-list__header">
+      @for(columnName of columnNames; track $index) {
+      <div
+        class="dft-list__header-item"
+        [class.mod-first]="$first"
+        [class.mod-last]="$last"
+      >
+        {{ columnName | translate }}
+      </div>
+      }
+    </div>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+  }
+  <ng-content select="[items]"></ng-content>
+</mat-list>

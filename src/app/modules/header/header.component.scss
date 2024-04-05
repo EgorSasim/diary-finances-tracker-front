@@ -2,7 +2,6 @@ $headerHeight: var(--header-height);
 
 .dft-header {
   display: flex;
-  flex-grow: 100%;
   padding: 0 1.8rem;
   height: $headerHeight;
 }
