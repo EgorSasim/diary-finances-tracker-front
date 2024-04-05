@@ -1,0 +1,23 @@
+@if(formGroup?.controls) {
+<dft-edit-page
+  (back)="navigateBack()"
+  (reset)="resetFormValue()"
+  (save)="saveChanges()"
+>
+  <ng-container main>
+    <mat-form-field class="dft-note-edit-page__title">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="formGroup.controls.title" />
+      @if (formGroup.controls.title.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+      }
+    </mat-form-field>
+    <dft-text-area
+      [control]="formGroup.controls.description"
+      [height]="textAreaHeight"
+    ></dft-text-area>
+  </ng-container>
+</dft-edit-page>
+} @if(isLoading$ | async) {
+<dft-spinner></dft-spinner>
+}

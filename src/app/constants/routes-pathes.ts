@@ -4,4 +4,5 @@ export const ROUTE_PATH = {
   withSideBar: 'with-side-bar',
   home: 'home',
   taskEditPage: 'task-edit-page',
+  noteEditPage: 'note-edit-page',
 };

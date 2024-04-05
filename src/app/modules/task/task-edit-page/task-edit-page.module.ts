@@ -11,8 +11,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
-import { EditHeaderModule } from '../../common/edit-header/edit-header.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EditPageModule } from '../../common/edit-page/edit-page.module';
 
 @NgModule({
   declarations: [TaskEditPageComponent],
@@ -30,8 +30,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     CommonModule,
     TextAreaModule,
-    EditHeaderModule,
     MatSlideToggleModule,
+    EditPageModule,
   ],
 })
 export class TaskEditPageModule {}

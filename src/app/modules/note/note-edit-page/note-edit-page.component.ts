@@ -1,40 +1,32 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  OnInit,
-} from '@angular/core';
-import { TaskEditPageService } from './task-edit-page.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, filter, map, switchMap, tap } from 'rxjs';
-import { Task, TaskEditForm } from '../../../services/task/task.typings';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { BehaviorSubject, filter, map, switchMap } from 'rxjs';
+import { Note, NoteEditForm } from '../../../services/note/note.typings';
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { TaskEditPageBuilder } from './task-edit-page.builder';
-import { ROUTE_PATH } from '../../../constants/routes-pathes';
+import { NoteEditPageBuilder } from './note-edit-page.builder';
+import { NoteEditPageService } from './note-edit-page.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
-import { TASK_PRIORITY_TO_NAME } from '../../../constants/task-priorities';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ROUTE_PATH } from '../../../constants/routes-pathes';
 
 @Component({
-  selector: 'dft-task-edit-page',
-  templateUrl: './task-edit-page.component.html',
-  styleUrl: './task-edit-page.component.scss',
-  providers: [TaskEditPageService, TaskEditPageBuilder],
+  selector: 'dft-note-edit-page',
+  templateUrl: './note-edit-page.component.html',
+  styleUrl: './note-edit-page.component.scss',
+  providers: [NoteEditPageBuilder, NoteEditPageService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskEditPageComponent implements OnInit {
+export class NoteEditPageComponent {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public formGroup: FormGroup<TaskEditForm>;
-  public readonly priorities = Object.keys(TASK_PRIORITY_TO_NAME);
-  public readonly priorityNames = Object.values(TASK_PRIORITY_TO_NAME);
+  public formGroup: FormGroup<NoteEditForm>;
   public readonly textAreaHeight: string = '20rem';
-  private initialFormGroupState: Required<Task>;
+  private initialFormGroupState: Required<Note>;
 
   constructor(
-    private taskEditPageService: TaskEditPageService,
+    private noteEditPageService: NoteEditPageService,
     private activatedRoute: ActivatedRoute,
     private destroyRef: DestroyRef,
-    private taskEditPageBuilder: TaskEditPageBuilder,
+    private noteEditPageBuilder: NoteEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
     private router: Router
   ) {}
@@ -49,7 +41,7 @@ export class TaskEditPageComponent implements OnInit {
       .pipe(
         map((params) => params['id']),
         filter((id) => !!id),
-        switchMap((id) => this.taskEditPageService.getTask(id)),
+        switchMap((id) => this.noteEditPageService.getNote(id)),
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe((task) => {
@@ -57,10 +49,10 @@ export class TaskEditPageComponent implements OnInit {
         if (!task) {
           this.router.navigate([ROUTE_PATH.withHeader]);
         } else {
-          this.formGroup = this.taskEditPageBuilder.createFormGroup(task);
+          this.formGroup = this.noteEditPageBuilder.createFormGroup(task);
           this.initialFormGroupState = {
             ...this.formGroup.getRawValue(),
-          } as Required<Task>;
+          } as Required<Note>;
         }
       });
   }
@@ -79,8 +71,8 @@ export class TaskEditPageComponent implements OnInit {
 
   public saveChanges(): void {
     this.isLoading$.next(true);
-    const task = this.formGroup.getRawValue() as Required<Task>;
-    this.taskEditPageService.saveChanges(task.id, task).subscribe({
+    const note = this.formGroup.getRawValue() as Required<Note>;
+    this.noteEditPageService.saveChanges(note.id, note).subscribe({
       next: () => {
         this.navigateBack();
       },

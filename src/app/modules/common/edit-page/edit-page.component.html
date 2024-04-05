@@ -1,0 +1,9 @@
+<dft-edit-header
+  class="dft-edit-page__header"
+  (back)="backEmit()"
+  (reset)="resetEmit()"
+  (save)="saveEmit()"
+></dft-edit-header>
+<main [style.width]="width" class="dft-edit-page__main">
+  <ng-content select="[main]"></ng-content>
+</main>

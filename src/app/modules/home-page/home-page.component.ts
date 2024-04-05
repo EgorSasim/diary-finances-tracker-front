@@ -96,7 +96,7 @@ export class HomePageComponent {
   }
 
   public goToNoteEditPage(id: Note['id']): void {
-    console.log('id: ', id);
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.noteEditPage, id]);
   }
 
   public removeNote(id: Note['id']): void {

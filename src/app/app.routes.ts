@@ -5,6 +5,7 @@ import { HomePageComponent } from './modules/home-page/home-page.component';
 import { ROUTE_PATH } from './constants/routes-pathes';
 import { SideBarComponent } from './modules/side-bar/side-bar.component';
 import { TaskEditPageComponent } from './modules/task/task-edit-page/task-edit-page.component';
+import { NoteEditPageComponent } from './modules/note/note-edit-page/note-edit-page.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,14 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./modules/task/task-edit-page/task-edit-page.module').then(
             (m) => m.TaskEditPageModule
+          ),
+      },
+      {
+        path: `${ROUTE_PATH.noteEditPage}/:id`,
+        component: NoteEditPageComponent,
+        loadChildren: () =>
+          import('./modules/note/note-edit-page/note-edit-page.module').then(
+            (m) => m.NoteEditPageModule
           ),
       },
       {

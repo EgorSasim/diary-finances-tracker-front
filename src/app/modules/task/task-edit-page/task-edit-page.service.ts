@@ -7,7 +7,7 @@ import { Task } from '../../../services/task/task.typings';
 export class TaskEditPageService {
   constructor(private taskService: TaskService) {}
 
-  public getTask(id: number): Observable<Task> {
+  public getTask(id: Task['id']): Observable<Task> {
     return this.taskService.getTask(id);
   }
 
