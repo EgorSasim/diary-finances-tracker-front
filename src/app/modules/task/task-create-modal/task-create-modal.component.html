@@ -1,6 +1,12 @@
 @if (formGroup?.controls) {
-<div class="dft-task-create-modal">
-  <main class="dft-task-create-modal__main">
+<dft-create-form
+  [height]="'32rem'"
+  [width]="'53rem'"
+  (close)="close()"
+  (create)="create()"
+>
+  <div header>lalla</div>
+  <main main>
     <mat-form-field class="dft-task-create-modal__title-control">
       <mat-label>{{ "app.title" | translate }}</mat-label>
       <input matInput [formControl]="formGroup.controls.title" />
@@ -57,14 +63,6 @@
       [height]="textAreaHeight"
     ></dft-text-area>
   </main>
-  <footer class="dft-task-create-modal__footer">
-    <button mat-raised-button color="warn" (click)="close()">
-      {{ "app.cancel" | translate }}
-    </button>
-    <button mat-raised-button color="primary" (click)="create()">
-      {{ "app.add" | translate }}
-    </button>
-  </footer>
-</div>
+</dft-create-form>
 
 }

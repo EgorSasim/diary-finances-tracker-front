@@ -8,11 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  MatNativeDateModule,
-  provideNativeDateAdapter,
-} from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
+import { CreateFormModule } from '../../common/create-form/create-form.module';
 
 @NgModule({
   declarations: [TaskCreateModalComponent],
@@ -28,6 +26,7 @@ import { TextAreaModule } from '../../common/text-area/text-area.module';
     ReactiveFormsModule,
     CommonModule,
     TextAreaModule,
+    CreateFormModule,
   ],
   exports: [TaskCreateModalComponent],
 })

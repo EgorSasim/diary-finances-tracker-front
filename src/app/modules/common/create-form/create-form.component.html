@@ -1,0 +1,20 @@
+<div [style.width]="width" [style.height]="height" class="dft-create-form">
+  @if (visibleParts.header) {
+  <div class="dft-create-form__header">
+    <ng-content select="[header]"></ng-content>
+  </div>
+  } @if (visibleParts.main) {
+  <div class="dft-create-form__main">
+    <ng-content #main select="[main]"></ng-content>
+  </div>
+  } @if (visibleParts.footer) {
+  <div class="dft-create-form__footer">
+    <button mat-raised-button color="warn" (click)="closeEmit()">
+      {{ "app.cancel" | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="createEmit()">
+      {{ "app.add" | translate }}
+    </button>
+  </div>
+  }
+</div>
