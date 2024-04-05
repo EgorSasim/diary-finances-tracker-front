@@ -1,3 +1,10 @@
+.dft-home-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
 .dft-home-page__task-list {
   width: 80%;
   display: block;
@@ -16,7 +23,7 @@
   width: 20%;
   margin: 0 auto;
 
-  &.small-width {
+  &.full-width {
     width: 80%;
   }
 }

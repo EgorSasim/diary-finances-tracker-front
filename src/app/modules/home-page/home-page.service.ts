@@ -47,4 +47,8 @@ export class HomePageService {
   public getNotes(): Observable<Note[]> {
     return this.noteService.getNotes();
   }
+
+  public removeNote(id: Note['id']): Observable<Note> {
+    return this.noteService.remoteNote(id);
+  }
 }

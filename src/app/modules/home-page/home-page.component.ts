@@ -28,7 +28,7 @@ import { Note } from '../../services/note/note.typings';
 export class HomePageComponent {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public tasks$: Observable<Task[]>;
-  public notes$: Observable<Note[]> = this.homePageService.getNotes();
+  public notes$: Observable<Note[]>;
 
   constructor(
     private homePageService: HomePageService,
@@ -38,6 +38,7 @@ export class HomePageComponent {
     private router: Router
   ) {
     this.updateTasks();
+    this.updateNotes();
   }
 
   public showCreateTaskModal(): void {
@@ -94,6 +95,23 @@ export class HomePageComponent {
       });
   }
 
+  public goToNoteEditPage(id: Note['id']): void {
+    console.log('id: ', id);
+  }
+
+  public removeNote(id: Note['id']): void {
+    this.isLoading$.next(true);
+    this.homePageService
+      .removeNote(id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.updateNotes();
+          this.changeDetectorRef.markForCheck();
+        },
+      });
+  }
+
   private updateTasks(): void {
     this.isLoading$.next(true);
     this.tasks$ = this.homePageService.getAllTasks().pipe(
@@ -116,17 +134,22 @@ export class HomePageComponent {
       });
   }
 
+  private updateNotes(): void {
+    this.isLoading$.next(true);
+    this.notes$ = this.homePageService.getNotes().pipe(
+      take(1),
+      finalize(() => this.isLoading$.next(false)),
+      takeUntilDestroyed(this.destroyRef)
+    );
+  }
+
   private handleNoteCreation(note: Note): void {
     this.isLoading$.next(true);
-    this.homePageService
-      .createNote(note)
-      .pipe(
-        switchMap(() => {
-          return this.homePageService.getNotes();
-        })
-      )
-      .subscribe((notes) => {
-        this.isLoading$.next(false);
-      });
+    this.homePageService.createNote(note).subscribe({
+      complete: () => {
+        this.updateNotes();
+        this.changeDetectorRef.markForCheck();
+      },
+    });
   }
 }

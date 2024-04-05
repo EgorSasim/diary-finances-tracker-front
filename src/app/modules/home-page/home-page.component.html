@@ -2,35 +2,58 @@
 <dft-spinner></dft-spinner>
 }
 
-<mat-accordion
-  [class.small-width]="panel.expanded"
-  class="dft-home-page__task-list"
->
-  <mat-expansion-panel #panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
-    </mat-expansion-panel-header>
-    @if ((tasks$ | async)?.length;) {
-    <dft-task-list
-      [taskItems]="tasks$ | async"
-      (completeTask)="completeTask($event)"
-      (editTask)="goToTaskEditPage($event)"
-      (removeTask)="removeTask($event)"
-    ></dft-task-list>
-    } @else {
-    <span
-      >{{ "app.noTodayTasks" | translate }}.
-      <button mat-button color="primary" (click)="showCreateTaskModal()">
-        {{ "app.createTask" | translate }}
-      </button></span
-    >
-    }
-  </mat-expansion-panel>
-</mat-accordion>
+<div class="dft-home-page">
+  <mat-accordion
+    [class.full-width]="taskPanel.expanded"
+    class="dft-home-page__task-list"
+  >
+    <mat-expansion-panel #taskPanel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
+      </mat-expansion-panel-header>
+      @if ((tasks$ | async)?.length;) {
+      <dft-task-list
+        [taskItems]="tasks$ | async"
+        (completeTask)="completeTask($event)"
+        (editTask)="goToTaskEditPage($event)"
+        (removeTask)="removeTask($event)"
+      ></dft-task-list>
+      } @else {
+      <span
+        >{{ "app.noTasks" | translate }}.
+        <button mat-button color="primary" (click)="showCreateTaskModal()">
+          {{ "app.createTask" | translate }}
+        </button></span
+      >
+      }
+    </mat-expansion-panel>
+  </mat-accordion>
 
-@if ((notes$ | async)?.length) {
-<dft-note-list [noteItems]="notes$ | async"></dft-note-list>
-}
+  <mat-accordion
+    [class.full-width]="notePanel.expanded"
+    class="dft-home-page__task-list"
+  >
+    <mat-expansion-panel #notePanel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ "app.recentNotes" | translate }} </mat-panel-title>
+      </mat-expansion-panel-header>
+      @if ((notes$ | async)?.length;) {
+      <dft-note-list
+        [noteItems]="notes$ | async"
+        (editNote)="goToNoteEditPage($event)"
+        (removeNote)="removeNote($event)"
+      ></dft-note-list>
+      } @else {
+      <span
+        >{{ "app.noNotes" | translate }}.
+        <button mat-button color="primary" (click)="showCreateNoteModal()">
+          {{ "app.createNote" | translate }}
+        </button></span
+      >
+      }
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 
 <dft-create-entity-menu-button
   class="home-page__add-entity"
