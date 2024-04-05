@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TaskItemComponent } from './task-item.component';
+import { TaskListItemComponent } from './task-list-item.component';
 import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +10,7 @@ import { CrossOutModule } from '../../../../directives/cross-out/cross-out.modul
 import { CompletedModule } from '../../../../directives/completed/completed.module';
 
 @NgModule({
-  declarations: [TaskItemComponent],
+  declarations: [TaskListItemComponent],
   imports: [
     MatButtonModule,
     MatIconModule,
@@ -21,6 +21,6 @@ import { CompletedModule } from '../../../../directives/completed/completed.modu
     CrossOutModule,
     CompletedModule,
   ],
-  exports: [TaskItemComponent],
+  exports: [TaskListItemComponent],
 })
-export class TaskItemModule {}
+export class TaskListItemModule {}

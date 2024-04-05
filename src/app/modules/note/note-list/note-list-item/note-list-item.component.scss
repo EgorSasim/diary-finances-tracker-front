@@ -1,0 +1,19 @@
+.dft-note-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dft-note-list-item__element {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+
+  &.mod-first {
+    justify-content: left;
+  }
+
+  &.mod-last:not(.mod-first) {
+    justify-content: right;
+  }
+}

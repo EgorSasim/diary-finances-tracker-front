@@ -1,11 +1,11 @@
 import { Task } from '../../../../services/task/task.typings';
 
-export type TaskItem = Pick<
+export type TaskListItem = Pick<
   Task,
   'id' | 'title' | 'endDate' | 'priority' | 'completed'
 >;
 
-export interface CompletedTaskItem {
+export interface CompletedTaskListItem {
   id: number;
   isCompleted: boolean;
 }

@@ -28,6 +28,10 @@
   </mat-expansion-panel>
 </mat-accordion>
 
+@if ((notes$ | async)?.length) {
+<dft-note-list [noteItems]="notes$ | async"></dft-note-list>
+}
+
 <dft-create-entity-menu-button
   class="home-page__add-entity"
   (createTask)="showCreateTaskModal()"

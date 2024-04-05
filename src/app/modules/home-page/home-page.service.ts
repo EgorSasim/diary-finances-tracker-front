@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../services/user/user.typings';
 import { TaskService } from '../../services/task/task.service';
 import { Task } from '../../services/task/task.typings';
-import { CompletedTaskItem } from '../task/task-list/task-item/task-item.typings';
+import { CompletedTaskListItem } from '../task/task-list/task-list-item/task-list-item.typings';
 import { Note } from '../../services/note/note.typings';
 import { NoteService } from '../../services/note/note.service';
 
@@ -32,7 +32,9 @@ export class HomePageService {
     return this.taskService.removeTask(id);
   }
 
-  public completeTask(completedTaskItem: CompletedTaskItem): Observable<Task> {
+  public completeTask(
+    completedTaskItem: CompletedTaskListItem
+  ): Observable<Task> {
     return this.taskService.updateTask(completedTaskItem.id, {
       completed: completedTaskItem.isCompleted,
     });

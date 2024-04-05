@@ -7,6 +7,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerModule } from '../common/spinner/spinner.module';
+import { NoteListModule } from '../note/note-list/note-list.module';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -17,6 +18,7 @@ import { SpinnerModule } from '../common/spinner/spinner.module';
     MatExpansionModule,
     TranslateModule,
     MatButtonModule,
+    NoteListModule,
     SpinnerModule,
   ],
 })

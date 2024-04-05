@@ -1,1 +1,15 @@
-<p>note-list works!</p>
+@if(noteItems?.length) {
+<dft-list [columnNames]="columnNames">
+  <ng-container items>
+    @for (item of noteItems; track item.id) {
+    <mat-list-item>
+      <dft-note-list-item
+        [noteItem]="item"
+        (edit)="editNoteEmit($event)"
+        (remove)="removeNoteEmit($event)"
+      ></dft-note-list-item>
+    </mat-list-item>
+    }
+  </ng-container>
+</dft-list>
+}

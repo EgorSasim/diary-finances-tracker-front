@@ -7,7 +7,7 @@
       <div
         class="dft-list__header-item"
         [class.mod-first]="$first"
-        [class.mod-last]="$last"
+        [class.mod-last]="$last && !$first"
       >
         {{ columnName | translate }}
       </div>

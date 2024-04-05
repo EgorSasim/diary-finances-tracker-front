@@ -5,7 +5,10 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CompletedTaskItem, TaskItem } from './task-item/task-item.typings';
+import {
+  CompletedTaskListItem,
+  TaskListItem,
+} from './task-list-item/task-list-item.typings';
 import { ListColumnNames } from '../../common/list/list.typings';
 
 @Component({
@@ -14,10 +17,10 @@ import { ListColumnNames } from '../../common/list/list.typings';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListComponent {
-  @Input() public taskItems: TaskItem[];
+  @Input() public taskItems: TaskListItem[];
   @Output() public removeTask: EventEmitter<number> = new EventEmitter();
   @Output() public editTask: EventEmitter<number> = new EventEmitter();
-  @Output() public completeTask: EventEmitter<CompletedTaskItem> =
+  @Output() public completeTask: EventEmitter<CompletedTaskListItem> =
     new EventEmitter();
   public readonly columnNames: ListColumnNames = [
     'app.title',
@@ -33,7 +36,7 @@ export class TaskListComponent {
     this.editTask.emit(id);
   }
 
-  public completeTaskEmit(completedTaskItem: CompletedTaskItem): void {
+  public completeTaskEmit(completedTaskItem: CompletedTaskListItem): void {
     this.completeTask.emit(completedTaskItem);
   }
 }

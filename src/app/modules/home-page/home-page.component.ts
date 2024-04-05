@@ -13,7 +13,7 @@ import {
   take,
   tap,
 } from 'rxjs';
-import { CompletedTaskItem } from '../task/task-list/task-item/task-item.typings';
+import { CompletedTaskListItem } from '../task/task-list/task-list-item/task-list-item.typings';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
 import { NoteCreateModalComponent } from '../note/note-create-modal/note-create-modal.component';
@@ -28,6 +28,7 @@ import { Note } from '../../services/note/note.typings';
 export class HomePageComponent {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public tasks$: Observable<Task[]>;
+  public notes$: Observable<Note[]> = this.homePageService.getNotes();
 
   constructor(
     private homePageService: HomePageService,
@@ -63,7 +64,7 @@ export class HomePageComponent {
       .subscribe();
   }
 
-  public completeTask(completedTaskItem: CompletedTaskItem): void {
+  public completeTask(completedTaskItem: CompletedTaskListItem): void {
     this.isLoading$.next(true);
     this.homePageService
       .completeTask(completedTaskItem)
@@ -120,17 +121,11 @@ export class HomePageComponent {
     this.homePageService
       .createNote(note)
       .pipe(
-        tap((note) => {
-          console.log('create note.....', note);
-          console.log('updated note list...');
-        }),
         switchMap(() => {
-          console.log('get all notes.....');
           return this.homePageService.getNotes();
-        }),
-        tap((notes) => console.log('notes; ', notes))
+        })
       )
-      .subscribe(() => {
+      .subscribe((notes) => {
         this.isLoading$.next(false);
       });
   }

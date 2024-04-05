@@ -5,20 +5,20 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { CompletedTaskItem, TaskItem } from './task-item.typings';
+import { CompletedTaskListItem, TaskListItem } from './task-list-item.typings';
 import { TASK_PRIORITY_TO_NAME } from '../../../../constants/task-priorities';
 
 @Component({
   selector: 'dft-task-item',
-  templateUrl: './task-item.component.html',
-  styleUrl: './task-item.component.scss',
+  templateUrl: './task-list-item.component.html',
+  styleUrl: './task-list-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskItemComponent {
-  @Input() taskItem: TaskItem;
+export class TaskListItemComponent {
+  @Input() taskItem: TaskListItem;
   @Output() remove: EventEmitter<number> = new EventEmitter();
   @Output() edit: EventEmitter<number> = new EventEmitter();
-  @Output() complete: EventEmitter<CompletedTaskItem> = new EventEmitter();
+  @Output() complete: EventEmitter<CompletedTaskListItem> = new EventEmitter();
 
   public readonly taskPriorityName = TASK_PRIORITY_TO_NAME;
 
