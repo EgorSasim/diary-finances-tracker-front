@@ -7,7 +7,7 @@
     [class.full-width]="taskPanel.expanded"
     class="dft-home-page__task-list"
   >
-    <mat-expansion-panel #taskPanel>
+    <mat-expansion-panel #taskPanel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> {{ "app.todayTasks" | translate }} </mat-panel-title>
       </mat-expansion-panel-header>
@@ -33,7 +33,7 @@
     [class.full-width]="notePanel.expanded"
     class="dft-home-page__task-list"
   >
-    <mat-expansion-panel #notePanel>
+    <mat-expansion-panel #notePanel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> {{ "app.recentNotes" | translate }} </mat-panel-title>
       </mat-expansion-panel-header>

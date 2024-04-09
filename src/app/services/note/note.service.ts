@@ -20,7 +20,7 @@ export class NoteService {
     return this.noteApiService.createNote(note);
   }
 
-  public remoteNote(id: Note['id']): Observable<Note> {
+  public removeNote(id: Note['id']): Observable<Note> {
     return this.noteApiService.removeNote(id);
   }
 

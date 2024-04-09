@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { NoteDto } from './note-api.typings';
 import { API_PATH } from '../api.constants';
 import { NOTE_API_PATH } from './note-api.constants';
-import { Note } from '../../services/note/note.typings';
 
 @Injectable({ providedIn: 'root' })
 export class NoteApiService {

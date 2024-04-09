@@ -49,6 +49,6 @@ export class HomePageService {
   }
 
   public removeNote(id: Note['id']): Observable<Note> {
-    return this.noteService.remoteNote(id);
+    return this.noteService.removeNote(id);
   }
 }

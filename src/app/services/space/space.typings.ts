@@ -1,0 +1,16 @@
+import { Note } from '../note/note.typings';
+import { Task } from '../task/task.typings';
+
+export interface Space {
+  id: number;
+  name: string;
+  taskIds?: Task['id'][];
+  noteIds?: Note['id'][];
+}
+
+export class SpaceSearchParams {
+  id: number;
+  number: string;
+  taskIds?: Task['id'][];
+  noteIds?: Note['id'][];
+}
