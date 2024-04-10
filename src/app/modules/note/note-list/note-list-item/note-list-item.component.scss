@@ -2,12 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  column-gap: 2rem;
 }
 
 .dft-note-list-item__element {
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1;
 
   &.mod-first {
     justify-content: left;

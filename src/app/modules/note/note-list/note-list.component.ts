@@ -21,7 +21,11 @@ export class NoteListComponent {
   @Output() public removeNote: EventEmitter<NoteListItem['id']> =
     new EventEmitter();
 
-  public readonly columnNames: ListColumnNames = ['app.title', 'app.settings'];
+  public readonly columnNames: ListColumnNames = [
+    'app.title',
+    'app.description',
+    'app.settings',
+  ];
 
   public editNoteEmit(id: NoteListItem['id']): void {
     this.editNote.emit(id);

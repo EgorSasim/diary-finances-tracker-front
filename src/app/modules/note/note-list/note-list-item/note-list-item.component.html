@@ -1,6 +1,7 @@
 @if (noteItem; as note) {
 <div class="dft-note-list-item">
   <div class="dft-note-list-item__element mod-first">{{ note.title }}</div>
+  <div class="dft-note-list-item__element" ellipsis>{{ note.description }}</div>
   <div class="dft-note-list-item__element mod-last">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
