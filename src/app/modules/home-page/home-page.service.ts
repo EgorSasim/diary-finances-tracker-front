@@ -7,13 +7,16 @@ import { Task } from '../../services/task/task.typings';
 import { CompletedTaskListItem } from '../task/task-list/task-list-item/task-list-item.typings';
 import { Note } from '../../services/note/note.typings';
 import { NoteService } from '../../services/note/note.service';
+import { Space } from '../../services/space/space.typings';
+import { SpaceService } from '../../services/space/space.service';
 
 @Injectable()
 export class HomePageService {
   constructor(
     private userService: UserService,
     private noteService: NoteService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private spaceService: SpaceService
   ) {}
 
   public getUserInfo(): Observable<User> {
@@ -50,5 +53,9 @@ export class HomePageService {
 
   public removeNote(id: Note['id']): Observable<Note> {
     return this.noteService.removeNote(id);
+  }
+
+  public createSpace(space: Space): Observable<Space> {
+    return this.spaceService.createSpace(space);
   }
 }

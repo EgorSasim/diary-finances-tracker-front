@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
 import { NoteCreateModalComponent } from '../note/note-create-modal/note-create-modal.component';
 import { Note } from '../../services/note/note.typings';
+import { SpaceCreateModalComponent } from '../space/space-create-modal/space-create-modal.component';
+import { Space } from '../../services/space/space.typings';
 
 @Component({
   selector: 'dft-home-page',
@@ -60,6 +62,18 @@ export class HomePageComponent {
       .pipe(
         filter((note) => !!note),
         tap((note) => this.handleNoteCreation(note)),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
+  }
+
+  public showCreateSpaceModal(): void {
+    const dialogRef = this.matDialog.open(SpaceCreateModalComponent);
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((space) => !!space),
+        tap((space) => this.handleSpaceCreation(space)),
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe();
@@ -151,5 +165,16 @@ export class HomePageComponent {
         this.changeDetectorRef.markForCheck();
       },
     });
+  }
+
+  private handleSpaceCreation(space: Space): void {
+    this.isLoading$.next(true);
+    this.homePageService
+      .createSpace(space)
+      .pipe(
+        finalize(() => this.isLoading$.next(false)),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
   }
 }

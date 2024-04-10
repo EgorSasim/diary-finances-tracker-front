@@ -1,1 +1,47 @@
-<p>space-create-modal works!</p>
+@if(formGroup?.controls) {
+<dft-create-form
+  [width]="'50rem'"
+  [height]="'12rem'"
+  (close)="close()"
+  (create)="create()"
+>
+  <main main>
+    <mat-form-field class="dft-space-create-modal__title">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="formGroup.controls.name" />
+      @if(formGroup.controls.name.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls.name) }}</mat-error>
+      }
+    </mat-form-field>
+    <div class="dft-space-create-modal__selectors">
+      @if(tasks$ | async; as tasks) {
+      <mat-form-field class="dft-space-create-modal__selectors-control">
+        <mat-label>{{ "app.relatedTasks" | translate }}</mat-label>
+        <mat-select
+          matInput
+          [formControl]="formGroup.controls.taskIds"
+          multiple
+        >
+          @for (task of tasks; track task.id) {
+          <mat-option [value]="task.id">{{ task.title }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      } @if (notes$ | async; as notes) {
+      <mat-form-field class="dft-space-create-modal__selectors-control">
+        <mat-label>{{ "app.relatedNotes" | translate }}</mat-label>
+        <mat-select
+          matInput
+          [formControl]="formGroup.controls.noteIds"
+          multiple
+        >
+          @for (note of notes; track note.id) {
+          <mat-option [value]="note.id">{{ note.title }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+  </main>
+</dft-create-form>
+}
