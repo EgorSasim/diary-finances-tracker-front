@@ -1,20 +1,22 @@
-<mat-drawer-container autosize>
-  <mat-drawer #drawer mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    <button mat-raised-button>Toggle extra text</button>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" class="dft-side-bar__drawer">
+    <dft-navigation></dft-navigation>
+    <hr />
+    <dft-diary-accordion></dft-diary-accordion>
   </mat-drawer>
 
-  <div class="dft-side-bar__content">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon
-        fontIcon="{{
-          drawer.opened
-            ? 'keyboard_double_arrow_left'
-            : 'keyboard_double_arrow_right'
-        }}"
-      ></mat-icon>
-    </button>
-    <router-outlet></router-outlet>
-  </div>
+  <mat-drawer-content>
+    <div class="dft-side-bar__outside-content">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon
+          fontIcon="{{
+            drawer.opened
+              ? 'keyboard_double_arrow_left'
+              : 'keyboard_double_arrow_right'
+          }}"
+        ></mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
 </mat-drawer-container>

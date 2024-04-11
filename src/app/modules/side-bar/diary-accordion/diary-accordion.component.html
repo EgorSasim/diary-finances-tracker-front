@@ -1,0 +1,34 @@
+<div class="dft-diary-accordion__controls">
+  <button color="primary" mat-button (click)="accordion.openAll()">
+    {{ "app.expandAll" | translate }}
+  </button>
+  <button color="primary" mat-button (click)="accordion.closeAll()">
+    {{ "app.collapseAll" | translate }}
+  </button>
+</div>
+<mat-accordion multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
+      <mat-panel-title>{{ "app.tasks" | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    @for (task of (tasks$ | async); track task.id) {
+    <div>{{ task.title }}</div>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
+      <mat-panel-title>{{ "app.notes" | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    @for (note of (notes$ | async); track note.id) {
+    <div>{{ note.title }}</div>
+    }
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
+      <mat-panel-title>{{ "app.spaces" | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    @for (space of (spaces$ | async); track space.id) {
+    <div>{{ space.name }}</div>
+    }
+  </mat-expansion-panel>
+</mat-accordion>

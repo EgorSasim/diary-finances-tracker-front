@@ -1,10 +1,12 @@
 import { Injectable, Optional } from '@angular/core';
 import { Task } from './task.typings';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject, tap } from 'rxjs';
 import { TaskApiService } from '../../api/task/task-api.service';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
+  public taskChange$: ReplaySubject<void> = new ReplaySubject(1);
+
   constructor(private taskApiServivce: TaskApiService) {}
 
   public getAllTasks(): Observable<Task[]> {
@@ -17,17 +19,23 @@ export class TaskService {
 
   public createTask(task: Task): Observable<Task> {
     task.creationDate = new Date(Date.now());
-    return this.taskApiServivce.createTask(task);
+    return this.taskApiServivce
+      .createTask(task)
+      .pipe(tap(() => this.taskChange$.next()));
   }
 
   public removeTask(id: Task['id']): Observable<Task> {
-    return this.taskApiServivce.removeTask(id);
+    return this.taskApiServivce
+      .removeTask(id)
+      .pipe(tap(() => this.taskChange$.next()));
   }
 
   public updateTask(
     id: Task['id'],
     updateParams: Partial<Task>
   ): Observable<Task> {
-    return this.taskApiServivce.updateTask(id, updateParams);
+    return this.taskApiServivce
+      .updateTask(id, updateParams)
+      .pipe(tap(() => this.taskChange$.next()));
   }
 }
