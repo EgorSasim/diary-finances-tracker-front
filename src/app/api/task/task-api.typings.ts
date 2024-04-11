@@ -8,6 +8,7 @@ export interface TaskDto {
   endDate?: Date;
   reminder?: Date;
   reccurance?: TaskDtoReccurance;
+  completed: Boolean;
 }
 
 type TaskDtoPriority = 'Low' | 'Medium' | 'High';

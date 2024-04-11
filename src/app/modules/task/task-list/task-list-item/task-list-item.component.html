@@ -20,7 +20,11 @@
   <div class="task-item__element">-</div>
   }
   <div class="task-item__element mod-button">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button
+      mat-icon-button
+      [color]="task.completed ? 'basic' : 'primary'"
+      [matMenuTriggerFor]="menu"
+    >
       <mat-icon>more_vert</mat-icon>
     </button>
   </div>

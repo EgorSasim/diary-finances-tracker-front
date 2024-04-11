@@ -3,12 +3,13 @@ import { HomePageService } from './home-page.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskCreateModalComponent } from '../task/task-create-modal/task-create-modal.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Task } from '../../services/task/task.typings';
+import { Task, TaskSortParam } from '../../services/task/task.typings';
 import {
   BehaviorSubject,
   Observable,
   filter,
   finalize,
+  map,
   switchMap,
   take,
   tap,
@@ -130,6 +131,12 @@ export class HomePageComponent {
     this.isLoading$.next(true);
     this.tasks$ = this.homePageService.getAllTasks().pipe(
       take(1),
+      map((tasks) =>
+        tasks.sort(
+          (firstTask, secondTask) =>
+            +firstTask.completed - +secondTask.completed
+        )
+      ),
       finalize(() => this.isLoading$.next(false)),
       takeUntilDestroyed(this.destroyRef)
     );

@@ -11,24 +11,78 @@
     <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
       <mat-panel-title>{{ "app.tasks" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
-    @for (task of (tasks$ | async); track task.id) {
-    <div>{{ task.title }}</div>
+    @if((tasks$ | async)?.length) {
+    <mat-list>
+      @for (task of (tasks$ | async); track task.id) {
+      <mat-list-item>
+        <button
+          mat-stroked-button
+          class="dft-diary-accordion__list-item"
+          [color]="task.completed ? 'basic' : 'primary'"
+          crossOut
+          [isCrossed]="task.completed"
+          [completed]="task.completed"
+          (click)="navigateToTaskEditPage(task.id)"
+        >
+          {{ task.title }}
+        </button>
+      </mat-list-item>
+      @if (!$last) {
+      <mat-divider></mat-divider>
+      } }
+    </mat-list>
+    } @else {
+    <div>{{ "app.noTasks" | translate }}</div>
     }
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
       <mat-panel-title>{{ "app.notes" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
-    @for (note of (notes$ | async); track note.id) {
-    <div>{{ note.title }}</div>
+    @if((notes$ | async)?.length) {
+    <mat-list>
+      @for (note of (notes$ | async); track note.id) {
+      <mat-list-item>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="dft-diary-accordion__list-item"
+          (click)="navigateToNoteEditPage(note.id)"
+        >
+          {{ note.title }}
+        </button>
+      </mat-list-item>
+      @if (!$last) {
+      <mat-divider></mat-divider>
+      } }
+    </mat-list>
+    } @else {
+    <div>{{ "app.noNotes" | translate }}</div>
     }
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
       <mat-panel-title>{{ "app.spaces" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
-    @for (space of (spaces$ | async); track space.id) {
-    <div>{{ space.name }}</div>
+    @if((spaces$ | async)?.length;) {
+    <mat-list>
+      @for (space of (spaces$ | async); track space.id) {
+      <mat-list-item>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="dft-diary-accordion__list-item"
+          (click)="navigateToSpaceEditPage(space.id)"
+        >
+          {{ space.name }}
+        </button>
+      </mat-list-item>
+      @if (!$last) {
+      <mat-divider></mat-divider>
+      } }
+    </mat-list>
+    } @else {
+    <div>{{ "app.noSpaces" | translate }}</div>
     }
   </mat-expansion-panel>
 </mat-accordion>

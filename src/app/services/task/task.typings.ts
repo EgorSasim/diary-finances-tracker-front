@@ -10,7 +10,7 @@ export interface Task {
   endDate?: Date;
   reminder?: Date;
   reccurance?: TaskReccurance;
-  completed?: Boolean;
+  completed: Boolean;
 }
 
 export type TaskPriority = 'Low' | 'Medium' | 'High';
@@ -27,3 +27,11 @@ type TaskReccuranceType = 'Daily' | 'Weekly' | 'Monthly';
 export type TaskForm = ConvertToForm<Task>;
 export type TaskCreateForm = Required<Omit<TaskForm, 'id'>>;
 export type TaskEditForm = Required<TaskForm>;
+
+export type TaskSortParamsOrder = 'ASC' | 'DESC';
+export enum TaskSortParam {
+  CreationDate = 'creationDate',
+  StartDate = 'startDate',
+  EndDate = 'endDate',
+  Completed = 'completed',
+}

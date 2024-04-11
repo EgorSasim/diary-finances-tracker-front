@@ -2,7 +2,7 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { NoteService } from '../../../services/note/note.service';
 import { TaskService } from '../../../services/task/task.service';
 import { SpaceService } from '../../../services/space/space.service';
-import { Observable, startWith, switchMap } from 'rxjs';
+import { Observable, map, startWith, switchMap } from 'rxjs';
 import { Task } from '../../../services/task/task.typings';
 import { Note } from '../../../services/note/note.typings';
 import { Space } from '../../../services/space/space.typings';
@@ -21,6 +21,12 @@ export class DiaryAccordionService {
     return this.taskService.taskChange$.pipe(
       startWith(true),
       switchMap(() => this.taskService.getAllTasks()),
+      map((tasks) =>
+        tasks.sort(
+          (firstTask, secondTask) =>
+            +firstTask.completed - +secondTask.completed
+        )
+      ),
       takeUntilDestroyed(this.destroyRef)
     );
   }

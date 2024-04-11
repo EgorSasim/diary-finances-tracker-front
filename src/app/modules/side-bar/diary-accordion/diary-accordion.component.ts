@@ -9,8 +9,9 @@ import { Observable, switchMap } from 'rxjs';
 import { Task } from '../../../services/task/task.typings';
 import { Note } from '../../../services/note/note.typings';
 import { Space } from '../../../services/space/space.typings';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatAccordion } from '@angular/material/expansion';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '../../../constants/routes-pathes';
 
 @Component({
   selector: 'dft-diary-accordion',
@@ -31,5 +32,20 @@ export class DiaryAccordionComponent {
   public readonly spaces$: Observable<Space[]> =
     this.diaryAccordionService.handleSpacesChange();
 
-  constructor(private diaryAccordionService: DiaryAccordionService) {}
+  constructor(
+    private diaryAccordionService: DiaryAccordionService,
+    private router: Router
+  ) {}
+
+  public navigateToTaskEditPage(id: Task['id']): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
+  }
+
+  public navigateToNoteEditPage(id: Note['id']): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.noteEditPage, id]);
+  }
+
+  public navigateToSpaceEditPage(id: Space['id']): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.spaceEditPage, id]);
+  }
 }
