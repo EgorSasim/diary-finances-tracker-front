@@ -78,6 +78,10 @@ export class TaskEditPageComponent implements OnInit {
   }
 
   public saveChanges(): void {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
     this.isLoading$.next(true);
     const task = this.formGroup.getRawValue() as Required<Task>;
     this.taskEditPageService.saveChanges(task.id, task).subscribe({

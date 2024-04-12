@@ -70,6 +70,10 @@ export class NoteEditPageComponent {
   }
 
   public saveChanges(): void {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
     this.isLoading$.next(true);
     const note = this.formGroup.getRawValue() as Required<Note>;
     this.noteEditPageService.saveChanges(note.id, note).subscribe({

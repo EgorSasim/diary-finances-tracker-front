@@ -78,6 +78,10 @@ export class SpaceEditPageComponent {
   }
 
   public saveChanges(): void {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
     this.isLoading$.next(true);
     const space = this.formGroup.getRawValue() as Required<Space>;
     console.log('save space: ', space);
