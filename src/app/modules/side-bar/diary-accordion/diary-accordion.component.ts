@@ -5,7 +5,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DiaryAccordionService } from './diary-accordion.service';
-import { Observable, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Task } from '../../../services/task/task.typings';
 import { Note } from '../../../services/note/note.typings';
 import { Space } from '../../../services/space/space.typings';

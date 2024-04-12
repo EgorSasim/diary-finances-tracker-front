@@ -18,4 +18,4 @@ export class SpaceSearchParams {
 
 export type SpaceForm = ConvertToForm<Space>;
 export type SpaceCreateForm = Required<Omit<SpaceForm, 'id'>>;
-export type TaskEditForm = Required<SpaceForm>;
+export type SpaceEditForm = Required<SpaceForm>;

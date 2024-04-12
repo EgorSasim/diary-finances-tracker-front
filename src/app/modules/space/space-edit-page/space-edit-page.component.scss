@@ -1,0 +1,15 @@
+.dft-space-edit-page__title {
+  display: block;
+  width: 100;
+}
+
+.dft-space-edit-page__selectors {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.dft-space-edit-page__selectors-control {
+  flex: 1;
+}
