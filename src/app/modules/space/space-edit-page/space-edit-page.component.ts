@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
+import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
 
 @Component({
   selector: 'dft-space-edit-page',
@@ -35,7 +36,8 @@ export class SpaceEditPageComponent {
     private spaceEditPageBuilder: SpaceEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
     private router: Router,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private backNavigationService: BackNavigationService
   ) {}
 
   public ngOnInit(): void {
@@ -70,11 +72,7 @@ export class SpaceEditPageComponent {
   }
 
   public navigateBack(): void {
-    this.router.navigate([
-      ROUTE_PATH.withHeader,
-      ROUTE_PATH.withSideBar,
-      ROUTE_PATH.home,
-    ]);
+    this.backNavigationService.back();
   }
 
   public saveChanges(): void {

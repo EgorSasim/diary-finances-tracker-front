@@ -14,6 +14,7 @@ import { TaskEditPageBuilder } from './task-edit-page.builder';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { TASK_PRIORITY_TO_NAME } from '../../../constants/task-priorities';
+import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
 
 @Component({
   selector: 'dft-task-edit-page',
@@ -36,7 +37,8 @@ export class TaskEditPageComponent implements OnInit {
     private destroyRef: DestroyRef,
     private taskEditPageBuilder: TaskEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
-    private router: Router
+    private router: Router,
+    private backNavigationService: BackNavigationService
   ) {}
 
   public ngOnInit(): void {
@@ -70,11 +72,7 @@ export class TaskEditPageComponent implements OnInit {
   }
 
   public navigateBack(): void {
-    this.router.navigate([
-      ROUTE_PATH.withHeader,
-      ROUTE_PATH.withSideBar,
-      ROUTE_PATH.home,
-    ]);
+    this.backNavigationService.back();
   }
 
   public saveChanges(): void {

@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
+import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
 
 @Component({
   selector: 'dft-note-edit-page',
@@ -28,7 +29,8 @@ export class NoteEditPageComponent {
     private destroyRef: DestroyRef,
     private noteEditPageBuilder: NoteEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
-    private router: Router
+    private router: Router,
+    private backNavigationService: BackNavigationService
   ) {}
 
   public ngOnInit(): void {
@@ -62,11 +64,7 @@ export class NoteEditPageComponent {
   }
 
   public navigateBack(): void {
-    this.router.navigate([
-      ROUTE_PATH.withHeader,
-      ROUTE_PATH.withSideBar,
-      ROUTE_PATH.home,
-    ]);
+    this.backNavigationService.back();
   }
 
   public saveChanges(): void {
