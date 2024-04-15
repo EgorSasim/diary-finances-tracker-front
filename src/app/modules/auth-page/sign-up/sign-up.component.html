@@ -1,14 +1,14 @@
 @if (formGroup?.controls) {
 <mat-form-field>
-  <mat-label>{{ "auth.name" | translate }}</mat-label>
+  <mat-label>{{ "auth.login" | translate }}</mat-label>
   <input
     matInput
-    [placeholder]="'app.placeholder.name' | translate"
-    [formControl]="formGroup.controls.name"
+    [placeholder]="'app.placeholder.login' | translate"
+    [formControl]="formGroup.controls.login"
   />
-  @if (formGroup.controls.name.errors) {
+  @if (formGroup.controls.login.errors) {
   <mat-error>{{
-    getErrorMessage(formGroup.controls.name) | translate
+    getErrorMessage(formGroup.controls.login) | translate
   }}</mat-error>
   }
 </mat-form-field>

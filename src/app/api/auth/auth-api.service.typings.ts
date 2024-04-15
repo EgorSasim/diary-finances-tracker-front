@@ -3,12 +3,12 @@ export interface TokenDto {
 }
 
 export interface SignInDto {
-  email: string;
+  login: string;
   password: string;
 }
 
 export interface SignUpDto {
-  name: string;
+  login: string;
   email: string;
   password: string;
 }

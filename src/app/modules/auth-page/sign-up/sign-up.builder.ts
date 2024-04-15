@@ -6,7 +6,7 @@ import { SignUpForm } from './sign-up.typings';
 export class SignUpBuiler {
   public createFormGroup(): FormGroup<SignUpForm> {
     return new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', Validators.required),
     });

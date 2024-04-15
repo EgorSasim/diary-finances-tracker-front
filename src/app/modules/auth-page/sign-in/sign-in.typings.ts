@@ -1,7 +1,7 @@
 import { ConvertToForm } from '../../../typings/forms';
 
 export interface SignIn {
-  email: string;
+  login: string;
   password: string;
 }
 
