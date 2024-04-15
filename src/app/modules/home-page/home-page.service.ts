@@ -39,7 +39,7 @@ export class HomePageService {
     completedTaskItem: CompletedTaskListItem
   ): Observable<Task> {
     return this.taskService.updateTask(completedTaskItem.id, {
-      completed: completedTaskItem.isCompleted,
+      status: completedTaskItem.status,
     });
   }
 

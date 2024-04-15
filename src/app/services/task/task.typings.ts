@@ -1,3 +1,4 @@
+import { TaskDtoStatus } from '../../api/task/task-api.typings';
 import { ConvertToForm } from '../../typings/forms';
 
 export interface Task {
@@ -10,9 +11,10 @@ export interface Task {
   endDate?: Date;
   reminder?: Date;
   reccurance?: TaskReccurance;
-  completed: Boolean;
+  status: TaskStatus;
 }
 
+export type TaskStatus = 'ToDo' | 'InProgress' | 'Done';
 export type TaskPriority = 'Low' | 'Medium' | 'High';
 
 export interface TaskReccurance {

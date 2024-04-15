@@ -23,8 +23,7 @@ export class DiaryAccordionService {
       switchMap(() => this.taskService.getAllTasks()),
       map((tasks) =>
         tasks.sort(
-          (firstTask, secondTask) =>
-            +firstTask.completed - +secondTask.completed
+          (firstTask, secondTask) => +firstTask.status - +secondTask.status
         )
       ),
       takeUntilDestroyed(this.destroyRef)

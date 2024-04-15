@@ -3,8 +3,8 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TaskCreateForm } from '../../../services/task/task.typings';
 import { TaskCreateModalBuilder } from './task-create-modal.builder';
-import { TASK_PRIORITY_TO_NAME } from '../../../constants/task-priorities';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
+import { TASK_PRIORITY_TO_NAME } from '../../../services/task/task.constants';
 
 @Component({
   selector: 'dft-task-create-modal',

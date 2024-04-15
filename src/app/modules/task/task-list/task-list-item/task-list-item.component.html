@@ -2,8 +2,8 @@
 <div
   class="task-item"
   crossOut
-  [isCrossed]="task.completed"
-  [completed]="task.completed"
+  [isCrossed]="task.status === 'Done'"
+  [completed]="task.status === 'Done'"
 >
   <div ellipsis class="task-item__element mod-title">{{ task.title }}</div>
   @if (task.endDate | date : "M/dd/yyy"; as date) {
@@ -22,7 +22,7 @@
   <div class="task-item__element mod-button">
     <button
       mat-icon-button
-      [color]="task.completed ? 'basic' : 'primary'"
+      [color]="task.status === 'Done' ? 'basic' : 'primary'"
       [matMenuTriggerFor]="menu"
     >
       <mat-icon>more_vert</mat-icon>
@@ -34,11 +34,15 @@
 <mat-menu #menu>
   <button
     mat-menu-item
-    (click)="completeTask(taskItem.id, !taskItem.completed)"
+    (click)="
+      completeTask(taskItem.id, taskItem.status === 'Done' ? 'ToDo' : 'Done')
+    "
   >
-    <mat-icon> @if (taskItem.completed) { redo } @else {done}</mat-icon>
+    <mat-icon> @if (taskItem.status === 'Done') { redo } @else {done}</mat-icon>
     <span
-      >{{ (taskItem.completed ? "app.reopen" : "app.complete") | translate }}
+      >{{
+        (taskItem.status === "Done" ? "app.reopen" : "app.complete") | translate
+      }}
     </span>
   </button>
   <button mat-menu-item (click)="editTask(taskItem.id)">

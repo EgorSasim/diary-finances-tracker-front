@@ -60,5 +60,9 @@
   "http.error.expiredToken": "Время сессии истекло",
   "task.priority.high": "Высокий",
   "task.priority.low": "Низкий",
-  "task.priority.medium": "Средний"
+  "task.priority.medium": "Средний",
+  "task.status": "Статус",
+  "task.status.toDo": "К выполнению",
+  "task.status.inProgress": "В работе",
+  "task.status.done": "Завершена"
 }

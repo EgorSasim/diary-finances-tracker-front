@@ -133,8 +133,7 @@ export class HomePageComponent {
       take(1),
       map((tasks) =>
         tasks.sort(
-          (firstTask, secondTask) =>
-            +firstTask.completed - +secondTask.completed
+          (firstTask, secondTask) => +firstTask.status - +secondTask.status
         )
       ),
       finalize(() => this.isLoading$.next(false)),

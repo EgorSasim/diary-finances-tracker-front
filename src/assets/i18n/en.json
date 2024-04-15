@@ -60,5 +60,9 @@
   "http.error.expiredToken": "Session timed out",
   "task.priority.high": "High",
   "task.priority.low": "Low",
-  "task.priority.medium": "Medium"
+  "task.priority.medium": "Medium",
+  "task.status": "Status",
+  "task.status.toDo": "To do",
+  "task.status.inProgress": "In progress",
+  "task.status.done": "Done"
 }

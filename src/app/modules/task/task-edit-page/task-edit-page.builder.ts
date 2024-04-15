@@ -27,7 +27,7 @@ export class TaskEditPageBuilder {
       reminder: new FormControl(task.reminder),
       startDate: new FormControl(task.startDate),
       endDate: new FormControl(task.endDate),
-      completed: new FormControl(task.completed),
+      status: new FormControl(task.status),
     });
   }
 }

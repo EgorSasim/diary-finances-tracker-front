@@ -8,9 +8,10 @@ export interface TaskDto {
   endDate?: Date;
   reminder?: Date;
   reccurance?: TaskDtoReccurance;
-  completed: Boolean;
+  status: TaskDtoStatus;
 }
 
+export type TaskDtoStatus = 'ToDo' | 'InProgress' | 'Done';
 type TaskDtoPriority = 'Low' | 'Medium' | 'High';
 
 export interface TaskDtoReccurance {

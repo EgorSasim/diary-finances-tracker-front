@@ -13,8 +13,11 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 import { TaskEditPageBuilder } from './task-edit-page.builder';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
-import { TASK_PRIORITY_TO_NAME } from '../../../constants/task-priorities';
 import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
+import {
+  TASK_PRIORITY_TO_NAME,
+  TASK_STATUS_TO_TRANSLATION,
+} from '../../../services/task/task.constants';
 
 @Component({
   selector: 'dft-task-edit-page',
@@ -28,6 +31,8 @@ export class TaskEditPageComponent implements OnInit {
   public formGroup: FormGroup<TaskEditForm>;
   public readonly priorities = Object.keys(TASK_PRIORITY_TO_NAME);
   public readonly priorityNames = Object.values(TASK_PRIORITY_TO_NAME);
+  public readonly statuses = Object.keys(TASK_STATUS_TO_TRANSLATION);
+  public readonly statusNames = Object.values(TASK_STATUS_TO_TRANSLATION);
   public readonly textAreaHeight: string = '20rem';
   private initialFormGroupState: Required<Task>;
 

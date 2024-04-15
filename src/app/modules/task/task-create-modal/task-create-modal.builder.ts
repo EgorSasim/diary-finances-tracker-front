@@ -6,6 +6,8 @@ import {
   TASK_TITLE_MAX_LENGTH,
 } from '../../../services/task/task.constants';
 
+import { TaskStatus } from '../../../services/task/task.typings';
+
 @Injectable()
 export class TaskCreateModalBuilder {
   public createFormGroup(): FormGroup<TaskCreateForm> {
@@ -23,7 +25,7 @@ export class TaskCreateModalBuilder {
       reminder: new FormControl(null),
       startDate: new FormControl(null),
       endDate: new FormControl(null),
-      completed: new FormControl(false),
+      status: new FormControl(null),
     });
   }
 }

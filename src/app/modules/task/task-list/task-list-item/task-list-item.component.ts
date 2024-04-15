@@ -6,7 +6,8 @@ import {
   Output,
 } from '@angular/core';
 import { CompletedTaskListItem, TaskListItem } from './task-list-item.typings';
-import { TASK_PRIORITY_TO_NAME } from '../../../../constants/task-priorities';
+import { TASK_PRIORITY_TO_NAME } from '../../../../services/task/task.constants';
+import { TaskStatus } from '../../../../services/task/task.typings';
 
 @Component({
   selector: 'dft-task-item',
@@ -30,7 +31,7 @@ export class TaskListItemComponent {
     this.edit.emit(id);
   }
 
-  public completeTask(id: number, completed: boolean) {
-    this.complete.emit({ id, isCompleted: completed });
+  public completeTask(id: number, status: TaskStatus) {
+    this.complete.emit({ id, status });
   }
 }
