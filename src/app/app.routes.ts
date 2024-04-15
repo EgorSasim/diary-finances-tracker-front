@@ -7,6 +7,7 @@ import { SideBarComponent } from './modules/side-bar/side-bar.component';
 import { TaskEditPageComponent } from './modules/task/task-edit-page/task-edit-page.component';
 import { NoteEditPageComponent } from './modules/note/note-edit-page/note-edit-page.component';
 import { SpaceEditPageComponent } from './modules/space/space-edit-page/space-edit-page.component';
+import { TasksPageComponent } from './modules/task/tasks-page/tasks-page.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,14 @@ export const routes: Routes = [
             loadChildren: () =>
               import('./modules/home-page/home-page.module').then(
                 (m) => m.HomePageModule
+              ),
+          },
+          {
+            path: ROUTE_PATH.tasksPage,
+            component: TasksPageComponent,
+            loadChildren: () =>
+              import('./modules/task/tasks-page/tasks-page.module').then(
+                (m) => m.TasksPageModule
               ),
           },
           {

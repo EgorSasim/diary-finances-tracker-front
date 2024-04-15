@@ -5,6 +5,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [NavigationComponent],
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     TranslateModule,
     MatButtonModule,
     RouterModule,
+    MatIconModule,
   ],
   exports: [NavigationComponent],
 })

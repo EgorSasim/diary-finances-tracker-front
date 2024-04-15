@@ -5,6 +5,9 @@
     }}</mat-expansion-panel-header>
 
     <div class="dft-navigaton__links">
+      <a mat-button color="primary" [routerLink]="homePagePath">
+        <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
+      </a>
       <a mat-button color="primary" [routerLink]="tasksPagePath"
         >{{ "app.tasks" | translate }}
       </a>

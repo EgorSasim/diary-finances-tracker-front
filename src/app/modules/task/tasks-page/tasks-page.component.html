@@ -1,0 +1,32 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      {{ "app.list" | translate }}
+    </ng-template>
+    <dft-tasks-page-list></dft-tasks-page-list>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>table</mat-icon>
+      {{ "app.board" | translate }}
+    </ng-template>
+    <dft-tasks-page-board></dft-tasks-page-board>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>calendar_today</mat-icon>
+      {{ "app.calendar" | translate }}
+    </ng-template>
+    <dft-tasks-page-calendar></dft-tasks-page-calendar>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>bar_chart</mat-icon>
+      {{ "app.chart" | translate }}
+    </ng-template>
+    <dft-tasks-page-chart></dft-tasks-page-chart>
+  </mat-tab>
+</mat-tab-group>
+
+<ng-template #outlet><h1>Hehee</h1></ng-template>

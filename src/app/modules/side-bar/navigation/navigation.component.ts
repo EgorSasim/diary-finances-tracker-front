@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  NOTES_PAGE_PATH,
-  SPACES_PAGE_PATH,
-  TASKS_PAGE_PATH,
-} from './navigation.constants';
+import { ROUTE_PATH } from '../../../constants/routes-pathes';
 
 @Component({
   selector: 'dft-navigation',
@@ -11,7 +7,8 @@ import {
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
-  public readonly tasksPagePath: string[] = TASKS_PAGE_PATH;
-  public readonly notesPagePath: string[] = NOTES_PAGE_PATH;
-  public readonly spacesPagePath: string[] = SPACES_PAGE_PATH;
+  public readonly homePagePath: string = ROUTE_PATH.home;
+  public readonly tasksPagePath: string = ROUTE_PATH.tasksPage;
+  public readonly notesPagePath: string = ROUTE_PATH.notesPage;
+  public readonly spacesPagePath: string = ROUTE_PATH.spacesPage;
 }
