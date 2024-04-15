@@ -13,7 +13,7 @@
       }
     </mat-form-field>
     <div class="dft-space-edit-page__selectors">
-      @if((tasks$ | async)?.length) {
+      @if(tasks$ | async) {
       <mat-form-field class="dft-space-edit-page__selectors-control">
         <mat-label>{{ "app.relatedTasks" | translate }}</mat-label>
         <mat-select
@@ -26,7 +26,7 @@
           }
         </mat-select>
       </mat-form-field>
-      } @if ((notes$ | async)?.length) {
+      } @if (notes$ | async) {
       <mat-form-field class="dft-space-edit-page__selectors-control">
         <mat-label>{{ "app.relatedNotes" | translate }}</mat-label>
         <mat-select
