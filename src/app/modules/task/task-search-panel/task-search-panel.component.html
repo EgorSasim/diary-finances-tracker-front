@@ -1,0 +1,11 @@
+@if (formGroup?.controls) {
+<mat-toolbar class="dft-task-search-panel">
+  <mat-form-field>
+    <mat-label>{{ "app.title" | translate }}</mat-label>
+    <input matInput [formControl]="formGroup.controls.title" />
+  </mat-form-field>
+  <dft-task-status-selector
+    [control]="formGroup.controls.status"
+  ></dft-task-status-selector>
+</mat-toolbar>
+}

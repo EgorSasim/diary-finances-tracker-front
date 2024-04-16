@@ -8,7 +8,11 @@
 
   <mat-drawer-content>
     <div class="dft-side-bar__outside-content">
-      <button mat-icon-button (click)="drawer.toggle()">
+      <button
+        class="dft-side-bar__toggle"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
         <mat-icon
           fontIcon="{{
             drawer.opened

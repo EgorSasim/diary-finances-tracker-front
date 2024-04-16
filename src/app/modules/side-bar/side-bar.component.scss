@@ -4,6 +4,13 @@ $headerHeight: var(--header-height);
   height: calc(100vh - $headerHeight);
 }
 
+.dft-side-bar__toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
 .dft-side-bar__drawer {
   width: 20%;
   padding: 0.8rem;

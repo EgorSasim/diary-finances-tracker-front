@@ -13,13 +13,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditPageModule } from '../../common/edit-page/edit-page.module';
+import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
 
 @NgModule({
   declarations: [TaskEditPageComponent],
   imports: [
     CommonModule,
     SpinnerModule,
-    CommonModule,
     MatFormFieldModule,
     TranslateModule,
     MatSelectModule,
@@ -32,6 +32,7 @@ import { EditPageModule } from '../../common/edit-page/edit-page.module';
     TextAreaModule,
     MatSlideToggleModule,
     EditPageModule,
+    TaskStatusSelectorModule,
   ],
 })
 export class TaskEditPageModule {}

@@ -68,17 +68,9 @@
       [height]="textAreaHeight"
     ></dft-text-area>
 
-    <mat-form-field>
-      <mat-label>{{ "task.status" | translate }}</mat-label>
-      <mat-select matNativeControl [formControl]="formGroup.controls.status">
-        <mat-option>{{ "app.notSelected" | translate }}</mat-option>
-        @for (status of statusNames; track $index) {
-        <mat-option value="{{ statuses[$index] }}">{{
-          status | translate
-        }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+    <dft-task-status-selector
+      [control]="formGroup.controls.status"
+    ></dft-task-status-selector>
   </ng-container>
 </dft-edit-page>
 } @if(isLoading$ | async) {

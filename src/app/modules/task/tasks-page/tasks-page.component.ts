@@ -11,7 +11,7 @@ import { TasksPageService } from './tasks-page.service';
 export class TasksPageComponent {
   constructor(private tasksPageService: TasksPageService) {
     this.tasksPageService
-      .getTasks({ status: 'Done' })
+      .getTasks()
       .subscribe((tasks) => console.log('tasks: ', tasks));
   }
 }

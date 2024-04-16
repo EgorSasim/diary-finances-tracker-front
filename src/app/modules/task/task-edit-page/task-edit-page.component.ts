@@ -31,8 +31,6 @@ export class TaskEditPageComponent implements OnInit {
   public formGroup: FormGroup<TaskEditForm>;
   public readonly priorities = Object.keys(TASK_PRIORITY_TO_NAME);
   public readonly priorityNames = Object.values(TASK_PRIORITY_TO_NAME);
-  public readonly statuses = Object.keys(TASK_STATUS_TO_TRANSLATION);
-  public readonly statusNames = Object.values(TASK_STATUS_TO_TRANSLATION);
   public readonly textAreaHeight: string = '20rem';
   private initialFormGroupState: Required<Task>;
 
