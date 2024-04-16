@@ -18,7 +18,7 @@ export class SpaceCreateModalComponent {
   public formGroup: FormGroup<SpaceCreateForm> =
     this.spaceCreateModalBuilder.createFormGroup();
 
-  public tasks$ = this.taskService.getAllTasks();
+  public tasks$ = this.taskService.getTasks();
   public notes$ = this.noteService.getNotes();
 
   constructor(

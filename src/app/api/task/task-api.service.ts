@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { TASK_API_PATH } from './task-api.constants';
-import { TaskDto } from './task-api.typings';
+import { TaskDto, TaskDtoSearchParams } from './task-api.typings';
 import { API_PATH } from '../api.constants';
 
 @Injectable({
@@ -11,8 +11,16 @@ import { API_PATH } from '../api.constants';
 export class TaskApiService {
   constructor(private httpClient: HttpClient) {}
 
-  public getAllTasks(): Observable<TaskDto[]> {
+  public getTasks(searchParams?: TaskDtoSearchParams): Observable<TaskDto[]> {
+    let params: HttpParams = new HttpParams();
+    if (searchParams) {
+      Object.entries(searchParams).forEach(
+        ([key, value]) => (params = params.append(key, value))
+      );
+    }
+
     return this.httpClient.get<TaskDto[]>(`${API_PATH}/${TASK_API_PATH}`, {
+      params: params,
       responseType: 'json',
     });
   }

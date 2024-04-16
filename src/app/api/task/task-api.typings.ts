@@ -14,6 +14,17 @@ export interface TaskDto {
 export type TaskDtoStatus = 'ToDo' | 'InProgress' | 'Done';
 type TaskDtoPriority = 'Low' | 'Medium' | 'High';
 
+export interface TaskDtoSearchParams {
+  id?: number;
+  title?: string;
+  creationDate?: Date;
+  description?: string;
+  priority?: TaskDtoPriority;
+  startDate?: Date;
+  endDate?: Date;
+  status?: TaskDtoStatus;
+}
+
 export interface TaskDtoReccurance {
   interval: number;
   type: TaskDtoReccuranceType;

@@ -28,7 +28,7 @@ export class HomePageService {
   }
 
   public getAllTasks(): Observable<Task[]> {
-    return this.taskService.getAllTasks();
+    return this.taskService.getTasks();
   }
 
   public removeTask(id: number): Observable<Task> {

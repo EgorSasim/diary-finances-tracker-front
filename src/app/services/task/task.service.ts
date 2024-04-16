@@ -1,5 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
-import { Task } from './task.typings';
+import { Task, TaskSearchParams } from './task.typings';
 import { Observable, ReplaySubject, tap } from 'rxjs';
 import { TaskApiService } from '../../api/task/task-api.service';
 
@@ -9,8 +9,8 @@ export class TaskService {
 
   constructor(private taskApiServivce: TaskApiService) {}
 
-  public getAllTasks(): Observable<Task[]> {
-    return this.taskApiServivce.getAllTasks();
+  public getTasks(searchParams?: TaskSearchParams): Observable<Task[]> {
+    return this.taskApiServivce.getTasks(searchParams);
   }
 
   public getTask(id: Task['id']): Observable<Task> {

@@ -20,7 +20,7 @@ export class DiaryAccordionService {
   public handleTaskChange(): Observable<Task[]> {
     return this.taskService.taskChange$.pipe(
       startWith(true),
-      switchMap(() => this.taskService.getAllTasks()),
+      switchMap(() => this.taskService.getTasks()),
       map((tasks) =>
         tasks.sort(
           (firstTask, secondTask) => +firstTask.status - +secondTask.status

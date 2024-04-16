@@ -26,6 +26,17 @@ export interface TaskReccurance {
 
 type TaskReccuranceType = 'Daily' | 'Weekly' | 'Monthly';
 
+export interface TaskSearchParams {
+  id?: number;
+  title?: string;
+  creationDate?: Date;
+  description?: string;
+  priority?: TaskPriority;
+  startDate?: Date;
+  endDate?: Date;
+  status?: TaskStatus;
+}
+
 export type TaskForm = ConvertToForm<Task>;
 export type TaskCreateForm = Required<Omit<TaskForm, 'id'>>;
 export type TaskEditForm = Required<TaskForm>;

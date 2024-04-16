@@ -27,7 +27,7 @@ export class SpaceEditPageService {
   }
 
   public getTasks(): Observable<Task[]> {
-    return this.taskService.getAllTasks();
+    return this.taskService.getTasks();
   }
 
   public getNotes(): Observable<Note[]> {
