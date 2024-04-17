@@ -68,5 +68,6 @@
   "task.status": "Status",
   "task.status.toDo": "To do",
   "task.status.inProgress": "In progress",
-  "task.status.done": "Done"
+  "task.status.done": "Done",
+  "task.noTasksFound": "Tasks not found"
 }

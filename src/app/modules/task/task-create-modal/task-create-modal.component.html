@@ -17,20 +17,9 @@
 
     <div class="dft-task-create-modal__two-sides-wrap">
       <div class="dft-task-create-modal__wrap-side">
-        <mat-form-field class="dft-task-create-modal__side-control">
-          <mat-label>{{ "app.priority" | translate }}</mat-label>
-          <mat-select
-            matNativeControl
-            [formControl]="formGroup.controls.priority"
-          >
-            <mat-option>{{ "app.notSelected" | translate }}</mat-option>
-            @for (priorityName of priorityNames; track $index) {
-            <mat-option value="{{ priorities[$index] }}">{{
-              priorityName | translate
-            }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+        <dft-task-priority-selector
+          [control]="formGroup.controls.priority"
+        ></dft-task-priority-selector>
       </div>
 
       <div class="dft-task-create-modal__wrap-side">

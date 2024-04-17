@@ -68,5 +68,6 @@
   "task.status": "Статус",
   "task.status.toDo": "К выполнению",
   "task.status.inProgress": "В работе",
-  "task.status.done": "Завершена"
+  "task.status.done": "Завершена",
+  "task.noTasksFound": "Задач не найдено"
 }

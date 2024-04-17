@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
+import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
 
 @NgModule({
   declarations: [TaskSearchPanelComponent],
@@ -18,6 +19,7 @@ import { TaskStatusSelectorModule } from '../task-status-selector/task-status-se
     ReactiveFormsModule,
     TranslateModule,
     TaskStatusSelectorModule,
+    TaskPrioritySelectorModule,
   ],
   exports: [TaskSearchPanelComponent],
 })

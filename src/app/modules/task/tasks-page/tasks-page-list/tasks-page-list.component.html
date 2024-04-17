@@ -1,8 +1,9 @@
+<dft-task-search-panel
+  class="dft-tasks-page-list__filter-controls"
+  (searchParamsChange)="searchParamsChange($event)"
+></dft-task-search-panel>
+@if((tasks$ | async)?.length) {
 <div class="dft-tasks-page-list">
-  <dft-task-search-panel
-    class="dft-tasks-page-list__filter-controls"
-    (searchParamsChange)="searchParamsChange($event)"
-  ></dft-task-search-panel>
   <dft-task-list
     (completeTask)="completeTask($event)"
     (editTask)="goToTaskEditPage($event)"
@@ -10,6 +11,12 @@
     [taskItems]="tasks$ | async"
   ></dft-task-list>
 </div>
+
+} @else {
+<h1 class="dft-tasks-page-list__no-tasks">
+  {{ "task.noTasksFound" | translate }}
+</h1>
+}
 
 <!-- @if(isLoading$ | async) {
 <dft-spinner></dft-spinner>

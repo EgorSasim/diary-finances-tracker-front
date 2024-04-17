@@ -1,0 +1,11 @@
+<mat-form-field class="dft-task-priority-selector">
+  <mat-label>{{ "app.priority" | translate }}</mat-label>
+  <mat-select matNativeControl [formControl]="control">
+    <mat-option>{{ "app.notSelected" | translate }}</mat-option>
+    @for (priorityName of priorityNames; track $index) {
+    <mat-option value="{{ priorities[$index] }}">{{
+      priorityName | translate
+    }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

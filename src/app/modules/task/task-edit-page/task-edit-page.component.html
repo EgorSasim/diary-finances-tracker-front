@@ -14,20 +14,9 @@
           <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
           }
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>{{ "app.priority" | translate }}</mat-label>
-          <mat-select
-            matNativeControl
-            [formControl]="formGroup.controls.priority"
-          >
-            <mat-option>{{ "app.notSelected" | translate }}</mat-option>
-            @for (priorityName of priorityNames; track $index) {
-            <mat-option value="{{ priorities[$index] }}">{{
-              priorityName | translate
-            }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+        <dft-task-priority-selector
+          [control]="formGroup.controls.priority"
+        ></dft-task-priority-selector>
       </div>
 
       <div class="dft-task-edit-page__content-side">

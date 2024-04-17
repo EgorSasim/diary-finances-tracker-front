@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { CreateFormModule } from '../../common/create-form/create-form.module';
+import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
 
 @NgModule({
   declarations: [TaskCreateModalComponent],
@@ -27,6 +28,7 @@ import { CreateFormModule } from '../../common/create-form/create-form.module';
     CommonModule,
     TextAreaModule,
     CreateFormModule,
+    TaskPrioritySelectorModule,
   ],
   exports: [TaskCreateModalComponent],
 })

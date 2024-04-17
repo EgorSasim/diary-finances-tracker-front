@@ -29,7 +29,6 @@ export class TasksPageListService {
 
   public handleTasksChanges(): Observable<Task[]> {
     return merge(this.searchParams$, this.tasksChange$).pipe(
-      tap(() => console.log('outside pipe')),
       switchMap((searchParams) => {
         if (searchParams) {
           this.prevSearchParamsValue = { ...searchParams };

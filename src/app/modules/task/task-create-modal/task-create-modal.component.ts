@@ -4,7 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { TaskCreateForm } from '../../../services/task/task.typings';
 import { TaskCreateModalBuilder } from './task-create-modal.builder';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
-import { TASK_PRIORITY_TO_NAME } from '../../../services/task/task.constants';
 
 @Component({
   selector: 'dft-task-create-modal',
@@ -14,8 +13,6 @@ import { TASK_PRIORITY_TO_NAME } from '../../../services/task/task.constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskCreateModalComponent {
-  public readonly priorities = Object.keys(TASK_PRIORITY_TO_NAME);
-  public readonly priorityNames = Object.values(TASK_PRIORITY_TO_NAME);
   public readonly textAreaHeight: string = '12rem';
 
   public formGroup: FormGroup<TaskCreateForm> =
