@@ -14,12 +14,8 @@ import { Task } from '../../../services/task/task.typings';
   styleUrl: './task-status-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskStatusSelectorComponent implements OnInit {
+export class TaskStatusSelectorComponent {
   @Input() public control: FormControl<Task['status']>;
   public readonly statuses = Object.keys(TASK_STATUS_TO_TRANSLATION);
   public readonly statusNames = Object.values(TASK_STATUS_TO_TRANSLATION);
-
-  public ngOnInit(): void {
-    console.log('controlL ', this.control);
-  }
 }

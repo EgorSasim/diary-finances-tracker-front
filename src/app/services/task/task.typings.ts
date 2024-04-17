@@ -27,7 +27,6 @@ export interface TaskReccurance {
 type TaskReccuranceType = 'Daily' | 'Weekly' | 'Monthly';
 
 export interface TaskSearchParams {
-  id?: number;
   title?: string;
   creationDate?: Date;
   description?: string;

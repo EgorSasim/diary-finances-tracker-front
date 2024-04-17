@@ -7,7 +7,6 @@ import { TaskSearchParams } from '../../../services/task/task.typings';
 export class TaskSearchPanelBuilder {
   public createFormGroup(): FormGroup<ConvertToForm<TaskSearchParams>> {
     return new FormGroup<ConvertToForm<TaskSearchParams>>({
-      id: new FormControl(null),
       title: new FormControl(null),
       description: new FormControl(null),
       priority: new FormControl(null),

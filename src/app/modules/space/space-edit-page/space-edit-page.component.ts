@@ -82,7 +82,6 @@ export class SpaceEditPageComponent {
     }
     this.isLoading$.next(true);
     const space = this.formGroup.getRawValue() as Required<Space>;
-    console.log('save space: ', space);
     this.spaceEditPageService.saveChanges(space.id, space).subscribe({
       next: () => {
         this.navigateBack();
