@@ -1,3 +1,16 @@
-<dft-task-search-panel
-  (searchParamsChange)="searchParamsChange($event)"
-></dft-task-search-panel>
+<div class="dft-tasks-page-list">
+  <dft-task-search-panel
+    class="dft-tasks-page-list__filter-controls"
+    (searchParamsChange)="searchParamsChange($event)"
+  ></dft-task-search-panel>
+  <dft-task-list
+    (completeTask)="completeTask($event)"
+    (editTask)="goToTaskEditPage($event)"
+    (removeTask)="removeTask($event)"
+    [taskItems]="tasks$ | async"
+  ></dft-task-list>
+</div>
+
+<!-- @if(isLoading$ | async) {
+<dft-spinner></dft-spinner>
+} -->

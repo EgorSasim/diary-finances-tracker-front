@@ -1,14 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { TasksPageListService } from './tasks-page-list.service';
 import {
-  Observable,
-  ReplaySubject,
-  combineLatest,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs';
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  OnInit,
+} from '@angular/core';
+import { TasksPageListService } from './tasks-page-list.service';
+import { Observable } from 'rxjs';
 import { Task, TaskSearchParams } from '../../../../services/task/task.typings';
+import { CompletedTaskListItem } from '../../task-list/task-list-item/task-list-item.typings';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '../../../../constants/routes-pathes';
 
 @Component({
   selector: 'dft-tasks-page-list',
@@ -17,35 +20,44 @@ import { Task, TaskSearchParams } from '../../../../services/task/task.typings';
   providers: [TasksPageListService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TasksPageListComponent implements OnInit {
-  public searchParams$: ReplaySubject<TaskSearchParams> = new ReplaySubject(1);
-  public taskChange$: Observable<void> = this.tasksPageListService.tasksChange$;
-  public tasks$: Observable<Task[]> = this.handleChanges();
+export class TasksPageListComponent {
+  public tasks$: Observable<Task[]> =
+    this.tasksPageListService.handleTasksChanges();
+  public isLoading$: Observable<boolean> = this.tasksPageListService.isLoading$;
 
-  constructor(private tasksPageListService: TasksPageListService) {}
-
-  public ngOnInit(): void {
-    console.log('tasks: ', this.tasks$);
-    this.tasks$.subscribe((tasks) => console.log('tasks: ', tasks));
-  }
+  constructor(
+    private tasksPageListService: TasksPageListService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private destroyRef: DestroyRef,
+    private router: Router
+  ) {}
 
   public searchParamsChange(searchParams: TaskSearchParams) {
-    this.searchParams$.next(searchParams);
+    this.tasksPageListService.setIsLoading(true);
+    this.tasksPageListService.searchParamsChange(searchParams);
   }
 
-  public handleChanges(): Observable<Task[]> {
-    return combineLatest([
-      this.searchParams$.pipe(
-        startWith(),
-        tap(() => console.log('search params changes inside observable'))
-      ),
-    ]).pipe(
-      tap(() => console.log('outside pipe')),
-      switchMap(([searchParams]) => {
-        console.log('search params: ', searchParams);
-        return this.tasksPageListService.getTasks(searchParams);
-      }),
-      tap((tasks) => console.log('combine latest -> tasks: ', tasks))
-    );
+  public completeTask(completedTaskItem: CompletedTaskListItem): void {
+    this.tasksPageListService
+      .completeTask(completedTaskItem)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.changeDetectorRef.markForCheck();
+        },
+      });
+  }
+  public goToTaskEditPage(id: number): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
+  }
+  public removeTask(id: number): void {
+    this.tasksPageListService
+      .removeTask(id)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        complete: () => {
+          this.changeDetectorRef.markForCheck();
+        },
+      });
   }
 }

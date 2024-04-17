@@ -22,9 +22,13 @@ export class DiaryAccordionService {
       startWith(true),
       switchMap(() => this.taskService.getTasks()),
       map((tasks) =>
-        tasks.sort(
-          (firstTask, secondTask) => +firstTask.status - +secondTask.status
-        )
+        tasks.sort((firstTask, secondTask) => {
+          if (firstTask.status === 'Done') {
+            return 1;
+          } else {
+            return -1;
+          }
+        })
       ),
       takeUntilDestroyed(this.destroyRef)
     );

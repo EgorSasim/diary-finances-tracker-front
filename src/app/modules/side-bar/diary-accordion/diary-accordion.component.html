@@ -18,10 +18,10 @@
         <button
           mat-stroked-button
           class="dft-diary-accordion__list-item"
-          [color]="task.completed ? 'basic' : 'primary'"
+          [color]="task.status === 'Done' ? 'basic' : 'primary'"
           crossOut
-          [isCrossed]="task.completed"
-          [completed]="task.completed"
+          [isCrossed]="task.status === 'Done'"
+          [completed]="task.status === 'Done'"
           (click)="navigateToTaskEditPage(task.id)"
         >
           {{ task.title }}

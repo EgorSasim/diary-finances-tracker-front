@@ -132,9 +132,13 @@ export class HomePageComponent {
     this.tasks$ = this.homePageService.getAllTasks().pipe(
       take(1),
       map((tasks) =>
-        tasks.sort(
-          (firstTask, secondTask) => +firstTask.status - +secondTask.status
-        )
+        tasks.sort((firstTask, secondTask) => {
+          if (firstTask.status === 'Done') {
+            return 1;
+          } else {
+            return -1;
+          }
+        })
       ),
       finalize(() => this.isLoading$.next(false)),
       takeUntilDestroyed(this.destroyRef)
