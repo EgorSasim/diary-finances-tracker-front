@@ -1,4 +1,11 @@
-.dft-task-page-board-example-container {
+.dft-task-page-board {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: top;
+}
+
+.dft-task-page-board-container {
   width: 400px;
   max-width: 100%;
   margin: 0 25px 25px 0;
@@ -6,7 +13,7 @@
   vertical-align: top;
 }
 
-.dft-task-page-board-example-list {
+.dft-task-page-board-list {
   border: solid 1px #ccc;
   min-height: 60px;
   background: white;
@@ -15,7 +22,7 @@
   display: block;
 }
 
-.dft-task-page-board-example-box {
+.dft-task-page-board-box {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
@@ -44,13 +51,11 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.dft-task-page-board-example-box:last-child {
+.dft-task-page-board-box:last-child {
   border: none;
 }
 
-.dft-task-page-board-example-list.dft-task-page-board-cdk-drop-list-dragging
-  .dft-task-page-board-example-box:not(
-    .dft-task-page-board-cdk-drag-placeholder
-  ) {
+.dft-task-page-board-list.dft-task-page-board-cdk-drop-list-dragging
+  .dft-task-page-board-box:not(.dft-task-page-board-cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
