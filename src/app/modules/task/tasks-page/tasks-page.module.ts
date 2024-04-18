@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     TasksPageChartModule,
     TranslateModule,
     MatIconModule,
+    TasksPageBoardModule,
   ],
 })
 export class TasksPageModule {}

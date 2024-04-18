@@ -1,0 +1,56 @@
+.dft-task-page-board-example-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.dft-task-page-board-example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.dft-task-page-board-example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.dft-task-page-board-cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.dft-task-page-board-cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.dft-task-page-board-cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.dft-task-page-board-example-box:last-child {
+  border: none;
+}
+
+.dft-task-page-board-example-list.dft-task-page-board-cdk-drop-list-dragging
+  .dft-task-page-board-example-box:not(
+    .dft-task-page-board-cdk-drag-placeholder
+  ) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

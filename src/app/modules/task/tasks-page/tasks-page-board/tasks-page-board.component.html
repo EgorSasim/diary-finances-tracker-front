@@ -1,1 +1,52 @@
-<p>tasks-page-board works!</p>
+<div class="dft-task-page-board-example-container">
+  <h2>To do</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[inReviewList, doneList]"
+    class="dft-task-page-board-example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (item of todo; track item) {
+    <div class="dft-task-page-board-example-box" cdkDrag>{{ item }}</div>
+    }
+  </div>
+</div>
+
+<div class="dft-task-page-board-example-container">
+  <h2>In review</h2>
+
+  <div
+    cdkDropList
+    #inReviewList="cdkDropList"
+    [cdkDropListData]="inReview"
+    [cdkDropListConnectedTo]="[doneList, todoList]"
+    class="dft-task-page-board-example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (item of inReview; track item) {
+    <div class="dft-task-page-board-example-box" cdkDrag [attr.data]="item">
+      {{ item }}
+    </div>
+    }
+  </div>
+</div>
+
+<div class="dft-task-page-board-example-container">
+  <h2>Done</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList, inReviewList]"
+    class="dft-task-page-board-example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for (item of done; track item) {
+    <div class="dft-task-page-board-example-box" cdkDrag>{{ item }}</div>
+    }
+  </div>
+</div>
