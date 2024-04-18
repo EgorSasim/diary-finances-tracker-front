@@ -1,8 +1,17 @@
-.dft-tasks-page-list {
+.tasks-page-list {
   padding: 2rem;
 }
 
+.tasks-page-list__filters {
+  width: 15rem;
+  display: block;
+  &.full-width {
+    width: 100%;
+  }
+}
+
 .dft-tasks-page-list__no-tasks {
+  padding-top: 2rem;
   display: flex;
   justify-content: center;
 }

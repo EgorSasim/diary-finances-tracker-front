@@ -1,5 +1,5 @@
 @if (formGroup?.controls) {
-<mat-toolbar class="dft-task-search-panel">
+<div class="dft-task-search-panel">
   <mat-form-field>
     <mat-label>{{ "app.title" | translate }}</mat-label>
     <input matInput [formControl]="formGroup.controls.title" />
@@ -10,5 +10,17 @@
   <dft-task-priority-selector
     [control]="formGroup.controls.priority"
   ></dft-task-priority-selector>
-</mat-toolbar>
+  <dft-task-date-range-selector
+    class="dft-task-search-panel__date-range"
+    [formGroup]="formGroup"
+  ></dft-task-date-range-selector>
+</div>
+<button
+  mat-button
+  color="primary"
+  [disabled]="formGroup.pristine"
+  (click)="clearFormGroup()"
+>
+  {{ "app.clearFilters" | translate }}
+</button>
 }

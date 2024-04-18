@@ -25,7 +25,7 @@ export class TaskCreateModalBuilder {
       reminder: new FormControl(null),
       startDate: new FormControl(null),
       endDate: new FormControl(null),
-      status: new FormControl(null),
+      status: new FormControl('ToDo'),
     });
   }
 }

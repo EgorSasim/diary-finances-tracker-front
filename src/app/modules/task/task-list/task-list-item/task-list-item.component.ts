@@ -3,11 +3,13 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output,
 } from '@angular/core';
 import { CompletedTaskListItem, TaskListItem } from './task-list-item.typings';
 import { TASK_PRIORITY_TO_NAME } from '../../../../services/task/task.constants';
 import { TaskStatus } from '../../../../services/task/task.typings';
+import { getYearMonthDayDate } from '../../../../helpers/date';
 
 @Component({
   selector: 'dft-task-item',
@@ -22,7 +24,7 @@ export class TaskListItemComponent {
   @Output() complete: EventEmitter<CompletedTaskListItem> = new EventEmitter();
 
   public readonly taskPriorityName = TASK_PRIORITY_TO_NAME;
-  public readonly currDate: Date = new Date(Date.now());
+  public readonly currDate: Date = getYearMonthDayDate(new Date());
 
   public removeTask(id: number): void {
     this.remove.emit(id);

@@ -5,6 +5,7 @@ import { TaskSearchPanelModule } from '../../task-search-panel/task-search-panel
 import { TaskListModule } from '../../task-list/task-list.module';
 import { SpinnerModule } from '../../../common/spinner/spinner.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [TasksPageListComponent],
@@ -14,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TaskListModule,
     SpinnerModule,
     TranslateModule,
+    MatExpansionModule,
   ],
   exports: [TasksPageListComponent],
 })

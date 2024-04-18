@@ -1,23 +1,36 @@
-<dft-task-search-panel
-  class="dft-tasks-page-list__filter-controls"
-  (searchParamsChange)="searchParamsChange($event)"
-></dft-task-search-panel>
-@if((tasks$ | async)?.length) {
-<div class="dft-tasks-page-list">
-  <dft-task-list
-    (completeTask)="completeTask($event)"
-    (editTask)="goToTaskEditPage($event)"
-    (removeTask)="removeTask($event)"
-    [taskItems]="tasks$ | async"
-  ></dft-task-list>
+<div class="tasks-page-list">
+  <mat-accordion
+    class="tasks-page-list__filters"
+    [class.full-width]="taskPanel.expanded"
+  >
+    <mat-expansion-panel #taskPanel [expanded]="false">
+      <mat-expansion-panel-header>
+        {{ "app.filters" | translate }}
+      </mat-expansion-panel-header>
+      <dft-task-search-panel
+        class="dft-tasks-page-list__filter-controls"
+        (searchParamsChange)="searchParamsChange($event)"
+      ></dft-task-search-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  @if((tasks$ | async)?.length) {
+  <div class="dft-tasks-page-list">
+    <dft-task-list
+      (completeTask)="completeTask($event)"
+      (editTask)="goToTaskEditPage($event)"
+      (removeTask)="removeTask($event)"
+      [taskItems]="tasks$ | async"
+    ></dft-task-list>
+  </div>
+
+  } @else {
+  <h1 class="dft-tasks-page-list__no-tasks">
+    {{ "task.noTasksFound" | translate }}
+  </h1>
+  }
+
+  <!-- @if(isLoading$ | async) {
+  <dft-spinner></dft-spinner>
+  } -->
 </div>
-
-} @else {
-<h1 class="dft-tasks-page-list__no-tasks">
-  {{ "task.noTasksFound" | translate }}
-</h1>
-}
-
-<!-- @if(isLoading$ | async) {
-<dft-spinner></dft-spinner>
-} -->

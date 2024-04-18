@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
 import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
+import { TaskDateRangeSelectorModule } from '../task-date-range-selector/task-date-range-selector.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [TaskSearchPanelComponent],
@@ -20,6 +22,8 @@ import { TaskPrioritySelectorModule } from '../task-priority-selector/task-prior
     TranslateModule,
     TaskStatusSelectorModule,
     TaskPrioritySelectorModule,
+    TaskDateRangeSelectorModule,
+    MatButtonModule,
   ],
   exports: [TaskSearchPanelComponent],
 })
