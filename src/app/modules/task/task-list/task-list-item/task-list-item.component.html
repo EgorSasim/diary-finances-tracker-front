@@ -7,7 +7,7 @@
 >
   <div ellipsis class="task-item__element mod-title">{{ task.title }}</div>
   @if (task.endDate | date : "M/dd/yyy"; as date) {
-  <div class="task-item__element">
+  <div class="task-item__element" [overdued]="currDate > task?.endDate">
     {{ date }}
   </div>
   } @else {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, map, merge, startWith } from 'rxjs';
 import { User } from '../../services/user/user.typings';
 import { TaskService } from '../../services/task/task.service';
 import { Task } from '../../services/task/task.typings';
@@ -27,8 +27,33 @@ export class HomePageService {
     return this.taskService.createTask(task);
   }
 
-  public getAllTasks(): Observable<Task[]> {
-    return this.taskService.getTasks();
+  public getTasks(): Observable<Task[]> {
+    return forkJoin([
+      this.taskService.getTasks({ status: 'InProgress' }).pipe(startWith([])),
+      this.taskService.getTasks({ status: 'ToDo' }).pipe(startWith([])),
+    ]).pipe(
+      map(([inProgressTasks, toDoTasks]: [Task[], Task[]]) =>
+        inProgressTasks.concat(toDoTasks)
+      ),
+      map((tasks) =>
+        tasks.filter((task) => {
+          const currDate = new Date(Date.now());
+          if (task.startDate && task.endDate) {
+            return task.startDate <= currDate && task.endDate >= currDate;
+          }
+          if (!task.startDate && !task.endDate) {
+            return false;
+          }
+          if (task.startDate) {
+            return task.startDate <= currDate;
+          }
+          if (task.endDate) {
+            return task.endDate >= currDate;
+          }
+          return false;
+        })
+      )
+    );
   }
 
   public removeTask(id: number): Observable<Task> {

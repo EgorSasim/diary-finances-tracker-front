@@ -35,7 +35,7 @@
   "auth.login": "Enter login",
   "app.priority": "Priority",
   "app.endDate": "End date",
-  "app.todayTasks": "Today's tasks",
+  "app.activeTasks": "Relevant tasks",
   "app.noTasks": "No tasks",
   "app.noNotes": "No notes",
   "app.createNote": "Create note",

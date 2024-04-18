@@ -1,0 +1,17 @@
+@if(formGroup.controls) {
+<mat-form-field class="dft-task-date-range-selector">
+  <mat-label>{{ "app.enterStartAndEndDate" | translate }}</mat-label>
+  <mat-date-range-input [formGroup]="formGroup" [rangePicker]="picker">
+    <input matStartDate formControlName="startDate" />
+    <input matEndDate formControlName="endDate" />
+  </mat-date-range-input>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+  @if (formGroup.controls?.startDate?.errors) {
+  <mat-error>{{ getErrorMessage(formGroup.controls.startDate) }}</mat-error>
+  } @if (formGroup.controls.endDate?.errors) {
+  <mat-error>{{ getErrorMessage(formGroup.controls.endDate) }}</mat-error>
+  }
+</mat-form-field>
+
+}

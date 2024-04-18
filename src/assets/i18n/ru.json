@@ -35,7 +35,7 @@
   "auth.login": "Введите логин",
   "app.priority": "Приоритет",
   "app.endDate": "Дата окончания",
-  "app.todayTasks": "Задачи на сегодня",
+  "app.activeTasks": "Актуальные задачи",
   "app.noTasks": "Нет задач",
   "app.noNotes": "Нет записей",
   "app.createNote": "Создать запись",

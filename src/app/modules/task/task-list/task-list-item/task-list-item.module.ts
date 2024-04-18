@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { CrossOutModule } from '../../../../directives/cross-out/cross-out.module';
 import { CompletedModule } from '../../../../directives/completed/completed.module';
+import { OverduedModule } from '../../../../directives/overdued/overdued.module';
 
 @NgModule({
   declarations: [TaskListItemComponent],
@@ -19,6 +20,7 @@ import { CompletedModule } from '../../../../directives/completed/completed.modu
     MatMenuModule,
     TranslateModule,
     CrossOutModule,
+    OverduedModule,
     CompletedModule,
   ],
   exports: [TaskListItemComponent],

@@ -129,17 +129,8 @@ export class HomePageComponent {
 
   private updateTasks(): void {
     this.isLoading$.next(true);
-    this.tasks$ = this.homePageService.getAllTasks().pipe(
+    this.tasks$ = this.homePageService.getTasks().pipe(
       take(1),
-      map((tasks) =>
-        tasks.sort((firstTask, secondTask) => {
-          if (firstTask.status === 'Done') {
-            return 1;
-          } else {
-            return -1;
-          }
-        })
-      ),
       finalize(() => this.isLoading$.next(false)),
       takeUntilDestroyed(this.destroyRef)
     );

@@ -22,6 +22,7 @@ export class TaskListItemComponent {
   @Output() complete: EventEmitter<CompletedTaskListItem> = new EventEmitter();
 
   public readonly taskPriorityName = TASK_PRIORITY_TO_NAME;
+  public readonly currDate: Date = new Date(Date.now());
 
   public removeTask(id: number): void {
     this.remove.emit(id);
