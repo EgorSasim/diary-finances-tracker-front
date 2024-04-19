@@ -1,7 +1,6 @@
 <mat-form-field *ngIf="control">
   <mat-label>{{ "task.status" | translate }}</mat-label>
   <mat-select matNativeControl [formControl]="control">
-    <mat-option>{{ "app.notSelected" | translate }}</mat-option>
     @for (status of statusNames; track $index) {
     <mat-option value="{{ statuses[$index] }}">{{
       status | translate

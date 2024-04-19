@@ -11,7 +11,7 @@ export interface TaskDto {
   status: TaskDtoStatus;
 }
 
-export type TaskDtoStatus = 'ToDo' | 'InProgress' | 'Done';
+export type TaskDtoStatus = 'NoStatus' | 'ToDo' | 'InProgress' | 'Done';
 type TaskDtoPriority = 'Low' | 'Medium' | 'High';
 
 export interface TaskDtoSearchParams {

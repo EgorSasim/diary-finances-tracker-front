@@ -14,7 +14,7 @@ export interface Task {
   status: TaskStatus;
 }
 
-export type TaskStatus = 'ToDo' | 'InProgress' | 'Done';
+export type TaskStatus = 'NoStatus' | 'ToDo' | 'InProgress' | 'Done';
 export type TaskPriority = 'Low' | 'Medium' | 'High';
 
 export interface TaskReccurance {

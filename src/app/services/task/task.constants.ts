@@ -10,6 +10,7 @@ export const TASK_PRIORITY_TO_NAME: Record<TaskPriority, string> = {
 };
 
 export const TASK_STATUS_TO_TRANSLATION: Record<TaskStatus, string> = {
+  NoStatus: 'task.status.noStatus',
   ToDo: 'task.status.toDo',
   InProgress: 'task.status.inProgress',
   Done: 'task.status.done',

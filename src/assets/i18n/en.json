@@ -68,6 +68,7 @@
   "task.priority.low": "Low",
   "task.priority.medium": "Medium",
   "task.status": "Status",
+  "task.status.noStatus": "No status",
   "task.status.toDo": "To do",
   "task.status.inProgress": "In progress",
   "task.status.done": "Done",

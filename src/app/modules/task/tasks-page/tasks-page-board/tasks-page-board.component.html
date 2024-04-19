@@ -1,12 +1,29 @@
 <div class="dft-task-page-board">
   <div class="dft-task-page-board-container">
+    <h2>{{ "task.status.noStatus" | translate }}</h2>
+
+    <div
+      cdkDropList
+      #noStatusList="cdkDropList"
+      [cdkDropListData]="noStatusTasks$ | async"
+      [cdkDropListConnectedTo]="[toDoList, inProgressList, doneList]"
+      class="dft-task-page-board-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of (noStatusTasks$ | async); track item) {
+      <div class="dft-task-page-board-box" cdkDrag>{{ item.title }}</div>
+      }
+    </div>
+  </div>
+
+  <div class="dft-task-page-board-container">
     <h2>{{ "task.status.toDo" | translate }}</h2>
 
     <div
       cdkDropList
       #todoList="cdkDropList"
       [cdkDropListData]="toDoTasks$ | async"
-      [cdkDropListConnectedTo]="[inProgressList, doneList]"
+      [cdkDropListConnectedTo]="[noStatusList, inProgressList, doneList]"
       class="dft-task-page-board-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -23,7 +40,7 @@
       cdkDropList
       #inProgressList="cdkDropList"
       [cdkDropListData]="inProgressTasks$ | async"
-      [cdkDropListConnectedTo]="[doneList, todoList]"
+      [cdkDropListConnectedTo]="[noStatusList, doneList, todoList]"
       class="dft-task-page-board-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -42,7 +59,7 @@
       cdkDropList
       #doneList="cdkDropList"
       [cdkDropListData]="doneTasks$ | async"
-      [cdkDropListConnectedTo]="[todoList, inProgressList]"
+      [cdkDropListConnectedTo]="[noStatusList, todoList, inProgressList]"
       class="dft-task-page-board-list"
       (cdkDropListDropped)="drop($event)"
     >

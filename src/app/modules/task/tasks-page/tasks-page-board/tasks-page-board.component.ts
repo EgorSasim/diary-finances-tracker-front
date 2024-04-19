@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import {
   CdkDragDrop,
+  CdkDropList,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
@@ -15,13 +21,34 @@ import { Task } from '../../../../services/task/task.typings';
   providers: [TasksPageBoardService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TasksPageBoardComponent {
+export class TasksPageBoardComponent implements AfterViewInit {
+  @ViewChild('noStatusList') noStatusList: CdkDropList<Task[]>;
+  @ViewChild('todoList') toDoList: CdkDropList<Task[]>;
+  @ViewChild('inProgressList') inProgressList: CdkDropList<Task[]>;
+  @ViewChild('doneList') doneList: CdkDropList<Task[]>;
+
+  public noStatusTasks$: Observable<Task[]> =
+    this.tasksPageBoardService.noStatusTasks$;
   public toDoTasks$: Observable<Task[]> = this.tasksPageBoardService.toDoTasks$;
   public inProgressTasks$: Observable<Task[]> =
     this.tasksPageBoardService.inProgressTasks$;
   public doneTasks$: Observable<Task[]> = this.tasksPageBoardService.doneTasks$;
 
+  private tasksPageContainerNameToTaskStatusMap: Map<
+    CdkDropList,
+    Task['status']
+  >;
+
   constructor(private tasksPageBoardService: TasksPageBoardService) {}
+
+  public ngAfterViewInit(): void {
+    this.tasksPageContainerNameToTaskStatusMap = new Map([
+      [this.noStatusList, 'NoStatus'],
+      [this.toDoList, 'ToDo'],
+      [this.inProgressList, 'InProgress'],
+      [this.doneList, 'Done'],
+    ]);
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -38,12 +65,11 @@ export class TasksPageBoardComponent {
         event.currentIndex
       );
     }
-    console.log('event container', event.container);
-    const updatedTaskId = (
-      event.container.data[event.currentIndex] as unknown as Task
-    ).id;
-    const status = (event.container.data[0] as unknown as Task).status;
-    console.log('new status: ', status);
-    this.tasksPageBoardService.updateTask(updatedTaskId, status).subscribe();
+    const containerName = this.tasksPageContainerNameToTaskStatusMap.get(
+      event.container
+    ) as Task['status'];
+    const taskId = (event.container.data[event.currentIndex] as unknown as Task)
+      .id;
+    this.tasksPageBoardService.updateTask(taskId, containerName).subscribe();
   }
 }
