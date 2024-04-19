@@ -9,6 +9,7 @@
 @import "./assets/themes/orange.scss";
 @import "./assets/themes/red.scss";
 @import "./assets/themes/yellow.scss";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 @include mat-theming.all-static-component-dimensions();
 

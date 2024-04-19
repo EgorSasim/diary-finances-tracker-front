@@ -30,6 +30,8 @@ import { HeaderModule } from './modules/header/header.module';
 import { SideBarModule } from './modules/side-bar/side-bar.module';
 import { ModalsModule } from './modals.module';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,6 +48,10 @@ function HttpLoaderFactory(http: HttpClient) {
     NgxMaterialThemingModule,
     SnackBarModule,
     BrowserModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
