@@ -2,27 +2,24 @@
   <div class="dft-tasks-page-calendar__view-selector">
     <button
       mat-stroked-button
-      color="primary"
+      [color]="view === CalendarView.Month ? 'primary' : 'basic'"
       (click)="setView(CalendarView.Month)"
-      [class.active]="view === CalendarView.Month"
     >
       {{ "app.month" | translate }}
     </button>
     <button
       mat-stroked-button
-      color="primary"
+      [color]="view === CalendarView.Week ? 'primary' : 'basic'"
       (click)="setView(CalendarView.Week)"
-      [class.active]="view === CalendarView.Week"
     >
-      Week
+      {{ "app.week" | translate }}
     </button>
     <button
       mat-stroked-button
-      color="primary"
+      [color]="view === CalendarView.Day ? 'primary' : 'basic'"
       (click)="setView(CalendarView.Day)"
-      [class.active]="view === CalendarView.Day"
     >
-      Day
+      {{ "app.day" | translate }}
     </button>
   </div>
   <div>
@@ -36,10 +33,10 @@
       [(viewDate)]="viewDate"
       (viewDateChange)="closeOpenMonthViewDay()"
     >
-      Previous
+      {{ "app.previous" | translate }}
     </button>
     <button mat-stroked-button mwlCalendarToday [(viewDate)]="viewDate">
-      Today
+      {{ "app.today" | translate }}
     </button>
     <button
       mat-stroked-button
@@ -48,7 +45,7 @@
       [(viewDate)]="viewDate"
       (viewDateChange)="closeOpenMonthViewDay()"
     >
-      Next
+      {{ "app.next" | translate }}
     </button>
   </div>
 </div>
@@ -57,8 +54,7 @@
   <mwl-calendar-month-view
     *ngSwitchCase="CalendarView.Month"
     [viewDate]="viewDate"
-    [events]="events"
-    [refresh]="refresh"
+    [events]="events$ | async"
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
@@ -68,8 +64,7 @@
   <mwl-calendar-week-view
     *ngSwitchCase="CalendarView.Week"
     [viewDate]="viewDate"
-    [events]="events"
-    [refresh]="refresh"
+    [events]="events$ | async"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
   >
@@ -77,8 +72,7 @@
   <mwl-calendar-day-view
     *ngSwitchCase="CalendarView.Day"
     [viewDate]="viewDate"
-    [events]="events"
-    [refresh]="refresh"
+    [events]="events$ | async"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
   >
