@@ -12,6 +12,7 @@ export interface Task {
   reminder?: Date;
   reccurance?: TaskReccurance;
   status: TaskStatus;
+  color?: string;
 }
 
 export type TaskStatus = 'NoStatus' | 'ToDo' | 'InProgress' | 'Done';
@@ -34,6 +35,7 @@ export interface TaskSearchParams {
   startDate?: Date;
   endDate?: Date;
   status?: TaskStatus;
+  color?: string;
 }
 
 export type TaskForm = ConvertToForm<Task>;

@@ -26,6 +26,7 @@ export class TaskCreateModalBuilder {
       startDate: new FormControl(null),
       endDate: new FormControl(null),
       status: new FormControl('ToDo'),
+      color: new FormControl('#ffffff'),
     });
   }
 }

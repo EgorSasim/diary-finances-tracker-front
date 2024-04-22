@@ -32,6 +32,7 @@ import { ModalsModule } from './modals.module';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,6 +65,7 @@ function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: Languages.Ru,
     }),
+    NgxChartsModule,
     ThemeSelectorModule,
   ],
   providers: [

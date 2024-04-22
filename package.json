@@ -28,6 +28,7 @@
     "@messageformat/core": "^3.3.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@swimlane/ngx-charts": "^20.5.0",
     "angular-calendar": "^0.31.0",
     "chroma-js": "^2.4.2",
     "date-fns": "^3.6.0",

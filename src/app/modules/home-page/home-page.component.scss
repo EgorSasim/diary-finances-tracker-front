@@ -13,9 +13,10 @@
 
 .home-page__add-entity {
   display: block;
-  position: absolute;
+  position: sticky;
+  width: 5%;
   bottom: 2rem;
-  right: 2rem;
+  left: 100vw;
 }
 
 .dft-home-page__task-list {

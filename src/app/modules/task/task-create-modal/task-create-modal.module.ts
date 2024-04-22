@@ -13,6 +13,8 @@ import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { CreateFormModule } from '../../common/create-form/create-form.module';
 import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
 import { TaskDateRangeSelectorModule } from '../task-date-range-selector/task-date-range-selector.module';
+import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
+import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.module';
 
 @NgModule({
   declarations: [TaskCreateModalComponent],
@@ -31,6 +33,8 @@ import { TaskDateRangeSelectorModule } from '../task-date-range-selector/task-da
     CreateFormModule,
     TaskPrioritySelectorModule,
     TaskDateRangeSelectorModule,
+    TaskStatusSelectorModule,
+    TaskColorPickerModule,
   ],
   exports: [TaskCreateModalComponent],
 })

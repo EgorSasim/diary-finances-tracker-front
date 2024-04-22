@@ -28,6 +28,7 @@ export class TaskEditPageBuilder {
       startDate: new FormControl(task.startDate),
       endDate: new FormControl(task.endDate),
       status: new FormControl(task.status),
+      color: new FormControl(task.color),
     });
   }
 }

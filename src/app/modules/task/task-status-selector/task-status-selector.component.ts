@@ -15,6 +15,7 @@ import { Task } from '../../../services/task/task.typings';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskStatusSelectorComponent {
+  @Input() public withNullValue: boolean = true;
   @Input() public control: FormControl<Task['status']>;
   public readonly statuses = Object.keys(TASK_STATUS_TO_TRANSLATION);
   public readonly statusNames = Object.values(TASK_STATUS_TO_TRANSLATION);

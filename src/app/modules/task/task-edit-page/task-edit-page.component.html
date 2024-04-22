@@ -57,9 +57,16 @@
       [height]="textAreaHeight"
     ></dft-text-area>
 
-    <dft-task-status-selector
-      [control]="formGroup.controls.status"
-    ></dft-task-status-selector>
+    <div class="dft-task-edit-page__content-sides">
+      <dft-task-status-selector
+        class="dft-task-edit-page__content-side"
+        [control]="formGroup.controls.status"
+      ></dft-task-status-selector>
+      <dft-task-color-picker
+        class="dft-task-edit-page__content-side"
+        [control]="formGroup.controls.color"
+      ></dft-task-color-picker>
+    </div>
   </ng-container>
 </dft-edit-page>
 } @if(isLoading$ | async) {

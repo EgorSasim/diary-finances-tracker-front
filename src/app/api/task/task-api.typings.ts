@@ -9,6 +9,7 @@ export interface TaskDto {
   reminder?: Date;
   reccurance?: TaskDtoReccurance;
   status: TaskDtoStatus;
+  color?: string;
 }
 
 export type TaskDtoStatus = 'NoStatus' | 'ToDo' | 'InProgress' | 'Done';
@@ -23,6 +24,7 @@ export interface TaskDtoSearchParams {
   startDate?: Date;
   endDate?: Date;
   status?: TaskDtoStatus;
+  color?: string;
 }
 
 export interface TaskDtoReccurance {

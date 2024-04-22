@@ -15,6 +15,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EditPageModule } from '../../common/edit-page/edit-page.module';
 import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
 import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
+import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.module';
 
 @NgModule({
   declarations: [TaskEditPageComponent],
@@ -35,6 +36,7 @@ import { TaskPrioritySelectorModule } from '../task-priority-selector/task-prior
     EditPageModule,
     TaskStatusSelectorModule,
     TaskPrioritySelectorModule,
+    TaskColorPickerModule,
   ],
 })
 export class TaskEditPageModule {}

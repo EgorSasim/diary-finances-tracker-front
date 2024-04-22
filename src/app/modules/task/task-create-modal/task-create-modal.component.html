@@ -1,11 +1,10 @@
 @if (formGroup?.controls) {
 <dft-create-form
-  [height]="'32rem'"
+  [height]="'36rem'"
   [width]="'53rem'"
   (close)="close()"
   (create)="create()"
 >
-  <div header>lalla</div>
   <main main>
     <mat-form-field class="dft-task-create-modal__title-control">
       <mat-label>{{ "app.title" | translate }}</mat-label>
@@ -33,6 +32,17 @@
       [control]="formGroup.controls.description"
       [height]="textAreaHeight"
     ></dft-text-area>
+    <div class="dft-task-create-modal__two-sides-wrap">
+      <dft-task-status-selector
+        class="dft-task-create-modal__wrap-side"
+        [withNullValue]="false"
+        [control]="formGroup.controls.status"
+      ></dft-task-status-selector>
+      <dft-task-color-picker
+        class="dft-task-create-modal__wrap-side"
+        [control]="formGroup.controls.color"
+      ></dft-task-color-picker>
+    </div>
   </main>
 </dft-create-form>
 
