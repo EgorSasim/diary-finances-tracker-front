@@ -18,6 +18,7 @@ export class NoteEditPageBuilder {
       description: new FormControl(note.description, [
         Validators.maxLength(NOTE_DESCRIPTION_MAX_LENGTH),
       ]),
+      creationDate: new FormControl(note.creationDate),
     });
   }
 }

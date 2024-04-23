@@ -19,6 +19,7 @@ export class NoteService {
   }
 
   public createNote(note: Note): Observable<Note> {
+    note.creationDate = new Date();
     return this.noteApiService
       .createNote(note)
       .pipe(tap(() => this.noteChange$.next()));
