@@ -21,7 +21,7 @@
       } @else {
       <span
         >{{ "app.noTasks" | translate }}.
-        <button mat-button color="primary" (click)="showCreateTaskModal()">
+        <button mat-button color="primary" (click)="showTaskCreateModal()">
           {{ "app.createTask" | translate }}
         </button></span
       >
@@ -46,7 +46,7 @@
       } @else {
       <span
         >{{ "app.noNotes" | translate }}.
-        <button mat-button color="primary" (click)="showCreateNoteModal()">
+        <button mat-button color="primary" (click)="showNoteCreateModal()">
           {{ "app.createNote" | translate }}
         </button></span
       >
@@ -55,9 +55,6 @@
   </mat-accordion>
 </div>
 
-<dft-create-entity-menu-button
+<dft-create-diary-entity-menu-button
   class="home-page__add-entity"
-  (createTask)="showCreateTaskModal()"
-  (createNote)="showCreateNoteModal()"
-  (createSpace)="showCreateSpaceModal()"
-></dft-create-entity-menu-button>
+></dft-create-diary-entity-menu-button>

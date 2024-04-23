@@ -61,10 +61,9 @@ export class TasksPageChartService {
         });
         return taskAmountToColor;
       }),
-      tap((taskAmoutColor) => {
-        console.log('make next move: ', taskAmoutColor);
+      tap((taskAmountColor) => {
         this.colorInfo$.next(
-          this.mapTaskAmountToColorToColorInfo(taskAmoutColor)
+          this.mapTaskAmountToColorToColorInfo(taskAmountColor)
         );
       }),
       switchMap((taskAmountToColor) =>

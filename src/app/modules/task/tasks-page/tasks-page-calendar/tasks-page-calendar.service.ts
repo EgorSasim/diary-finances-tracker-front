@@ -26,20 +26,13 @@ export class TasksPageCalendarService {
     action: CalendarAction,
     event: CalendarEvent
   ): void {
-    console.log('event: ', event);
-    console.log('action: ', action);
     const task = mapEventToTask(event as Required<CalendarEvent>);
     switch (action) {
       case 'Delete':
-        console.log('event id: ', event.id);
-        this.taskService
-          .removeTask(event.id ? +event.id : 0)
-          .subscribe(() => console.log('remove task...'));
+        this.taskService.removeTask(event.id ? +event.id : 0).subscribe();
         return;
       case 'DroppedOrResized':
-        this.taskService
-          .updateTask(task.id as number, task)
-          .subscribe(() => console.log('upddated...'));
+        this.taskService.updateTask(task.id as number, task).subscribe();
         return;
       case 'Clicked':
       case 'Edit':

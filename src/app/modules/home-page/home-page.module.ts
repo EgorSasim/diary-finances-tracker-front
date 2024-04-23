@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { TaskListModule } from '../task/task-list/task-list.module';
-import { CreateEntityMenuButtonModule } from '../common/create-entity-menu-button/create-entity-menu-button.module';
+import { CreateDiaryEntityMenuButtonModule } from '../common/create-diary-entity-menu-button/create-diary-entity-menu-button.module';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +14,7 @@ import { NoteListModule } from '../note/note-list/note-list.module';
   imports: [
     CommonModule,
     TaskListModule,
-    CreateEntityMenuButtonModule,
+    CreateDiaryEntityMenuButtonModule,
     MatExpansionModule,
     TranslateModule,
     MatButtonModule,

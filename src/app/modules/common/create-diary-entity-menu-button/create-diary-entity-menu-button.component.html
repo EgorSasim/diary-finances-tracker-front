@@ -2,15 +2,15 @@
   <mat-icon>add</mat-icon>
 </button>
 <mat-menu #menu yPosition="above">
-  <button mat-menu-item (click)="emitTaskCreate()">
+  <button mat-menu-item (click)="showTaskCreateModal()">
     <mat-icon>task</mat-icon>
     <span>{{ "app.task" | translate }}</span>
   </button>
-  <button mat-menu-item (click)="emitNoteCreate()">
+  <button mat-menu-item (click)="showNoteCreateModal()">
     <mat-icon>note</mat-icon>
     <span>{{ "app.note" | translate }}</span>
   </button>
-  <button mat-menu-item (click)="emitSpaceCreate()">
+  <button mat-menu-item (click)="showSpaceCreateModal()">
     <mat-icon>folder</mat-icon>
     <span>{{ "app.space" | translate }}</span>
   </button>

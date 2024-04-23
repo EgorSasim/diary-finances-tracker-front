@@ -22,9 +22,7 @@ export class TaskCreateModalComponent {
     private matDialogRef: MatDialogRef<TaskCreateModalComponent>,
     private taskCreateModalBuilder: TaskCreateModalBuilder,
     private formErrorMessageService: FormErrorMessageService
-  ) {
-    this.formGroup.controls.color.valueChanges.subscribe(console.log);
-  }
+  ) {}
 
   public getErrorMessage(control: AbstractControl): string {
     return this.formErrorMessageService.getControlErrorMessage(control);

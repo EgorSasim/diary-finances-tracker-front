@@ -8,6 +8,7 @@ import { TasksPageCalendarModule } from './tasks-page-calendar/tasks-page-calend
 import { TasksPageChartModule } from './tasks-page-chart/tasks-page-chart.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateDiaryEntityMenuButtonModule } from '../../common/create-diary-entity-menu-button/create-diary-entity-menu-button.module';
 
 @NgModule({
   declarations: [TasksPageComponent],
@@ -21,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
     TranslateModule,
     MatIconModule,
     TasksPageBoardModule,
+    CreateDiaryEntityMenuButtonModule,
   ],
 })
 export class TasksPageModule {}

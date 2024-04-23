@@ -12,11 +12,14 @@
 }
 
 .home-page__add-entity {
-  display: block;
+  z-index: 3;
+  width: 0;
+  display: flex;
+  justify-content: right;
   position: sticky;
-  width: 5%;
-  bottom: 2rem;
+  bottom: 0;
   left: 100vw;
+  padding: 2rem;
 }
 
 .dft-home-page__task-list {
