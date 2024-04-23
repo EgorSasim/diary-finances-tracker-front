@@ -10,8 +10,8 @@ import { Task } from '../../../services/task/task.typings';
 import { Note } from '../../../services/note/note.typings';
 import { Space } from '../../../services/space/space.typings';
 import { MatAccordion } from '@angular/material/expansion';
-import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
+import { NavigationService } from '../../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-diary-accordion',
@@ -34,18 +34,18 @@ export class DiaryAccordionComponent {
 
   constructor(
     private diaryAccordionService: DiaryAccordionService,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public navigateToTaskEditPage(id: Task['id']): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
+    this.navigationService.goToTaskEditPage(id);
   }
 
   public navigateToNoteEditPage(id: Note['id']): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.noteEditPage, id]);
+    this.navigationService.goToNoteEditPage(id);
   }
 
   public navigateToSpaceEditPage(id: Space['id']): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.spaceEditPage, id]);
+    this.navigationService.goToSpaceEditPage(id);
   }
 }

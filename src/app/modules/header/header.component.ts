@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../services/user/user.typings';
 import { HeaderService } from './header.service';
 import { TokenService } from '../../services/token/token.service';
-import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../constants/routes-pathes';
+import { NavigationService } from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-header',
@@ -17,13 +16,13 @@ export class HeaderComponent {
   constructor(
     private headerService: HeaderService,
     private tokenService: TokenService,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public user$: Observable<User> = this.headerService.getUserInfo();
 
   public logOut(): void {
     this.tokenService.removeToken();
-    this.router.navigate([ROUTE_PATH.auth]);
+    this.navigationService.goToAuthPage();
   }
 }

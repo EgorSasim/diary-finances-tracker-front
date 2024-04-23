@@ -21,13 +21,15 @@ import { TranslateService } from '@ngx-translate/core';
 import { HTTP_ERROR_MESSAGES } from '../constants/http';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../constants/routes-pathes';
+import { NavigationService } from '../services/navigation/navigation.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(
     private matSnackBar: MatSnackBar,
     private injector: Injector,
-    private router: Router
+    private router: Router,
+    private navigationService: NavigationService
   ) {}
 
   public intercept(
@@ -48,7 +50,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             this.showSnack(err);
           });
         if (error.status === HttpStatusCode.Unauthorized) {
-          this.router.navigate([ROUTE_PATH.auth]);
+          this.navigationService.goToAuthPage();
         }
 
         return EMPTY;

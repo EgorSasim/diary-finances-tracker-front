@@ -14,6 +14,7 @@ import { FormErrorMessageService } from '../../../services/form-error-message/fo
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
+import { NavigationService } from '../../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-space-edit-page',
@@ -35,9 +36,9 @@ export class SpaceEditPageComponent {
     private destroyRef: DestroyRef,
     private spaceEditPageBuilder: SpaceEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
-    private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
-    private backNavigationService: BackNavigationService
+    private backNavigationService: BackNavigationService,
+    private navigationService: NavigationService
   ) {}
 
   public ngOnInit(): void {
@@ -56,7 +57,7 @@ export class SpaceEditPageComponent {
       .subscribe((space) => {
         this.isLoading$.next(false);
         if (!space) {
-          this.router.navigate([ROUTE_PATH.withHeader]);
+          this.navigationService.goToHomePage();
         } else {
           this.formGroup = this.spaceEditPageBuilder.createFormGroup(space);
           this.initialFormGroupState = {

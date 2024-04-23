@@ -12,6 +12,7 @@ import { CompletedTaskListItem } from '../../task-list/task-list-item/task-list-
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../../../constants/routes-pathes';
+import { NavigationService } from '../../../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-tasks-page-list',
@@ -29,7 +30,7 @@ export class TasksPageListComponent {
     private tasksPageListService: TasksPageListService,
     private changeDetectorRef: ChangeDetectorRef,
     private destroyRef: DestroyRef,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public searchParamsChange(searchParams: TaskSearchParams) {
@@ -47,9 +48,11 @@ export class TasksPageListComponent {
         },
       });
   }
+
   public goToTaskEditPage(id: number): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
+    this.navigationService.goToTaskEditPage(id);
   }
+
   public removeTask(id: number): void {
     this.tasksPageListService
       .removeTask(id)

@@ -9,10 +9,14 @@ import {
 import { CalendarAction } from './tasks-page-calendar.typings';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../../../constants/routes-pathes';
+import { NavigationService } from '../../../../services/navigation/navigation.service';
 
 @Injectable()
 export class TasksPageCalendarService {
-  constructor(private taskService: TaskService, private router: Router) {}
+  constructor(
+    private taskService: TaskService,
+    private navigationService: NavigationService
+  ) {}
 
   public getEvents(): Observable<CalendarEvent[]> {
     return this.taskService.taskChange$.pipe(
@@ -36,11 +40,7 @@ export class TasksPageCalendarService {
         return;
       case 'Clicked':
       case 'Edit':
-        this.router.navigate([
-          ROUTE_PATH.withHeader,
-          ROUTE_PATH.taskEditPage,
-          task.id,
-        ]);
+        this.navigationService.goToTaskEditPage(task.id as number);
     }
   }
 

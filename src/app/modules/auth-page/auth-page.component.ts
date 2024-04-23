@@ -5,8 +5,7 @@ import { AuthPageService } from './auth-page.service';
 import { BehaviorSubject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TokenService } from '../../services/token/token.service';
-import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../constants/routes-pathes';
+import { NavigationService } from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-auth-page',
@@ -22,7 +21,7 @@ export class AuthPageComponent {
     private authPageService: AuthPageService,
     private destroyRef: DestroyRef,
     private tokenService: TokenService,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public signIn(signInData: SignIn): void {
@@ -58,6 +57,6 @@ export class AuthPageComponent {
   }
 
   private navigateToHomePage() {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.home]);
+    this.navigationService.goToHomePage();
   }
 }

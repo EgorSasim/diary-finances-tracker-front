@@ -12,6 +12,7 @@ import { CompletedTaskListItem } from '../task/task-list/task-list-item/task-lis
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
 import { Note } from '../../services/note/note.typings';
+import { NavigationService } from '../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-home-page',
@@ -28,7 +29,7 @@ export class HomePageComponent {
   constructor(
     private homePageService: HomePageService,
     private destroyRef: DestroyRef,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public completeTask(completedTaskItem: CompletedTaskListItem): void {
@@ -39,7 +40,7 @@ export class HomePageComponent {
   }
 
   public goToTaskEditPage(id: number): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
+    this.navigationService.goToTaskEditPage(id);
   }
 
   public removeTask(id: number): void {
@@ -58,7 +59,7 @@ export class HomePageComponent {
   }
 
   public goToNoteEditPage(id: Note['id']): void {
-    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.noteEditPage, id]);
+    this.navigationService.goToNoteEditPage(id);
   }
 
   public removeNote(id: Note['id']): void {

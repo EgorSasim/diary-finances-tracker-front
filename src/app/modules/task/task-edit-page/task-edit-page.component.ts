@@ -14,6 +14,7 @@ import { TaskEditPageBuilder } from './task-edit-page.builder';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
+import { NavigationService } from '../../../services/navigation/navigation.service';
 @Component({
   selector: 'dft-task-edit-page',
   templateUrl: './task-edit-page.component.html',
@@ -33,8 +34,8 @@ export class TaskEditPageComponent implements OnInit {
     private destroyRef: DestroyRef,
     private taskEditPageBuilder: TaskEditPageBuilder,
     private formErrorMessageService: FormErrorMessageService,
-    private router: Router,
-    private backNavigationService: BackNavigationService
+    private backNavigationService: BackNavigationService,
+    private navigationService: NavigationService
   ) {}
 
   public ngOnInit(): void {
@@ -53,7 +54,7 @@ export class TaskEditPageComponent implements OnInit {
       .subscribe((task) => {
         this.isLoading$.next(false);
         if (!task) {
-          this.router.navigate([ROUTE_PATH.withHeader]);
+          this.navigationService.goToHomePage();
         } else {
           this.formGroup = this.taskEditPageBuilder.createFormGroup(task);
           this.initialFormGroupState = {

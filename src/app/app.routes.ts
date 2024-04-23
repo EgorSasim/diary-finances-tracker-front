@@ -8,6 +8,7 @@ import { TaskEditPageComponent } from './modules/task/task-edit-page/task-edit-p
 import { NoteEditPageComponent } from './modules/note/note-edit-page/note-edit-page.component';
 import { SpaceEditPageComponent } from './modules/space/space-edit-page/space-edit-page.component';
 import { TasksPageComponent } from './modules/task/tasks-page/tasks-page.component';
+import { NotesPageComponent } from './modules/note/notes-page/notes-page.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,14 @@ export const routes: Routes = [
             loadChildren: () =>
               import('./modules/task/tasks-page/tasks-page.module').then(
                 (m) => m.TasksPageModule
+              ),
+          },
+          {
+            path: ROUTE_PATH.notesPage,
+            component: NotesPageComponent,
+            loadChildren: () =>
+              import('./modules/note/notes-page/notes-page.module').then(
+                (m) => m.NotesPageModule
               ),
           },
           {
