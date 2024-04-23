@@ -1,4 +1,5 @@
 import { TaskChartColor } from './tasks-page-chart-typings';
+import { CHART_COLOR_SCHEME_NAME } from './tasks-page-chart.constants';
 
 export function getTaskColorByHex(hex: string): TaskChartColor {
   const rgb = hexToRGB(hex);
@@ -44,4 +45,10 @@ function hexToRGB(hex: string): { r: number; g: number; b: number } {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16),
   };
+}
+
+export function getRandChartColorTheme(): string {
+  return Object.values(CHART_COLOR_SCHEME_NAME)[
+    Math.floor(Math.random() * Object.keys(CHART_COLOR_SCHEME_NAME).length)
+  ];
 }

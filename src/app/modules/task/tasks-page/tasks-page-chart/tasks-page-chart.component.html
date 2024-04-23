@@ -1,15 +1,44 @@
-<ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="single"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)"
+<div class="dft-tasks-page-chart__top-charts">
+  <ngx-charts-bar-vertical
+    [view]="taskCreationChartOptions.chartSize"
+    [scheme]="taskCreationChartOptions.colorScheme"
+    [results]="taskCreationChartData$ | async"
+    [gradient]="taskCreationChartOptions.gradient"
+    [xAxis]="taskCreationChartOptions.showXAxis"
+    [yAxis]="taskCreationChartOptions.showYAxis"
+    [showXAxisLabel]="taskCreationChartOptions.showXAxisLabel"
+    [showYAxisLabel]="taskCreationChartOptions.showYAxisLabel"
+    [xAxisLabel]="'app.creationDate' | translate"
+    [yAxisLabel]="'task.amount' | translate"
+  >
+  </ngx-charts-bar-vertical>
+
+  <ngx-charts-pie-chart
+    class="dft-tasks-page-chart__top-charts-right"
+    [view]="taskStatusPercentageChartOptions.chartSize"
+    [scheme]="taskStatusPercentageChartOptions.colorScheme"
+    [results]="taskStatusPercentageChartData$ | async"
+    [gradient]="taskStatusPercentageChartOptions.gradient"
+    [legend]="taskStatusPercentageChartOptions.showLegend"
+    [legendPosition]="taskStatusPercentageChartOptions.legendPosition"
+    [labels]="true"
+    [maxLabelLength]="taskStatusPercentageChartOptions.maxLabelLength"
+    [explodeSlices]="taskStatusPercentageChartOptions.explodeSlices"
+    [tooltipText]="taskStatusPercentageChartOptions.tooltipText"
+  >
+  </ngx-charts-pie-chart>
+</div>
+
+<ngx-charts-bar-horizontal
+  [view]="taskAmountToEachColorChartOptions.chartSize"
+  [scheme]="taskAmountToEachColorChartOptions.colorScheme"
+  [results]="taskAmountToEachColorData$ | async"
+  [gradient]="taskAmountToEachColorChartOptions.gradient"
+  [xAxis]="taskAmountToEachColorChartOptions.showXAxis"
+  [yAxis]="taskAmountToEachColorChartOptions.showYAxis"
+  [showXAxisLabel]="taskAmountToEachColorChartOptions.showXAxisLabel"
+  [showYAxisLabel]="taskAmountToEachColorChartOptions.showYAxisLabel"
+  [xAxisLabel]="'task.amount' | translate"
+  [yAxisLabel]="'app.color' | translate"
 >
-</ngx-charts-bar-vertical>
+</ngx-charts-bar-horizontal>

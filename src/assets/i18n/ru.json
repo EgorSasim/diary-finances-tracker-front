@@ -60,6 +60,16 @@
   "app.placeholder.description": "Прим. Сделать что-нибудь с...",
   "app.language.ru": "Русский",
   "app.language.en": "Английский",
+  "app.color.black": "Чёрный",
+  "app.color.white": "Белый",
+  "app.color.red": "Красный",
+  "app.color.blue": "Голубой",
+  "app.color.green": "Зелёный",
+  "app.color.yellow": "Жёлтый",
+  "app.color.purple": "Фиолетовый",
+  "app.color.brown": "Коричневый",
+  "app.color.orange": "Оранжевый",
+  "app.color.pink": "Розовый",
   "app.colorDescription.black": "Грусть",
   "app.colorDescription.white": "Безразличие",
   "app.colorDescription.red": "Страсть",
@@ -89,5 +99,6 @@
   "task.status.toDo": "К выполнению",
   "task.status.inProgress": "В работе",
   "task.status.done": "Завершена",
-  "task.noTasksFound": "Задач не найдено"
+  "task.noTasksFound": "Задач не найдено",
+  "task.amount": "Количество задач"
 }

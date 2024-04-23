@@ -1,5 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TasksPageChartService } from './tasks-page-chart.service';
+import { Observable } from 'rxjs';
+import {
+  TaskChartItem,
+  TaskCreationDateChartItem,
+} from './tasks-page-chart-typings';
+import {
+  CHART_COLOR_SCHEME_NAME,
+  TASK_AMOUNT_TO_EACH_COLOR_CHART_OPTIONS,
+  TASK_CREATION_CHART_OPTIONS,
+  TASK_STATUSES_PERCENTAGE_CHART_OPTIONS,
+} from './tasks-page-chart.constants';
+import { getRandChartColorTheme } from './tasks-page-chart.helpers';
 
 @Component({
   selector: 'dft-tasks-page-chart',
@@ -9,44 +21,26 @@ import { TasksPageChartService } from './tasks-page-chart.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TasksPageChartComponent {
-  private data = [
-    {
-      name: 'Germany',
-      value: 8940000,
-    },
-    {
-      name: 'USA',
-      value: 5000000,
-    },
-    {
-      name: 'France',
-      value: 7200000,
-    },
-  ];
-  single: any[];
-  multi: any[];
+  public taskCreationChartData$: Observable<TaskCreationDateChartItem[]> =
+    this.tasksPageChartService.getTaskCreationData();
+  public taskStatusPercentageChartData$: Observable<TaskChartItem[]> =
+    this.tasksPageChartService.getTaskStatusesPercentage();
 
-  view: any[] = [700, 400];
+  public taskAmountToEachColorData$: Observable<TaskChartItem[]> =
+    this.tasksPageChartService.getTasksCountToEachColor();
 
-  // options
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Country';
-  showYAxisLabel = true;
-  yAxisLabel = 'Population';
+  public readonly taskCreationChartOptions: typeof TASK_CREATION_CHART_OPTIONS =
+    { ...TASK_CREATION_CHART_OPTIONS, colorScheme: 'fire' };
 
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
-  };
+  public readonly taskStatusPercentageChartOptions: typeof TASK_STATUSES_PERCENTAGE_CHART_OPTIONS =
+    { ...TASK_STATUSES_PERCENTAGE_CHART_OPTIONS, colorScheme: 'aqua' };
 
-  constructor() {
-    Object.assign(this, { single: this.data });
-  }
+  public readonly taskAmountToEachColorChartOptions: typeof TASK_AMOUNT_TO_EACH_COLOR_CHART_OPTIONS =
+    TASK_AMOUNT_TO_EACH_COLOR_CHART_OPTIONS;
 
-  onSelect(event: any) {
-    console.log(event);
+  constructor(private tasksPageChartService: TasksPageChartService) {
+    this.tasksPageChartService
+      .getTaskStatusesPercentage()
+      .subscribe((res) => console.log('res: ', res));
   }
 }

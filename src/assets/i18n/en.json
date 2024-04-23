@@ -60,6 +60,16 @@
   "app.placeholder.description": "Ex. Do smth with...",
   "app.language.ru": "Russian",
   "app.language.en": "English",
+  "app.color.black": "Black",
+  "app.color.white": "White",
+  "app.color.red": "Red",
+  "app.color.blue": "Blue",
+  "app.color.green": "Green",
+  "app.color.yellow": "Yellow",
+  "app.color.purple": "Purple",
+  "app.color.brown": "Brown",
+  "app.color.orange": "Orange",
+  "app.color.pink": "Pink",
   "app.colorDescription.black": "Sadness",
   "app.colorDescription.white": "Indifference",
   "app.colorDescription.red": "Passion",
@@ -89,5 +99,6 @@
   "task.status.toDo": "To do",
   "task.status.inProgress": "In progress",
   "task.status.done": "Done",
-  "task.noTasksFound": "Tasks not found"
+  "task.noTasksFound": "Tasks not found",
+  "task.amount": "Tasks amount"
 }
