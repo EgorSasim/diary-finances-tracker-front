@@ -46,6 +46,7 @@
   </ngx-charts-bar-horizontal>
 
   <div class="dft-tasks-page-chart__color-diagram-container-description">
+    <h1>{{ "app.colors.major" | translate }}</h1>
     <mat-accordion multi>
       @for (colorInfo of (colorsInfo$ | async); track $index) {
       <mat-expansion-panel>
