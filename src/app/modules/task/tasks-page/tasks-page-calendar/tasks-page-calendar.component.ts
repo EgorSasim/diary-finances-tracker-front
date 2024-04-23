@@ -43,9 +43,7 @@ export class TasksPageCalendarComponent {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private tasksPageCalendarService: TasksPageCalendarService) {
-    this.events$.subscribe((events) => console.log('events: ', events));
-  }
+  constructor(private tasksPageCalendarService: TasksPageCalendarService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

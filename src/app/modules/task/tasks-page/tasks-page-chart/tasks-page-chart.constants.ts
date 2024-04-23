@@ -18,6 +18,22 @@ export const TASK_CHART_COLOR_TO_SHORT_DESCRIPTION_TRANSLATION: Record<
   Yellow: 'app.colorDescription.yellow',
 };
 
+export const TASK_CHART_COLOR_TO_LONG_DESCRIPTION_TRANSLATION: Record<
+  TaskChartColor,
+  string
+> = {
+  Black: 'app.colorLongDescription.black',
+  Blue: 'app.colorLongDescription.blue',
+  Brown: 'app.colorLongDescription.brown',
+  Green: 'app.colorLongDescription.green',
+  Orange: 'app.colorLongDescription.orange',
+  Pink: 'app.colorLongDescription.pink',
+  Purple: 'app.colorLongDescription.purple',
+  Red: 'app.colorLongDescription.red',
+  White: 'app.colorLongDescription.white',
+  Yellow: 'app.colorLongDescription.yellow',
+};
+
 export const TASK_CHART_COLOR_TRANSLATION: Record<TaskChartColor, string> = {
   Black: 'app.color.black',
   Blue: 'app.color.blue',

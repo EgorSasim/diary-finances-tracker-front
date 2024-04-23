@@ -22,6 +22,12 @@ export interface TaskChartItem {
   value: number;
 }
 
+export interface ColorInfo {
+  name: string;
+  shortDescription: string;
+  longDescription: string;
+}
+
 export type ChartColorScheme =
   | 'Vivid'
   | 'Natural'

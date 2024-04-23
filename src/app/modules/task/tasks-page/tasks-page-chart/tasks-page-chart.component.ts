@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TasksPageChartService } from './tasks-page-chart.service';
 import { Observable } from 'rxjs';
 import {
+  ColorInfo,
   TaskChartItem,
   TaskCreationDateChartItem,
 } from './tasks-page-chart-typings';
@@ -21,6 +22,8 @@ import { getRandChartColorTheme } from './tasks-page-chart.helpers';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TasksPageChartComponent {
+  public colorsInfo$: Observable<ColorInfo[]> =
+    this.tasksPageChartService.colorInfo$;
   public taskCreationChartData$: Observable<TaskCreationDateChartItem[]> =
     this.tasksPageChartService.getTaskCreationData();
   public taskStatusPercentageChartData$: Observable<TaskChartItem[]> =
@@ -38,9 +41,5 @@ export class TasksPageChartComponent {
   public readonly taskAmountToEachColorChartOptions: typeof TASK_AMOUNT_TO_EACH_COLOR_CHART_OPTIONS =
     TASK_AMOUNT_TO_EACH_COLOR_CHART_OPTIONS;
 
-  constructor(private tasksPageChartService: TasksPageChartService) {
-    this.tasksPageChartService
-      .getTaskStatusesPercentage()
-      .subscribe((res) => console.log('res: ', res));
-  }
+  constructor(private tasksPageChartService: TasksPageChartService) {}
 }

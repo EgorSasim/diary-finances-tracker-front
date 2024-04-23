@@ -2,11 +2,26 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
 .dft-tasks-page-chart__top-charts-right {
   flex: 1;
   display: flex;
   justify-content: center;
+}
+
+.dft-tasks-page-chart__color-diagram-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+}
+
+.dft-tasks-page-chart__color-diagram {
+  flex: 1;
+}
+
+.dft-tasks-page-chart__color-diagram-container-description {
+  flex: 1;
 }

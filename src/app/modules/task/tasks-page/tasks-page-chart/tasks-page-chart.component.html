@@ -29,16 +29,37 @@
   </ngx-charts-pie-chart>
 </div>
 
-<ngx-charts-bar-horizontal
-  [view]="taskAmountToEachColorChartOptions.chartSize"
-  [scheme]="taskAmountToEachColorChartOptions.colorScheme"
-  [results]="taskAmountToEachColorData$ | async"
-  [gradient]="taskAmountToEachColorChartOptions.gradient"
-  [xAxis]="taskAmountToEachColorChartOptions.showXAxis"
-  [yAxis]="taskAmountToEachColorChartOptions.showYAxis"
-  [showXAxisLabel]="taskAmountToEachColorChartOptions.showXAxisLabel"
-  [showYAxisLabel]="taskAmountToEachColorChartOptions.showYAxisLabel"
-  [xAxisLabel]="'task.amount' | translate"
-  [yAxisLabel]="'app.color' | translate"
->
-</ngx-charts-bar-horizontal>
+<div class="dft-tasks-page-chart__color-diagram-container">
+  <ngx-charts-bar-horizontal
+    class="dft-tasks-page-chart__color-diagram"
+    [view]="taskAmountToEachColorChartOptions.chartSize"
+    [scheme]="taskAmountToEachColorChartOptions.colorScheme"
+    [results]="taskAmountToEachColorData$ | async"
+    [gradient]="taskAmountToEachColorChartOptions.gradient"
+    [xAxis]="taskAmountToEachColorChartOptions.showXAxis"
+    [yAxis]="taskAmountToEachColorChartOptions.showYAxis"
+    [showXAxisLabel]="taskAmountToEachColorChartOptions.showXAxisLabel"
+    [showYAxisLabel]="taskAmountToEachColorChartOptions.showYAxisLabel"
+    [xAxisLabel]="'task.amount' | translate"
+    [yAxisLabel]="'app.color' | translate"
+  >
+  </ngx-charts-bar-horizontal>
+
+  <div class="dft-tasks-page-chart__color-diagram-container-description">
+    <mat-accordion multi>
+      @for (colorInfo of (colorsInfo$ | async); track $index) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ colorInfo.name | translate }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ colorInfo.shortDescription | translate }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{ colorInfo.longDescription | translate }}</p>
+      </mat-expansion-panel>
+      }
+    </mat-accordion>
+  </div>
+</div>

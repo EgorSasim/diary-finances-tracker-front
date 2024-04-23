@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TaskService } from '../../../../services/task/task.service';
 import {
   Observable,
+  ReplaySubject,
   combineLatest,
   forkJoin,
   map,
@@ -13,6 +14,7 @@ import {
 } from 'rxjs';
 import { Task, TaskStatus } from '../../../../services/task/task.typings';
 import {
+  ColorInfo,
   TaskChartColor,
   TaskChartItem,
   TaskCreationDateChartItem,
@@ -21,10 +23,16 @@ import {
 import { getTaskColorByHex } from './tasks-page-chart.helpers';
 import { TASK_STATUS_TO_TRANSLATION } from '../../../../services/task/task.constants';
 import { TranslateService } from '@ngx-translate/core';
-import { TASK_CHART_COLOR_TRANSLATION } from './tasks-page-chart.constants';
+import {
+  TASK_CHART_COLOR_TO_LONG_DESCRIPTION_TRANSLATION,
+  TASK_CHART_COLOR_TO_SHORT_DESCRIPTION_TRANSLATION,
+  TASK_CHART_COLOR_TRANSLATION,
+} from './tasks-page-chart.constants';
 
 @Injectable()
 export class TasksPageChartService {
+  public colorInfo$: ReplaySubject<ColorInfo[]> = new ReplaySubject(1);
+
   constructor(
     private taskService: TaskService,
     private translateService: TranslateService
@@ -43,26 +51,21 @@ export class TasksPageChartService {
       this.translateService.onLangChange.pipe(startWith(true)),
     ]).pipe(
       map(([tasks]) => {
-        const taskAmountToColor: TasksAmountToChartColor = {
-          Black: 0,
-          Blue: 0,
-          Brown: 0,
-          Green: 0,
-          Orange: 0,
-          Pink: 0,
-          Purple: 0,
-          Red: 0,
-          White: 0,
-          Yellow: 0,
-        };
+        const taskAmountToColor: TasksAmountToChartColor =
+          this.getTaskAmountToColorInitialVal();
 
         tasks.forEach((task) => {
           if (task.color) {
             taskAmountToColor[getTaskColorByHex(task.color)]++;
           }
         });
-        console.log('taskAmountToColor: ', taskAmountToColor);
         return taskAmountToColor;
+      }),
+      tap((taskAmoutColor) => {
+        console.log('make next move: ', taskAmoutColor);
+        this.colorInfo$.next(
+          this.mapTaskAmountToColorToColorInfo(taskAmoutColor)
+        );
       }),
       switchMap((taskAmountToColor) =>
         forkJoin({
@@ -193,5 +196,38 @@ export class TasksPageChartService {
       Red: this.translateService.get(TASK_CHART_COLOR_TRANSLATION['Red']),
       Yellow: this.translateService.get(TASK_CHART_COLOR_TRANSLATION['Yellow']),
     });
+  }
+
+  private mapTaskAmountToColorToColorInfo(
+    taskAmountToColor: TasksAmountToChartColor
+  ): ColorInfo[] {
+    const maxAmount = Math.max(...Object.values(taskAmountToColor));
+    const majorColors = Object.entries(taskAmountToColor)
+      .filter((entry) => entry[1] === maxAmount)
+      .map((entry) => entry[0]) as TaskChartColor[];
+    if (!majorColors.length) {
+      return [];
+    }
+    return majorColors.map((color) => ({
+      name: TASK_CHART_COLOR_TRANSLATION[color],
+      shortDescription:
+        TASK_CHART_COLOR_TO_SHORT_DESCRIPTION_TRANSLATION[color],
+      longDescription: TASK_CHART_COLOR_TO_LONG_DESCRIPTION_TRANSLATION[color],
+    }));
+  }
+
+  private getTaskAmountToColorInitialVal(): TasksAmountToChartColor {
+    return {
+      Black: 0,
+      Blue: 0,
+      Brown: 0,
+      Green: 0,
+      Orange: 0,
+      Pink: 0,
+      Purple: 0,
+      Red: 0,
+      White: 0,
+      Yellow: 0,
+    };
   }
 }
