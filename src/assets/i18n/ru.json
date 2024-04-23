@@ -110,6 +110,7 @@
   "task.status.toDo": "К выполнению",
   "task.status.inProgress": "В работе",
   "task.status.done": "Завершена",
-  "task.noTasksFound": "Задач не найдено",
-  "task.amount": "Количество задач"
+  "task.noTasksFound": "Задачи не найдены",
+  "task.amount": "Количество задач",
+  "note.noNotesFound": "Записей не найдено"
 }

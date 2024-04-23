@@ -1,0 +1,17 @@
+.notes-page-list {
+  padding: 2rem;
+}
+
+.notes-page-list__filters {
+  width: 15rem;
+  display: block;
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.dft-notes-page-list__no-notes {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}

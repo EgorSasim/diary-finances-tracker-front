@@ -4,15 +4,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import {
-  addDays,
-  addHours,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  startOfDay,
-  subDays,
-} from 'date-fns';
+import { isSameDay, isSameMonth } from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventTimesChangedEvent,

@@ -4,9 +4,7 @@ import {
   Observable,
   combineLatest,
   filter,
-  forkJoin,
   map,
-  merge,
   startWith,
   switchMap,
 } from 'rxjs';
@@ -16,11 +14,10 @@ import { Task } from '../../services/task/task.typings';
 import { CompletedTaskListItem } from '../task/task-list/task-list-item/task-list-item.typings';
 import { Note } from '../../services/note/note.typings';
 import { NoteService } from '../../services/note/note.service';
-import { Space } from '../../services/space/space.typings';
-import { SpaceService } from '../../services/space/space.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskCreateModalComponent } from '../task/task-create-modal/task-create-modal.component';
 import { NoteCreateModalComponent } from '../note/note-create-modal/note-create-modal.component';
+import { subWeeks } from 'date-fns';
 
 @Injectable()
 export class HomePageService {
@@ -78,7 +75,14 @@ export class HomePageService {
   public handleNotes(): Observable<Note[]> {
     return this.noteService.noteChange$.pipe(
       startWith(true),
-      switchMap(() => this.noteService.getNotes())
+      switchMap(() => this.noteService.getNotes()),
+      map((notes) =>
+        notes.filter((note) => {
+          const noteDate = note.creationDate.getTime();
+          const weekAgo = subWeeks(new Date(), 1).getTime();
+          return noteDate - weekAgo > 0;
+        })
+      )
     );
   }
 

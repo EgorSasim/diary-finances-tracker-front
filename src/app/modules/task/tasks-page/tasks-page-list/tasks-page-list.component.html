@@ -8,7 +8,6 @@
         {{ "app.filters" | translate }}
       </mat-expansion-panel-header>
       <dft-task-search-panel
-        class="dft-tasks-page-list__filter-controls"
         (searchParamsChange)="searchParamsChange($event)"
       ></dft-task-search-panel>
     </mat-expansion-panel>
@@ -29,8 +28,4 @@
     {{ "task.noTasksFound" | translate }}
   </h1>
   }
-
-  <!-- @if(isLoading$ | async) {
-  <dft-spinner></dft-spinner>
-  } -->
 </div>

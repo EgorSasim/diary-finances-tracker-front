@@ -1,0 +1,28 @@
+<div class="notes-page-list">
+  <mat-accordion
+    class="notes-page-list__filters"
+    [class.full-width]="notePanel.expanded"
+  >
+    <mat-expansion-panel #notePanel [expanded]="false">
+      <mat-expansion-panel-header>
+        {{ "app.filters" | translate }}
+      </mat-expansion-panel-header>
+      <dft-note-search-panel
+        (searchParamsChange)="searchParamsChange($event)"
+      ></dft-note-search-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  @if ((notes$ | async)?.length) {
+
+  <dft-note-list
+    [noteItems]="notes$ | async"
+    (editNote)="goToNoteEditPage($event)"
+    (removeNote)="removeNote($event)"
+  ></dft-note-list>
+  } @else {
+  <h1 class="dft-notes-page-list__no-notes">
+    {{ "note.noNotesFound" | translate }}
+  </h1>
+  }
+</div>

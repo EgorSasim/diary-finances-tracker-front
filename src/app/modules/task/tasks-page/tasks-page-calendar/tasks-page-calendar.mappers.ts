@@ -1,6 +1,6 @@
 import { CalendarEvent, CalendarEventAction } from 'angular-calendar';
 import { Task } from '../../../../services/task/task.typings';
-import { endOfDay, startOfDay } from 'date-fns';
+import { startOfDay } from 'date-fns';
 import { TASK_PRIORITY_TO_TASK_CALENDAR_COLOR } from './tasks-page-calendar.constants';
 
 export function mapTasksToCalendarEvents(

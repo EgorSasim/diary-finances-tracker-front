@@ -7,6 +7,11 @@ export interface Note {
   creationDate: Date;
 }
 
+export interface NoteSearchParams {
+  title?: string;
+  creationDate?: Date;
+}
+
 export type NoteForm = ConvertToForm<Note>;
 export type NoteCreateForm = Required<Omit<NoteForm, 'id'>>;
 export type NoteEditForm = Required<NoteForm>;

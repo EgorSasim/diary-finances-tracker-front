@@ -1,18 +1,29 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { NoteDto } from './note-api.typings';
 import { API_PATH } from '../api.constants';
 import { NOTE_API_PATH } from './note-api.constants';
+import { NoteSearchParams } from '../../services/note/note.typings';
+import { getNoteTrulyTypeValues } from './note-api.helpers';
 
 @Injectable({ providedIn: 'root' })
 export class NoteApiService {
   constructor(private httpClient: HttpClient) {}
 
-  public getNotes(): Observable<NoteDto[]> {
-    return this.httpClient.get<NoteDto[]>(`${API_PATH}/${NOTE_API_PATH}`, {
-      responseType: 'json',
-    });
+  public getNotes(searchParams?: NoteSearchParams): Observable<NoteDto[]> {
+    let params: HttpParams = new HttpParams();
+    if (searchParams) {
+      Object.entries(searchParams).forEach(
+        ([key, value]) => (params = params.append(key, value))
+      );
+    }
+    return this.httpClient
+      .get<NoteDto[]>(`${API_PATH}/${NOTE_API_PATH}`, {
+        responseType: 'json',
+        params,
+      })
+      .pipe(map((notes) => notes.map(getNoteTrulyTypeValues)));
   }
 
   public getNote(id: NoteDto['id']): Observable<NoteDto> {

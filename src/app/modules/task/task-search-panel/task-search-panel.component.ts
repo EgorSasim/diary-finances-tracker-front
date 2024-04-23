@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { TaskSearchParams } from '../../../services/task/task.typings';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ConvertToForm } from '../../../typings/forms';
 import { TaskSearchPanelBuilder } from './task-search-panel.builder';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -31,14 +31,6 @@ export class TaskSearchPanelComponent {
     this.handleFormGroupChange();
   }
 
-  private handleFormGroupChange(): void {
-    this.formGroup.valueChanges
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((searhcParams) => {
-        this.searchParamsChange.emit(searhcParams as TaskSearchParams);
-      });
-  }
-
   public clearFormGroup(): void {
     this.formGroup.setValue({
       title: null,
@@ -50,5 +42,13 @@ export class TaskSearchPanelComponent {
       status: null,
     });
     this.formGroup.markAsPristine();
+  }
+
+  private handleFormGroupChange(): void {
+    this.formGroup.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((searhcParams) => {
+        this.searchParamsChange.emit(searhcParams as TaskSearchParams);
+      });
   }
 }
