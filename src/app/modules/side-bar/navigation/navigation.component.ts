@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTE_PATH } from '../../../constants/routes-pathes';
+import { NavigationService } from '../../../services/navigation/navigation.service';
 
 @Component({
   selector: 'dft-navigation',
@@ -7,8 +7,21 @@ import { ROUTE_PATH } from '../../../constants/routes-pathes';
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
-  public readonly homePagePath: string = ROUTE_PATH.home;
-  public readonly tasksPagePath: string = ROUTE_PATH.tasksPage;
-  public readonly notesPagePath: string = ROUTE_PATH.notesPage;
-  public readonly spacesPagePath: string = ROUTE_PATH.spacesPage;
+  constructor(private navigationService: NavigationService) {}
+
+  public goToHomePage(): void {
+    this.navigationService.goToHomePage();
+  }
+
+  public goToTasksPage(): void {
+    this.navigationService.goToTasksPage();
+  }
+
+  public goToNotesPage(): void {
+    this.navigationService.goToNotesPage();
+  }
+
+  public goToSpacesPage(): void {
+    this.navigationService.goToSpacesPage();
+  }
 }

@@ -1,0 +1,18 @@
+.spaces-page-list__filters {
+  width: 15rem;
+  display: block;
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.dft-spaces-page__add-diary-entity {
+  z-index: 3;
+  width: 0;
+  display: flex;
+  justify-content: right;
+  position: sticky;
+  bottom: 0;
+  left: 100vw;
+  padding: 2rem;
+}

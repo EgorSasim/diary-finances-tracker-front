@@ -9,6 +9,7 @@ import { NoteEditPageComponent } from './modules/note/note-edit-page/note-edit-p
 import { SpaceEditPageComponent } from './modules/space/space-edit-page/space-edit-page.component';
 import { TasksPageComponent } from './modules/task/tasks-page/tasks-page.component';
 import { NotesPageComponent } from './modules/note/notes-page/notes-page.component';
+import { SpacesPageComponent } from './modules/space/spaces-page/spaces-page.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,14 @@ export const routes: Routes = [
             loadChildren: () =>
               import('./modules/note/notes-page/notes-page.module').then(
                 (m) => m.NotesPageModule
+              ),
+          },
+          {
+            path: ROUTE_PATH.spacesPage,
+            component: SpacesPageComponent,
+            loadChildren: () =>
+              import('./modules/space/spaces-page/spaces-page.module').then(
+                (m) => m.SpacesPageModule
               ),
           },
           {

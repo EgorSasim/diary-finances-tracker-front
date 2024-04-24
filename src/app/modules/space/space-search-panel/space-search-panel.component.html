@@ -1,0 +1,16 @@
+@if (formGroup?.controls) {
+<div class="dft-space-search-panel">
+  <mat-form-field>
+    <mat-label>{{ "app.title" | translate }}</mat-label>
+    <input matInput [formControl]="formGroup.controls.name" />
+  </mat-form-field>
+</div>
+<button
+  mat-button
+  color="primary"
+  [disabled]="formGroup.pristine"
+  (click)="clearFormGroup()"
+>
+  {{ "app.clearFilters" | translate }}
+</button>
+}

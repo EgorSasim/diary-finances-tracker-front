@@ -10,8 +10,7 @@ export interface Space {
 }
 
 export class SpaceSearchParams {
-  id: number;
-  number: string;
+  name?: string;
   taskIds?: Task['id'][];
   noteIds?: Note['id'][];
 }

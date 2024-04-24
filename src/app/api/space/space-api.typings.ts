@@ -9,8 +9,7 @@ export interface SpaceDto {
 }
 
 export class SpaceDtoSearchParams {
-  id: number;
-  number: string;
+  name?: string;
   taskIds?: TaskDto['id'][];
   noteIds?: NoteDto['id'][];
 }

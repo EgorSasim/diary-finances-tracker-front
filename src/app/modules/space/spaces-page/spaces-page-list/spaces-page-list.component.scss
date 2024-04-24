@@ -1,0 +1,17 @@
+.spaces-page-list {
+  padding: 2rem;
+}
+
+.spaces-page-list__filters {
+  width: 15rem;
+  display: block;
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.dft-spaces-page-list__no-spaces {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}

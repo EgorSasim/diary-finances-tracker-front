@@ -14,6 +14,30 @@ export class NavigationService {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.home]);
   }
 
+  public goToTasksPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.tasksPage,
+    ]);
+  }
+
+  public goToNotesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.notesPage,
+    ]);
+  }
+
+  public goToSpacesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.spacesPage,
+    ]);
+  }
+
   public goToTaskEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }

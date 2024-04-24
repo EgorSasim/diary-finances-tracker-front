@@ -1,0 +1,13 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      {{ "app.list" | translate }}
+    </ng-template>
+    <dft-spaces-page-list></dft-spaces-page-list>
+  </mat-tab>
+</mat-tab-group>
+
+<dft-create-diary-entity-menu-button
+  class="dft-spaces-page__add-diary-entity"
+></dft-create-diary-entity-menu-button>

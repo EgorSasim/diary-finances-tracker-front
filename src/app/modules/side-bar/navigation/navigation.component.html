@@ -5,16 +5,16 @@
     }}</mat-expansion-panel-header>
 
     <div class="dft-navigaton__links">
-      <a mat-button color="primary" [routerLink]="homePagePath">
+      <a mat-button color="primary" (click)="goToHomePage()">
         <mat-icon aria-hidden="false" fontIcon="home"></mat-icon>
       </a>
-      <a mat-button color="primary" [routerLink]="tasksPagePath"
+      <a mat-button color="primary" (click)="goToTasksPage()"
         >{{ "app.tasks" | translate }}
       </a>
-      <a mat-button color="primary" [routerLink]="notesPagePath"
+      <a mat-button color="primary" (click)="goToNotesPage()"
         >{{ "app.notes" | translate }}
       </a>
-      <a mat-button color="primary" [routerLink]="spacesPagePath"
+      <a mat-button color="primary" (click)="goToSpacesPage()"
         >{{ "app.spaces" | translate }}
       </a>
     </div>
