@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, tap } from 'rxjs';
-import { Note, NoteSearchParams } from './note.typings';
+import { Note, NoteSearchParams, NoteWithSpaces } from './note.typings';
 import { NoteApiService } from '../../api/note/note-api.service';
 import { Task } from '../task/task.typings';
 
@@ -14,7 +14,7 @@ export class NoteService {
     return this.noteApiService.getNotes(searchParams);
   }
 
-  public getNote(id: Note['id']): Observable<Note> {
+  public getNote(id: Note['id']): Observable<NoteWithSpaces> {
     return this.noteApiService.getNote(id);
   }
 

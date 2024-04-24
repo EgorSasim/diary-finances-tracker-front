@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field class="dft-space-selector">
   <mat-label>{{ "app.spaces" | translate }}</mat-label>
   <mat-select matInput [formControl]="control" multiple>
     @for (space of (spaces$ | async); track space.id) {

@@ -16,6 +16,10 @@
       [control]="formGroup.controls.description"
       [height]="textAreaHeight"
     ></dft-text-area>
+
+    <dft-space-selector
+      [control]="formGroup?.controls?.spaceIds"
+    ></dft-space-selector>
   </ng-container>
 </dft-edit-page>
 } @if(isLoading$ | async) {

@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { BehaviorSubject, filter, map, switchMap } from 'rxjs';
-import { Note, NoteEditForm } from '../../../services/note/note.typings';
+import {
+  Note,
+  NoteEditForm,
+  NoteWithSpaceIds,
+} from '../../../services/note/note.typings';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { NoteEditPageBuilder } from './note-edit-page.builder';
 import { NoteEditPageService } from './note-edit-page.service';
@@ -22,7 +26,7 @@ export class NoteEditPageComponent {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public formGroup: FormGroup<NoteEditForm>;
   public readonly textAreaHeight: string = '20rem';
-  private initialFormGroupState: Required<Note>;
+  private initialFormGroupState: Required<NoteWithSpaceIds>;
 
   constructor(
     private noteEditPageService: NoteEditPageService,
@@ -47,15 +51,19 @@ export class NoteEditPageComponent {
         switchMap((id) => this.noteEditPageService.getNote(id)),
         takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe((task) => {
+      .subscribe((note) => {
         this.isLoading$.next(false);
-        if (!task) {
+        console.log('note: ', note);
+        if (!note) {
           this.navigationService.goToHomePage();
         } else {
-          this.formGroup = this.noteEditPageBuilder.createFormGroup(task);
+          this.formGroup = this.noteEditPageBuilder.createFormGroup({
+            ...note,
+            spaceIds: note?.spaces?.map((space) => space.id),
+          });
           this.initialFormGroupState = {
-            ...this.formGroup.getRawValue(),
-          } as Required<Note>;
+            ...(this.formGroup.getRawValue() as Required<NoteWithSpaceIds>),
+          };
         }
       });
   }

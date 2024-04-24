@@ -1,7 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { NoteDto } from './note-api.typings';
+import {
+  NoteDto,
+  NoteWithSpaceIdsDto,
+  NoteWithSpacesDto,
+} from './note-api.typings';
 import { API_PATH } from '../api.constants';
 import { NOTE_API_PATH } from './note-api.constants';
 import { NoteSearchParams } from '../../services/note/note.typings';
@@ -26,13 +30,16 @@ export class NoteApiService {
       .pipe(map((notes) => notes.map(getNoteTrulyTypeValues)));
   }
 
-  public getNote(id: NoteDto['id']): Observable<NoteDto> {
-    return this.httpClient.get<NoteDto>(`${API_PATH}/${NOTE_API_PATH}/${id}`, {
-      responseType: 'json',
-    });
+  public getNote(id: NoteDto['id']): Observable<NoteWithSpacesDto> {
+    return this.httpClient.get<NoteWithSpacesDto>(
+      `${API_PATH}/${NOTE_API_PATH}/${id}`,
+      {
+        responseType: 'json',
+      }
+    );
   }
 
-  public createNote(note: NoteDto): Observable<NoteDto> {
+  public createNote(note: NoteWithSpaceIdsDto): Observable<NoteWithSpacesDto> {
     return this.httpClient.post<NoteDto>(`${API_PATH}/${NOTE_API_PATH}`, note);
   }
 
@@ -44,9 +51,9 @@ export class NoteApiService {
 
   public updateNote(
     id: NoteDto['id'],
-    updateParams: Partial<NoteDto>
-  ): Observable<NoteDto> {
-    return this.httpClient.patch<NoteDto>(
+    updateParams: Partial<NoteWithSpaceIdsDto>
+  ): Observable<NoteWithSpacesDto> {
+    return this.httpClient.patch<NoteWithSpacesDto>(
       `${API_PATH}/${NOTE_API_PATH}/${id}`,
       updateParams
     );

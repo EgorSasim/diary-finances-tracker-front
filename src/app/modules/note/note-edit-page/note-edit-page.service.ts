@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { NoteService } from '../../../services/note/note.service';
-import { Note } from '../../../services/note/note.typings';
+import { Note, NoteWithSpaces } from '../../../services/note/note.typings';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class NoteEditPageService {
   constructor(private noteService: NoteService) {}
 
-  public getNote(id: Note['id']): Observable<Note> {
+  public getNote(id: Note['id']): Observable<NoteWithSpaces> {
     return this.noteService.getNote(id);
   }
 

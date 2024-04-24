@@ -18,6 +18,7 @@ export class NoteCreateModalBuilder {
         Validators.maxLength(NOTE_DESCRIPTION_MAX_LENGTH),
       ]),
       creationDate: new FormControl(null),
+      spaceIds: new FormControl(null),
     });
   }
 }

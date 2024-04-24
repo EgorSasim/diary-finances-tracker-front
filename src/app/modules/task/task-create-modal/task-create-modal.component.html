@@ -1,6 +1,6 @@
 @if (formGroup?.controls) {
 <dft-create-form
-  [height]="'36rem'"
+  [height]="'42rem'"
   [width]="'53rem'"
   (close)="close()"
   (create)="create()"
@@ -45,6 +45,7 @@
     </div>
     <div class="dft-task-create-modal__two-sides-wrap">
       <dft-space-selector
+        class="dft-task-create-modal__wrap-side"
         [control]="formGroup.controls.spaceIds"
       ></dft-space-selector>
     </div>

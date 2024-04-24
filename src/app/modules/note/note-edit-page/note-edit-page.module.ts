@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { SpaceSelectorModule } from '../../space/space-selector/space-selector.module';
 
 @NgModule({
   declarations: [NoteEditPageComponent],
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     TextAreaModule,
     FormsModule,
     ReactiveFormsModule,
+    SpaceSelectorModule,
   ],
   exports: [NoteEditPageComponent],
 })

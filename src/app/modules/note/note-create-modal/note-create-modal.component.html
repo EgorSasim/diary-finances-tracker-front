@@ -1,7 +1,7 @@
 @if(formGroup?.controls) {
 <dft-create-form
   [width]="'52rem'"
-  [height]="'35rem'"
+  [height]="'40rem'"
   (close)="close()"
   (create)="create()"
 >
@@ -17,6 +17,9 @@
       [control]="formGroup.controls.description"
       [height]="textAreaHeight"
     ></dft-text-area>
+    <dft-space-selector
+      [control]="formGroup?.controls?.spaceIds"
+    ></dft-space-selector>
   </main>
 </dft-create-form>
 

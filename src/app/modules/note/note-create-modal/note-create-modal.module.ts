@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateFormModule } from '../../common/create-form/create-form.module';
+import { SpaceSelectorModule } from '../../space/space-selector/space-selector.module';
 
 @NgModule({
   declarations: [NoteCreateModalComponent],
@@ -21,6 +22,7 @@ import { CreateFormModule } from '../../common/create-form/create-form.module';
     FormsModule,
     ReactiveFormsModule,
     CreateFormModule,
+    SpaceSelectorModule,
   ],
   exports: [NoteCreateModalComponent],
 })
