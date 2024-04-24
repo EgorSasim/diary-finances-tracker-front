@@ -9,8 +9,8 @@
     <mat-form-field class="dft-task-create-modal__title-control">
       <mat-label>{{ "app.title" | translate }}</mat-label>
       <input matInput [formControl]="formGroup.controls.title" />
-      @if (formGroup.controls.title.errors) {
-      <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+      @if (formGroup.controls?.title?.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls?.title) }}</mat-error>
       }
     </mat-form-field>
 
@@ -42,6 +42,11 @@
         class="dft-task-create-modal__wrap-side"
         [control]="formGroup.controls.color"
       ></dft-task-color-picker>
+    </div>
+    <div class="dft-task-create-modal__two-sides-wrap">
+      <dft-space-selector
+        [control]="formGroup.controls.spaces"
+      ></dft-space-selector>
     </div>
   </main>
 </dft-create-form>

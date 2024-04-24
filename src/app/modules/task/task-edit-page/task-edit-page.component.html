@@ -10,8 +10,10 @@
         <mat-form-field>
           <mat-label>{{ "app.title" | translate }}</mat-label>
           <input matInput [formControl]="formGroup.controls.title" />
-          @if (formGroup.controls.title.errors) {
-          <mat-error>{{ getErrorMessage(formGroup.controls.title) }}</mat-error>
+          @if (formGroup.controls?.title?.errors) {
+          <mat-error>{{
+            getErrorMessage(formGroup?.controls?.title)
+          }}</mat-error>
           }
         </mat-form-field>
         <dft-task-priority-selector
@@ -66,6 +68,11 @@
         class="dft-task-edit-page__content-side"
         [control]="formGroup.controls.color"
       ></dft-task-color-picker>
+    </div>
+    <div class="dft-task-edit-page__content-sides">
+      <dft-space-selector
+        [control]="formGroup?.controls?.spaces"
+      ></dft-space-selector>
     </div>
   </ng-container>
 </dft-edit-page>

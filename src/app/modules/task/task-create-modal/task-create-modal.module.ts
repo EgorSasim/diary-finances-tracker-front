@@ -15,6 +15,7 @@ import { TaskPrioritySelectorModule } from '../task-priority-selector/task-prior
 import { TaskDateRangeSelectorModule } from '../task-date-range-selector/task-date-range-selector.module';
 import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
 import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.module';
+import { SpaceSelectorModule } from '../../space/space-selector/space-selector.module';
 
 @NgModule({
   declarations: [TaskCreateModalComponent],
@@ -35,6 +36,7 @@ import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.mo
     TaskDateRangeSelectorModule,
     TaskStatusSelectorModule,
     TaskColorPickerModule,
+    SpaceSelectorModule,
   ],
   exports: [TaskCreateModalComponent],
 })

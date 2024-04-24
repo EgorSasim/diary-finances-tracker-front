@@ -1,5 +1,10 @@
 import { Injectable, Optional } from '@angular/core';
-import { Task, TaskSearchParams } from './task.typings';
+import {
+  CreateTask,
+  Task,
+  TaskSearchParams,
+  TaskWithSpaces,
+} from './task.typings';
 import { Observable, ReplaySubject, tap } from 'rxjs';
 import { TaskApiService } from '../../api/task/task-api.service';
 
@@ -13,11 +18,11 @@ export class TaskService {
     return this.taskApiServivce.getTasks(searchParams);
   }
 
-  public getTask(id: Task['id']): Observable<Task> {
+  public getTask(id: Task['id']): Observable<TaskWithSpaces> {
     return this.taskApiServivce.getTask(id);
   }
 
-  public createTask(task: Task): Observable<Task> {
+  public createTask(task: CreateTask): Observable<Task> {
     task.creationDate = new Date(Date.now());
     return this.taskApiServivce
       .createTask(task)

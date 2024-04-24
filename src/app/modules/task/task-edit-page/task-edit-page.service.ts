@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TaskService } from '../../../services/task/task.service';
 import { Observable } from 'rxjs';
-import { Task } from '../../../services/task/task.typings';
+import { Task, TaskWithSpaces } from '../../../services/task/task.typings';
 
 @Injectable()
 export class TaskEditPageService {
   constructor(private taskService: TaskService) {}
 
-  public getTask(id: Task['id']): Observable<Task> {
+  public getTask(id: Task['id']): Observable<TaskWithSpaces> {
     return this.taskService.getTask(id);
   }
 
@@ -15,6 +15,7 @@ export class TaskEditPageService {
     id: Task['id'],
     updateParams: Partial<Task>
   ): Observable<Task> {
+    console.log('update params: ', updateParams);
     return this.taskService.updateTask(id, updateParams);
   }
 }

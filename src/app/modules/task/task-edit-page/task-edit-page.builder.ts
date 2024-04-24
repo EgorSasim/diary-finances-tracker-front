@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Task, TaskEditForm } from '../../../services/task/task.typings';
+import {
+  Task,
+  TaskEditForm,
+  TaskWithSpaces,
+} from '../../../services/task/task.typings';
 import {
   TASK_DESCRIPTION_MAX_LENGTH,
   TASK_TITLE_MAX_LENGTH,
@@ -8,7 +12,7 @@ import {
 
 @Injectable()
 export class TaskEditPageBuilder {
-  public createFormGroup(task: Task): FormGroup<TaskEditForm> {
+  public createFormGroup(task: TaskWithSpaces): FormGroup<TaskEditForm> {
     return new FormGroup<TaskEditForm>({
       id: new FormControl({ value: task.id, disabled: true }),
       creationDate: new FormControl({
@@ -29,6 +33,7 @@ export class TaskEditPageBuilder {
       endDate: new FormControl(task.endDate),
       status: new FormControl(task.status),
       color: new FormControl(task.color),
+      spaces: new FormControl(task.spaces?.map((space) => space.id)),
     });
   }
 }

@@ -8,13 +8,18 @@ import { TaskEditPageService } from './task-edit-page.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, filter, map, switchMap, tap } from 'rxjs';
-import { Task, TaskEditForm } from '../../../services/task/task.typings';
+import {
+  Task,
+  TaskEditForm,
+  TaskWithSpaces,
+} from '../../../services/task/task.typings';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { TaskEditPageBuilder } from './task-edit-page.builder';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
 import { NavigationService } from '../../../services/navigation/navigation.service';
+import { FormData } from '../../../typings/forms';
 @Component({
   selector: 'dft-task-edit-page',
   templateUrl: './task-edit-page.component.html',
@@ -26,7 +31,7 @@ export class TaskEditPageComponent implements OnInit {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public formGroup: FormGroup<TaskEditForm>;
   public readonly textAreaHeight: string = '20rem';
-  private initialFormGroupState: Required<Task>;
+  private initialFormGroupState: FormData<TaskEditForm>;
 
   constructor(
     private taskEditPageService: TaskEditPageService,
@@ -59,7 +64,7 @@ export class TaskEditPageComponent implements OnInit {
           this.formGroup = this.taskEditPageBuilder.createFormGroup(task);
           this.initialFormGroupState = {
             ...this.formGroup.getRawValue(),
-          } as Required<Task>;
+          };
         }
       });
   }

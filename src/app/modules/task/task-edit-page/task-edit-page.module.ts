@@ -16,6 +16,7 @@ import { EditPageModule } from '../../common/edit-page/edit-page.module';
 import { TaskStatusSelectorModule } from '../task-status-selector/task-status-selector.module';
 import { TaskPrioritySelectorModule } from '../task-priority-selector/task-priority-selector.module';
 import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.module';
+import { SpaceSelectorModule } from '../../space/space-selector/space-selector.module';
 
 @NgModule({
   declarations: [TaskEditPageComponent],
@@ -37,6 +38,7 @@ import { TaskColorPickerModule } from '../task-color-picker/task-color-picker.mo
     TaskStatusSelectorModule,
     TaskPrioritySelectorModule,
     TaskColorPickerModule,
+    SpaceSelectorModule,
   ],
 })
 export class TaskEditPageModule {}

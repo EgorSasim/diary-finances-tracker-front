@@ -2,7 +2,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { TASK_API_PATH } from './task-api.constants';
-import { TaskDto, TaskDtoSearchParams } from './task-api.typings';
+import {
+  CreateTaskDto,
+  TaskDto,
+  TaskDtoSearchParams,
+  TaskDtoWithSpaces,
+} from './task-api.typings';
 import { API_PATH } from '../api.constants';
 import { getTaskTrulyTypeValues } from './task-api.helpers';
 
@@ -28,7 +33,7 @@ export class TaskApiService {
       .pipe(map((tasks) => tasks.map((task) => getTaskTrulyTypeValues(task))));
   }
 
-  public getTask(id: TaskDto['id']): Observable<TaskDto> {
+  public getTask(id: TaskDto['id']): Observable<TaskDtoWithSpaces> {
     return this.httpClient
       .get<TaskDto>(`${API_PATH}/${TASK_API_PATH}/${id}`, {
         responseType: 'json',
@@ -36,7 +41,7 @@ export class TaskApiService {
       .pipe(map((task) => getTaskTrulyTypeValues(task)));
   }
 
-  public createTask(task: TaskDto): Observable<TaskDto> {
+  public createTask(task: CreateTaskDto): Observable<TaskDto> {
     return this.httpClient.post<TaskDto>(`${API_PATH}/${TASK_API_PATH}`, task);
   }
 
