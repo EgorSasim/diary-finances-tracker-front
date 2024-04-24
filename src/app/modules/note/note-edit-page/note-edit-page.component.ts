@@ -53,7 +53,6 @@ export class NoteEditPageComponent {
       )
       .subscribe((note) => {
         this.isLoading$.next(false);
-        console.log('note: ', note);
         if (!note) {
           this.navigationService.goToHomePage();
         } else {

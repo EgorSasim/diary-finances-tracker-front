@@ -10,8 +10,9 @@ import { Task } from '../../../services/task/task.typings';
 import { Note } from '../../../services/note/note.typings';
 import { Space } from '../../../services/space/space.typings';
 import { MatAccordion } from '@angular/material/expansion';
-import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { NavigationService } from '../../../services/navigation/navigation.service';
+import { FormControl } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'dft-diary-accordion',
@@ -32,10 +33,42 @@ export class DiaryAccordionComponent {
   public readonly spaces$: Observable<Space[]> =
     this.diaryAccordionService.handleSpacesChange();
 
+  public taskTitleSearchControl: FormControl<Task['title'] | null> =
+    new FormControl(null);
+
+  public noteTitleSearchControl: FormControl<Task['title'] | null> =
+    new FormControl(null);
+
+  public spaceNameSearchControl: FormControl<Task['title'] | null> =
+    new FormControl(null);
+
   constructor(
     private diaryAccordionService: DiaryAccordionService,
-    private navigationService: NavigationService
-  ) {}
+    private navigationService: NavigationService,
+    private destroyRef: DestroyRef
+  ) {
+    this.handleChanges();
+  }
+
+  private handleChanges(): void {
+    this.taskTitleSearchControl.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((title) =>
+        this.diaryAccordionService.taskTitleChange$.next(title || '')
+      );
+
+    this.noteTitleSearchControl.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((title) =>
+        this.diaryAccordionService.noteTitleChange$.next(title || '')
+      );
+
+    this.spaceNameSearchControl.valueChanges
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((name) =>
+        this.diaryAccordionService.spaceNameChange$.next(name || '')
+      );
+  }
 
   public navigateToTaskEditPage(id: Task['id']): void {
     this.navigationService.goToTaskEditPage(id);

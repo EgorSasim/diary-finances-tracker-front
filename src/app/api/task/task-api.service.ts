@@ -54,7 +54,6 @@ export class TaskApiService {
     id: TaskDto['id'],
     updateParams: Partial<TaskDtoWithSpaces>
   ): Observable<TaskDto> {
-    console.log('update params: ', updateParams);
     return this.httpClient.patch<TaskDto>(
       `${API_PATH}/${TASK_API_PATH}/${id}`,
       updateParams

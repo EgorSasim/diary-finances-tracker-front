@@ -15,7 +15,6 @@ export class TaskEditPageService {
     id: Task['id'],
     updateParams: Partial<Task>
   ): Observable<Task> {
-    console.log('update params: ', updateParams);
     return this.taskService.updateTask(id, updateParams);
   }
 }

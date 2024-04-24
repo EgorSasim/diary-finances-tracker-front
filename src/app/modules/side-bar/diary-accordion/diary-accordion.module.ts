@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { CrossOutModule } from '../../../directives/cross-out/cross-out.module';
 import { CompletedModule } from '../../../directives/completed/completed.module';
 import { EllipsisModule } from '../../../directives/ellipsis/ellipsis.module';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DiaryAccordionComponent],
@@ -22,6 +24,8 @@ import { EllipsisModule } from '../../../directives/ellipsis/ellipsis.module';
     CrossOutModule,
     CompletedModule,
     EllipsisModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   exports: [DiaryAccordionComponent],
 })

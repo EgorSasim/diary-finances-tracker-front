@@ -6,11 +6,16 @@
     {{ "app.collapseAll" | translate }}
   </button>
 </div>
+
 <mat-accordion multi>
   <mat-expansion-panel>
     <mat-expansion-panel-header class="dft-diary-accordion__panel-header">
       <mat-panel-title>{{ "app.tasks" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="taskTitleSearchControl" />
+    </mat-form-field>
     @if((tasks$ | async)?.length) {
     <mat-list>
       @for (task of (tasks$ | async); track task.id) {
@@ -40,6 +45,10 @@
       <mat-panel-title>{{ "app.notes" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
     @if((notes$ | async)?.length) {
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="noteTitleSearchControl" />
+    </mat-form-field>
     <mat-list>
       @for (note of (notes$ | async); track note.id) {
       <mat-list-item>
@@ -65,6 +74,10 @@
       <mat-panel-title>{{ "app.spaces" | translate }}</mat-panel-title>
     </mat-expansion-panel-header>
     @if((spaces$ | async)?.length;) {
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="spaceNameSearchControl" />
+    </mat-form-field>
     <mat-list>
       @for (space of (spaces$ | async); track space.id) {
       <mat-list-item>
