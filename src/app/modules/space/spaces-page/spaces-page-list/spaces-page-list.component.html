@@ -7,22 +7,27 @@
       <mat-expansion-panel-header>
         {{ "app.filters" | translate }}
       </mat-expansion-panel-header>
-      <dft-note-search-panel
+      <dft-space-search-panel
         (searchParamsChange)="searchParamsChange($event)"
-      ></dft-note-search-panel>
+      ></dft-space-search-panel>
     </mat-expansion-panel>
   </mat-accordion>
 
-  <!-- @if ((notes$ | async)?.length) {
-  
-    <dft-note-list
-      [noteItems]="notes$ | async"
-      (editNote)="goToNoteEditPage($event)"
-      (removeNote)="removeNote($event)"
-    ></dft-note-list>
-    } @else {
-    <h1 class="dft-notes-page-list__no-notes">
-      {{ "note.noNotesFound" | translate }}
-    </h1>
-    } -->
+  @if ((spaces$ | async)?.length) {
+  <dft-space-list
+    class="dft-spaces-page-list__list"
+    (navigateSpaceEditPage)="goToSpaceEditPage($event)"
+    (removeSpace)="removeSpace($event)"
+    (completeTask)="completeTask($event)"
+    (editTask)="editTask($event)"
+    (removeTask)="removeTask($event)"
+    (editNote)="editNote($event)"
+    (removeNote)="removeNote($event)"
+    [spaces]="spaces$ | async"
+  ></dft-space-list>
+  } @else {
+  <h1 class="dft-spaces-page-list__no-spaces">
+    {{ "space.noSpacesFound" | translate }}
+  </h1>
+  }
 </div>

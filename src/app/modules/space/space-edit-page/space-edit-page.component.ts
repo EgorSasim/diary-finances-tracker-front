@@ -5,14 +5,16 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { BehaviorSubject, filter, map, switchMap } from 'rxjs';
-import { Space, SpaceEditForm } from '../../../services/space/space.typings';
+import {
+  SpaceEdit,
+  SpaceEditForm,
+} from '../../../services/space/space.typings';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { SpaceEditPageService } from './space-edit-page.service';
 import { SpaceEditPageBuilder } from './space-edit-page.builder';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormErrorMessageService } from '../../../services/form-error-message/form-error-message.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ROUTE_PATH } from '../../../constants/routes-pathes';
 import { BackNavigationService } from '../../../services/back-navigation/back-navigation.service';
 import { NavigationService } from '../../../services/navigation/navigation.service';
 
@@ -26,7 +28,7 @@ import { NavigationService } from '../../../services/navigation/navigation.servi
 export class SpaceEditPageComponent {
   public isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public formGroup: FormGroup<SpaceEditForm>;
-  private initialFormGroupState: Required<Space>;
+  private initialFormGroupState: Required<SpaceEdit>;
   public readonly tasks$ = this.spaceEditPageService.getTasks();
   public readonly notes$ = this.spaceEditPageService.getNotes();
 
@@ -62,7 +64,7 @@ export class SpaceEditPageComponent {
           this.formGroup = this.spaceEditPageBuilder.createFormGroup(space);
           this.initialFormGroupState = {
             ...this.formGroup.getRawValue(),
-          } as Required<Space>;
+          } as Required<SpaceEdit>;
           this.changeDetectorRef.markForCheck();
         }
       });
@@ -82,7 +84,7 @@ export class SpaceEditPageComponent {
       return;
     }
     this.isLoading$.next(true);
-    const space = this.formGroup.getRawValue() as Required<Space>;
+    const space = this.formGroup.getRawValue() as Required<SpaceEdit>;
     this.spaceEditPageService.saveChanges(space.id, space).subscribe({
       next: () => {
         this.navigateBack();

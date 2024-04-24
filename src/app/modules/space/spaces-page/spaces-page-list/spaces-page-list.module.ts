@@ -5,6 +5,7 @@ import { SpaceSearchPanelModule } from '../../space-search-panel/space-search-pa
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateModule } from '@ngx-translate/core';
 import { NoteSearchPanelModule } from '../../../note/note-search-panel/note-search-panel.module';
+import { SpaceListModule } from '../../space-list/space-list.module';
 
 @NgModule({
   declarations: [SpacesPageListComponent],
@@ -13,8 +14,7 @@ import { NoteSearchPanelModule } from '../../../note/note-search-panel/note-sear
     SpaceSearchPanelModule,
     MatExpansionModule,
     TranslateModule,
-    NoteSearchPanelModule,
-    // SpaceListModule,
+    SpaceListModule,
   ],
   exports: [SpacesPageListComponent],
 })

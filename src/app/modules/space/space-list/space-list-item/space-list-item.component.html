@@ -1,0 +1,25 @@
+@if (space) {
+<mat-accordion multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ "app.tasks" | translate }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <dft-task-list
+      [taskItems]="space.tasks"
+      (completeTask)="completeTaskEmit($event)"
+      (editTask)="editTaskEmit($event)"
+      (removeTask)="removeTaskEmit($event)"
+    ></dft-task-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ "app.notes" | translate }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <dft-note-list
+      [noteItems]="space.notes"
+      (editNote)="editNoteEmit($event)"
+      (removeNote)="removeNoteEmit($event)"
+    ></dft-note-list>
+  </mat-expansion-panel>
+</mat-accordion>
+}

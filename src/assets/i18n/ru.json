@@ -112,5 +112,6 @@
   "task.status.done": "Завершена",
   "task.noTasksFound": "Задачи не найдены",
   "task.amount": "Количество задач",
-  "note.noNotesFound": "Записей не найдено"
+  "note.noNotesFound": "Записей не найдено",
+  "space.noSpacesFound": "Пространств не найдено"
 }

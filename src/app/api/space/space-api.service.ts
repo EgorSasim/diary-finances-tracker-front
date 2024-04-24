@@ -12,10 +12,10 @@ export class SpaceApiService {
   public getSpaces(
     searchParams?: SpaceDtoSearchParams
   ): Observable<SpaceDto[]> {
-    const params = new HttpParams();
+    let params: HttpParams = new HttpParams();
     if (searchParams) {
-      Object.entries(searchParams).forEach(([key, value]) =>
-        params.append(key, value)
+      Object.entries(searchParams).forEach(
+        ([key, value]) => (params = params.append(key, value))
       );
     }
 

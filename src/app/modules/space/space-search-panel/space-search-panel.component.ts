@@ -23,10 +23,10 @@ export class SpaceSearchPanelComponent {
     new EventEmitter();
 
   public formGroup: FormGroup<ConvertToForm<SpaceSearchParams>> =
-    this.noteSearchPanelBuilder.createFormGroup();
+    this.spaceSearchPanelBuilder.createFormGroup();
 
   constructor(
-    private noteSearchPanelBuilder: SpaceSearchPanelBuilder,
+    private spaceSearchPanelBuilder: SpaceSearchPanelBuilder,
     private destroyRef: DestroyRef
   ) {
     this.handleFormGroupChange();
@@ -34,7 +34,7 @@ export class SpaceSearchPanelComponent {
 
   public clearFormGroup(): void {
     this.formGroup.setValue({
-      name: null,
+      name: '',
       noteIds: null,
       taskIds: null,
     });

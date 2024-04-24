@@ -112,5 +112,6 @@
   "task.status.done": "Done",
   "task.noTasksFound": "Tasks not found",
   "task.amount": "Tasks amount",
-  "note.noNotesFound": "Notes not found"
+  "note.noNotesFound": "Notes not found",
+  "space.noSpacesFound": "Spaces not found"
 }

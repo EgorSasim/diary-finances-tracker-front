@@ -1,0 +1,33 @@
+<mat-accordion multi>
+  @for (space of spaces; track space.id) {
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ space.name }} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="goToSpaceEditPage(space.id)"
+      >
+        {{ "app.edit" | translate }}
+      </button>
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="removeSpaceEmit(space.id)"
+      >
+        {{ "app.remove" | translate }}
+      </button>
+    </mat-panel-description>
+    <dft-space-list-item
+      [space]="space"
+      (completeTask)="completeTaskEmit($event)"
+      (editTask)="editTaskEmit($event)"
+      (removeTask)="removeTaskEmit($event)"
+      (editNote)="editNoteEmit($event)"
+      (removeNote)="removeNoteEmit($event)"
+    ></dft-space-list-item>
+  </mat-expansion-panel>
+  }
+</mat-accordion>
