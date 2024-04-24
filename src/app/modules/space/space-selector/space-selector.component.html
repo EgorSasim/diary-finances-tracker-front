@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-label>Favorite food</mat-label>
+  <mat-label>{{ "app.spaces" | translate }}</mat-label>
   <mat-select matInput [formControl]="control" multiple>
     @for (space of (spaces$ | async); track space.id) {
     <mat-option [value]="space.id">{{ space.name }}</mat-option>

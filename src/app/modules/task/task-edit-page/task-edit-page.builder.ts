@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  Task,
   TaskEditForm,
   TaskWithSpaces,
 } from '../../../services/task/task.typings';
@@ -33,7 +32,7 @@ export class TaskEditPageBuilder {
       endDate: new FormControl(task.endDate),
       status: new FormControl(task.status),
       color: new FormControl(task.color),
-      spaces: new FormControl(task.spaces?.map((space) => space.id)),
+      spaceIds: new FormControl(task.spaces?.map((space) => space.id)),
     });
   }
 }

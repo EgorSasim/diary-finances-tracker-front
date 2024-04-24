@@ -43,11 +43,11 @@
           <mat-date-range-picker #picker></mat-date-range-picker>
           @if (formGroup.controls?.startDate?.errors) {
           <mat-error>{{
-            getErrorMessage(formGroup.controls.startDate)
+            getErrorMessage(formGroup?.controls?.startDate)
           }}</mat-error>
           } @if (formGroup.controls.endDate?.errors) {
           <mat-error>{{
-            getErrorMessage(formGroup.controls.endDate)
+            getErrorMessage(formGroup?.controls?.endDate)
           }}</mat-error>
           }
         </mat-form-field>
@@ -71,7 +71,7 @@
     </div>
     <div class="dft-task-edit-page__content-sides">
       <dft-space-selector
-        [control]="formGroup?.controls?.spaces"
+        [control]="formGroup?.controls?.spaceIds"
       ></dft-space-selector>
     </div>
   </ng-container>

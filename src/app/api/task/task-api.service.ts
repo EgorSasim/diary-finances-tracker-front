@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
 import { TASK_API_PATH } from './task-api.constants';
 import {
-  CreateTaskDto,
   TaskDto,
   TaskDtoSearchParams,
   TaskDtoWithSpaces,
@@ -41,7 +40,7 @@ export class TaskApiService {
       .pipe(map((task) => getTaskTrulyTypeValues(task)));
   }
 
-  public createTask(task: CreateTaskDto): Observable<TaskDto> {
+  public createTask(task: TaskDtoWithSpaces): Observable<TaskDto> {
     return this.httpClient.post<TaskDto>(`${API_PATH}/${TASK_API_PATH}`, task);
   }
 
@@ -53,8 +52,9 @@ export class TaskApiService {
 
   public updateTask(
     id: TaskDto['id'],
-    updateParams: Partial<TaskDto>
+    updateParams: Partial<TaskDtoWithSpaces>
   ): Observable<TaskDto> {
+    console.log('update params: ', updateParams);
     return this.httpClient.patch<TaskDto>(
       `${API_PATH}/${TASK_API_PATH}/${id}`,
       updateParams

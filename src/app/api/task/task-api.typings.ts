@@ -15,21 +15,6 @@ export interface TaskDto {
   color?: string;
 }
 
-export interface CreateTaskDto {
-  id: number;
-  title: string;
-  creationDate: Date;
-  description?: string;
-  priority?: TaskDtoPriority;
-  startDate?: Date;
-  endDate?: Date;
-  reminder?: Date;
-  reccurance?: TaskDtoReccurance;
-  status: TaskDtoStatus;
-  color?: string;
-  spaces?: Space['id'][];
-}
-
 export interface TaskDtoWithSpaces extends TaskDto {
   spaces?: TaskSpace[];
 }
