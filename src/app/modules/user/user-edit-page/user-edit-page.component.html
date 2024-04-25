@@ -1,0 +1,29 @@
+<dft-edit-page (back)="goBack()" (reset)="resetForm()" (save)="saveChanages()">
+  @if (formGroup) {
+  <ng-container main>
+    <div class="dft-user-edit-page">
+      <mat-form-field>
+        <mat-label>{{ "auth.email" | translate }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'app.placeholder.email' | translate"
+          [formControl]="formGroup.controls.email"
+        />
+        <mat-error>{{
+          getErrorMessage(formGroup.controls.email) | translate
+        }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ "app.oldPassword" | translate }}</mat-label>
+        <input matInput [formControl]="formGroup.controls.oldPassword" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ "app.newPassword" | translate }}</mat-label>
+        <input matInput [formControl]="formGroup.controls.newPassword" />
+
+        <mat-error>{{ getErrorMessage(formGroup) | translate }}</mat-error>
+      </mat-form-field>
+    </div>
+  </ng-container>
+  }
+</dft-edit-page>

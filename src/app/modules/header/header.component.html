@@ -14,7 +14,9 @@
 <mat-menu #userMenu>
   <button mat-menu-item disabled>{{ (user$ | async)?.login }}</button>
   <button mat-menu-item disabled>{{ (user$ | async)?.email }}</button>
-  <button mat-menu-item>{{ "app.edit" | translate }}</button>
+  <button mat-menu-item (click)="goToUserEditPage()">
+    {{ "app.edit" | translate }}
+  </button>
   <button mat-menu-item (click)="logOut()">
     {{ "app.logOut" | translate }}
   </button>

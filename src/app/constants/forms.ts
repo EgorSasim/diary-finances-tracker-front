@@ -7,4 +7,5 @@ export const FORM_ERROR_MESSAGES: { [key in FormErrorCode]: string } = {
   [FormErrorCode.MinLength]: 'form.error.minLength',
   [FormErrorCode.MatDatepickerParse]: 'form.error.matDatepicerParse',
   [FormErrorCode.MatStartDateInvalid]: 'form.error.matStartDateInvalid',
+  [FormErrorCode.OldNewPassword]: 'form.error.oldNewPassword',
 };

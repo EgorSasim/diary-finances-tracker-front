@@ -26,6 +26,7 @@ export enum FormErrorCode {
   MinLength = 'minlength',
   MatDatepickerParse = 'matDatepickerParse',
   MatStartDateInvalid = 'matStartDateInvalid',
+  OldNewPassword = 'oldNewPassword',
 }
 
 export interface FormError {

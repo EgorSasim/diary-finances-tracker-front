@@ -9,4 +9,5 @@ export const ROUTE_PATH = {
   notesPage: 'notes-page',
   spaceEditPage: 'space-edit-page',
   spacesPage: 'spaces-page',
+  userEditPage: 'user-edit-page',
 };

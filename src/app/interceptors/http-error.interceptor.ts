@@ -49,7 +49,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           .subscribe((err) => {
             this.showSnack(err);
           });
-        if (error.status === HttpStatusCode.Unauthorized) {
+        if (
+          error.status === HttpStatusCode.Unauthorized &&
+          error.error?.message?.[0] !== HttpErrorCode.InvalidOldPassword
+        ) {
           this.navigationService.goToAuthPage();
         }
 

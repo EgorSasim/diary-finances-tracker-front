@@ -49,4 +49,8 @@ export class NavigationService {
   public goToSpaceEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.spaceEditPage, id]);
   }
+
+  public goToUserEditPage(): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.userEditPage]);
+  }
 }

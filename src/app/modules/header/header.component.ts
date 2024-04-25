@@ -21,6 +21,10 @@ export class HeaderComponent {
 
   public user$: Observable<User> = this.headerService.getUserInfo();
 
+  public goToUserEditPage(): void {
+    this.navigationService.goToUserEditPage();
+  }
+
   public logOut(): void {
     this.tokenService.removeToken();
     this.navigationService.goToAuthPage();
