@@ -8,11 +8,8 @@
 
 .dft-notes-page__add-diary-entity {
   z-index: 3;
-  width: 0;
-  display: flex;
-  justify-content: right;
-  position: sticky;
-  bottom: 0;
-  left: 100vw;
-  padding: 2rem;
+  display: block;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
 }

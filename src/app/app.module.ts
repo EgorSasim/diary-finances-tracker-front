@@ -33,6 +33,7 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [
+    MatSidenavModule,
     HeaderModule,
     SideBarModule,
     ModalsModule,
