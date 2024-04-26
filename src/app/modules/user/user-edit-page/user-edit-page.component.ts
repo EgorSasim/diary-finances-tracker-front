@@ -53,7 +53,7 @@ export class UserEditPageComponent {
     }
     this.userEditPageService
       .updateUser(this.formGroup.value as UserEdit)
-      .subscribe((user) => console.log('user: ', user));
+      .subscribe(() => this.backNavigationService.back());
   }
 
   private setFormGroupVaue(): void {

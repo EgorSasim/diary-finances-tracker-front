@@ -14,7 +14,7 @@
 </mat-form-field>
 <mat-form-field>
   <mat-label>{{ "auth.password" | translate }}</mat-label>
-  <input matInput [formControl]="formGroup.controls.password" />
+  <input type="password" matInput [formControl]="formGroup.controls.password" />
   @if (formGroup.controls.password.errors) {
   <mat-error>{{
     getErrorMessage(formGroup.controls.password) | translate

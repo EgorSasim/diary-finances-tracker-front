@@ -15,11 +15,19 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>{{ "app.oldPassword" | translate }}</mat-label>
-        <input matInput [formControl]="formGroup.controls.oldPassword" />
+        <input
+          type="password"
+          matInput
+          [formControl]="formGroup.controls.oldPassword"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>{{ "app.newPassword" | translate }}</mat-label>
-        <input matInput [formControl]="formGroup.controls.newPassword" />
+        <input
+          type="password"
+          matInput
+          [formControl]="formGroup.controls.newPassword"
+        />
 
         <mat-error>{{ getErrorMessage(formGroup) | translate }}</mat-error>
       </mat-form-field>
