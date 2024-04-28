@@ -1,0 +1,14 @@
+@if ((types$ | async)?.length) {
+<mat-form-field class="dft-income-type-selector">
+  <mat-label>{{ "app.income.type" | translate }}</mat-label>
+  <mat-select matInput [formControl]="control">
+    <mat-option>{{ "app.notSelected" | translate }}</mat-option>
+    @for (type of (types$ | async); track type.id) {
+    <mat-option [value]="type.name"
+      >{{ getTranslatedTypeName(type.name) | async | titlecase }}
+    </mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+
+}

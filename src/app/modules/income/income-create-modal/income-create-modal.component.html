@@ -1,0 +1,43 @@
+@if (formGroup?.controls) {
+<dft-create-form
+  [height]="'32rem'"
+  [width]="'53rem'"
+  (close)="close()"
+  (create)="create()"
+>
+  <main main>
+    <mat-form-field class="dft-income-create-modal__amount-control">
+      <mat-label>{{ "app.amount" | translate }}</mat-label>
+      <input
+        #amountControl
+        matInput
+        type="number"
+        placeholder="0"
+        min="0"
+        [formControl]="formGroup.controls.amount"
+      />
+      <span matTextPrefix>$&nbsp;</span>
+      @if (formGroup.controls?.amount?.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls?.amount) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="dft-income-create-modal__two-sides-wrap">
+      <dft-income-type-selector
+        class="dft-income-create-modal__wrap-side"
+        [control]="formGroup?.controls?.type"
+      ></dft-income-type-selector>
+      <dft-date-selector
+        class="dft-income-create-modal__wrap-side"
+        [control]="formGroup?.controls?.date"
+      ></dft-date-selector>
+    </div>
+
+    <dft-text-area
+      [control]="formGroup.controls.comment"
+      [height]="textAreaHeight"
+    ></dft-text-area>
+  </main>
+</dft-create-form>
+
+}

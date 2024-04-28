@@ -1,0 +1,9 @@
+<button mat-fab color="primary" [matMenuTriggerFor]="menu">
+  <mat-icon>money_off</mat-icon>
+</button>
+<mat-menu #menu yPosition="above">
+  <button mat-menu-item (click)="showIncomeCreateModal()">
+    <mat-icon>money</mat-icon>
+    <span>{{ "app.income" | translate }}</span>
+  </button>
+</mat-menu>

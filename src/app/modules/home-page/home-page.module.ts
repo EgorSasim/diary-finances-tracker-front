@@ -8,13 +8,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerModule } from '../common/spinner/spinner.module';
 import { NoteListModule } from '../note/note-list/note-list.module';
+import { CreateEntityMenuButtonModule } from '../common/create-entity-menu-button/create-entity-menu-button.module';
 
 @NgModule({
   declarations: [HomePageComponent],
   imports: [
     CommonModule,
     TaskListModule,
-    CreateDiaryEntityMenuButtonModule,
+    CreateEntityMenuButtonModule,
     MatExpansionModule,
     TranslateModule,
     MatButtonModule,
