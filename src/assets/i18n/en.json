@@ -1,4 +1,5 @@
 {
+  "app.incomes": "Incomes",
   "app.date": "Date",
   "app.amount": "Amount",
   "app.income.type": "Income type",
@@ -122,5 +123,6 @@
   "task.amount": "Tasks amount",
   "note.noNotesFound": "Notes not found",
   "space.noSpacesFound": "Spaces not found",
-  "income.type.salary": "Salary"
+  "income.type.salary": "Salary",
+  "income.noIncomesFound": "No incomes found"
 }

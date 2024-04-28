@@ -3,15 +3,12 @@ import {
   ChangeDetectorRef,
   Component,
   DestroyRef,
-  OnInit,
 } from '@angular/core';
 import { TasksPageListService } from './tasks-page-list.service';
 import { Observable } from 'rxjs';
 import { Task, TaskSearchParams } from '../../../../services/task/task.typings';
 import { CompletedTaskListItem } from '../../task-list/task-list-item/task-list-item.typings';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
-import { ROUTE_PATH } from '../../../../constants/routes-pathes';
 import { NavigationService } from '../../../../services/navigation/navigation.service';
 
 @Component({

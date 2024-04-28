@@ -38,6 +38,14 @@ export class NavigationService {
     ]);
   }
 
+  public goToIncomesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.incomesPage,
+    ]);
+  }
+
   public goToTaskEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
@@ -52,5 +60,9 @@ export class NavigationService {
 
   public goToUserEditPage(): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.userEditPage]);
+  }
+
+  public goToIncomeEditPage(): void {
+    this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.incomeEditPage]);
   }
 }

@@ -25,7 +25,8 @@ export class IncomeApiService {
     let params: HttpParams = new HttpParams();
     if (searchParams) {
       Object.entries(searchParams).forEach(
-        ([key, value]) => (params = params.append(key, value.toString()))
+        ([key, value]) =>
+          (params = params.append(key, value ? value.toString() : 'null'))
       );
     }
 

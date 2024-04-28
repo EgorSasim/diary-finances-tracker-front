@@ -1,0 +1,25 @@
+@if (formGroup?.controls) {
+<div class="dft-income-search-panel">
+  <mat-form-field>
+    <mat-label>{{ "app.amount" | translate }}</mat-label>
+    <input
+      matInput
+      type="number"
+      min="0"
+      [formControl]="formGroup.controls.amount"
+    />
+  </mat-form-field>
+  <dft-date-selector [control]="formGroup.controls.date"></dft-date-selector>
+  <dft-income-type-selector
+    [control]="formGroup?.controls?.type"
+  ></dft-income-type-selector>
+</div>
+<button
+  mat-button
+  color="primary"
+  [disabled]="formGroup.pristine"
+  (click)="clearFormGroup()"
+>
+  {{ "app.clearFilters" | translate }}
+</button>
+}

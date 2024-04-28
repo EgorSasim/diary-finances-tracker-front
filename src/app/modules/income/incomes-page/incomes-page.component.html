@@ -1,0 +1,20 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      {{ "app.list" | translate }}
+    </ng-template>
+    <dft-incomes-page-list
+      class="dft-incomes-page__item"
+    ></dft-incomes-page-list>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>bar_chart</mat-icon>
+      {{ "app.chart" | translate }}
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+<dft-create-tracker-entity-menu-button
+  class="dft-incomes-page__add-tracker-entity"
+></dft-create-tracker-entity-menu-button>

@@ -1,0 +1,30 @@
+<div>
+  <mat-accordion
+    class="dft-incomes-page-list__filters"
+    [class.full-width]="incomePanel.expanded"
+  >
+    <mat-expansion-panel #incomePanel [expanded]="false">
+      <mat-expansion-panel-header>
+        {{ "app.filters" | translate }}
+      </mat-expansion-panel-header>
+      <dft-income-search-panel
+        (searchParamsChange)="handleSearchParamsChange($event)"
+      ></dft-income-search-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  @if((incomes$ | async)?.length) {
+  <div>
+    <dft-income-list
+      (editIncome)="goToIncomeEditPage($event)"
+      (removeIncome)="removeIncome($event)"
+      [incomeItems]="incomes$ | async"
+    ></dft-income-list>
+  </div>
+
+  } @else {
+  <h1 class="dft-incomes-page-list__no-incomes">
+    {{ "income.noIncomesFound" | translate }}
+  </h1>
+  }
+</div>

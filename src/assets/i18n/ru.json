@@ -1,4 +1,5 @@
 {
+  "app.incomes": "Доходы",
   "app.date": "Дата",
   "app.amount": "Количество",
   "app.income.type": "Тип дохода",
@@ -122,5 +123,6 @@
   "task.amount": "Количество задач",
   "note.noNotesFound": "Записей не найдено",
   "space.noSpacesFound": "Пространств не найдено",
-  "income.type.salary": "Зарплата"
+  "income.type.salary": "Зарплата",
+  "income.noIncomesFound": "Доходов не найдено"
 }

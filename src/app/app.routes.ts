@@ -11,6 +11,7 @@ import { TasksPageComponent } from './modules/task/tasks-page/tasks-page.compone
 import { NotesPageComponent } from './modules/note/notes-page/notes-page.component';
 import { SpacesPageComponent } from './modules/space/spaces-page/spaces-page.component';
 import { UserEditPageComponent } from './modules/user/user-edit-page/user-edit-page.component';
+import { IncomesPageComponent } from './modules/income/incomes-page/incomes-page.component';
 
 export const routes: Routes = [
   {
@@ -57,6 +58,14 @@ export const routes: Routes = [
             loadChildren: () =>
               import('./modules/space/spaces-page/spaces-page.module').then(
                 (m) => m.SpacesPageModule
+              ),
+          },
+          {
+            path: ROUTE_PATH.incomesPage,
+            component: IncomesPageComponent,
+            loadChildren: () =>
+              import('./modules/income/incomes-page/incomes-page.module').then(
+                (m) => m.IncomesPageModule
               ),
           },
           {

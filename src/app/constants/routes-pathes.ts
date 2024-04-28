@@ -10,4 +10,6 @@ export const ROUTE_PATH = {
   spaceEditPage: 'space-edit-page',
   spacesPage: 'spaces-page',
   userEditPage: 'user-edit-page',
+  incomesPage: 'incomes-page',
+  incomeEditPage: 'income-edit-page',
 };

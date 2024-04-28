@@ -24,4 +24,8 @@ export class NavigationComponent {
   public goToSpacesPage(): void {
     this.navigationService.goToSpacesPage();
   }
+
+  public goToIncomesPage(): void {
+    this.navigationService.goToIncomesPage();
+  }
 }

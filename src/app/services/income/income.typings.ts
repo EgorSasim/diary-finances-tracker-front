@@ -8,6 +8,10 @@ export interface Income {
   comment: string;
 }
 
-export type IncomeSearchParams = Pick<Income, 'type' | 'date'>;
+export type IncomeSearchParams = Partial<
+  Pick<Income, 'type' | 'date' | 'amount'>
+>;
+
+export type IncomeSearchParamsForm = ConvertToForm<IncomeSearchParams>;
 
 export type IncomeCreateForm = ConvertToForm<Omit<Income, 'id'>>;
