@@ -1,0 +1,31 @@
+@if (balance$ | async; as balance) {
+<div class="dft-balance-page">
+  <h1>
+    {{ "app.balance" | translate }}: <b>{{ balance }}</b>
+  </h1>
+  <ngx-charts-bar-vertical-stacked
+    [view]="incomesToExpensesChartSettings.view"
+    [scheme]="incomesToExpensesChartSettings.colorScheme"
+    [results]="incomesToExpensesData$ | async"
+    [gradient]="incomesToExpensesChartSettings.gradient"
+    [xAxis]="incomesToExpensesChartSettings.showXAxis"
+    [yAxis]="incomesToExpensesChartSettings.showYAxis"
+    [legend]="incomesToExpensesChartSettings.showLegend"
+    [showXAxisLabel]="incomesToExpensesChartSettings.showXAxisLabel"
+    [showYAxisLabel]="incomesToExpensesChartSettings.showYAxisLabel"
+  ></ngx-charts-bar-vertical-stacked>
+
+  <ngx-charts-line-chart
+    [view]="incomesToExpensesLineChartSettings.view"
+    [scheme]="incomesToExpensesLineChartSettings.colorScheme"
+    [results]="incomesToExpensesChartData$ | async"
+    [gradient]="incomesToExpensesLineChartSettings.gradient"
+    [xAxis]="incomesToExpensesLineChartSettings.showXAxis"
+    [yAxis]="incomesToExpensesLineChartSettings.showYAxis"
+    [legend]="incomesToExpensesLineChartSettings.showLegend"
+    [showXAxisLabel]="incomesToExpensesLineChartSettings.showXAxisLabel"
+    [showYAxisLabel]="incomesToExpensesLineChartSettings.showYAxisLabel"
+  ></ngx-charts-line-chart>
+</div>
+
+}

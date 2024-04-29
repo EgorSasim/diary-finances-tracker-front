@@ -1,0 +1,11 @@
+$headerHeight: var(--header-height);
+
+.dft-balance-page {
+  padding: 2rem;
+  height: 100vh - $headerHeight;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+}

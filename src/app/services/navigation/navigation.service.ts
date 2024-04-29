@@ -56,6 +56,14 @@ export class NavigationService {
     ]);
   }
 
+  public goToBalancePage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.balancePage,
+    ]);
+  }
+
   public goToTaskEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
