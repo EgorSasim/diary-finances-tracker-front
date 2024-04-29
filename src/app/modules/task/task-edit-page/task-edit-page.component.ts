@@ -8,11 +8,7 @@ import { TaskEditPageService } from './task-edit-page.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, filter, map, switchMap, tap } from 'rxjs';
-import {
-  Task,
-  TaskEditForm,
-  TaskWithSpaces,
-} from '../../../services/task/task.typings';
+import { Task, TaskEditForm } from '../../../services/task/task.typings';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { TaskEditPageBuilder } from './task-edit-page.builder';
 import { ROUTE_PATH } from '../../../constants/routes-pathes';

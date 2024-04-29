@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Income, IncomeSearchParams } from './income.typings';
 import { Observable, ReplaySubject, tap } from 'rxjs';
 import { IncomeApiService } from '../../api/income/income-api.service';
+import { getIncomeTruthyTypes } from './income.helpers';
 
 @Injectable({ providedIn: 'root' })
 export class IncomeService {
@@ -19,7 +20,7 @@ export class IncomeService {
 
   public createIncome(income: Income): Observable<Income> {
     return this.incomeApiService
-      .createIncome(income)
+      .createIncome(getIncomeTruthyTypes(income))
       .pipe(tap(() => this.incomesChange$.next()));
   }
 
@@ -34,7 +35,7 @@ export class IncomeService {
     updateParams: Partial<Income>
   ): Observable<Income> {
     return this.incomeApiService
-      .updateIncome(id, updateParams)
+      .updateIncome(id, getIncomeTruthyTypes(updateParams as Income))
       .pipe(tap(() => this.incomesChange$.next()));
   }
 }

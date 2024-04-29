@@ -3,9 +3,9 @@ import { ConvertToForm } from '../../typings/forms';
 export interface Income {
   id: number;
   amount: number;
-  type: string;
+  type?: string | null;
   date: Date;
-  comment: string;
+  comment?: string;
 }
 
 export type IncomeSearchParams = Partial<
@@ -15,3 +15,4 @@ export type IncomeSearchParams = Partial<
 export type IncomeSearchParamsForm = ConvertToForm<IncomeSearchParams>;
 
 export type IncomeCreateForm = ConvertToForm<Omit<Income, 'id'>>;
+export type IncomeEditForm = ConvertToForm<Income>;

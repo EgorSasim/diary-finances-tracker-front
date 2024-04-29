@@ -7,7 +7,6 @@ import { SideBarComponent } from './side-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DiaryAccordionModule } from './diary-accordion/diary-accordion.module';
 import { NavigationModule } from './navigation/navigation.module';
-import { TrackerAccordionModule } from './tracker-accordion/tracker-accordion.module';
 
 @NgModule({
   declarations: [SideBarComponent],
@@ -19,7 +18,6 @@ import { TrackerAccordionModule } from './tracker-accordion/tracker-accordion.mo
     MatIconModule,
     DiaryAccordionModule,
     NavigationModule,
-    TrackerAccordionModule,
   ],
 })
 export class SideBarModule {}

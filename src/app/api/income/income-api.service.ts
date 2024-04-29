@@ -53,6 +53,7 @@ export class IncomeApiService {
     id: IncomeDto['id'],
     updateParams: Partial<IncomeDto>
   ): Observable<IncomeDto> {
+    console.log('update params in api: ', updateParams);
     return this.httpClient.patch<IncomeDto>(
       `${API_PATH}/${INCOME_API_PATH}/${id}`,
       updateParams

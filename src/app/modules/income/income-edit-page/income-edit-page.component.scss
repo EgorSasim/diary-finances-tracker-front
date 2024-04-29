@@ -1,0 +1,17 @@
+.dft-income-edit-page__amount-control {
+  display: block;
+  width: 100%;
+}
+
+.dft-income-edit-page__two-sides-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.dft-income-edit-page__wrap-side {
+  display: block;
+  width: 45%;
+}

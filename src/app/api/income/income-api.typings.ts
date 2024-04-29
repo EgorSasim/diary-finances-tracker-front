@@ -1,7 +1,7 @@
 export interface IncomeDto {
   id: number;
   amount: number;
-  type: string;
+  type?: string | null;
   date: Date;
-  comment: string;
+  comment?: string;
 }

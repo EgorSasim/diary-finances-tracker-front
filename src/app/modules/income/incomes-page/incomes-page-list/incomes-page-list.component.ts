@@ -24,7 +24,7 @@ export class IncomesPageListComponent {
   ) {}
 
   public goToIncomeEditPage(id: Income['id']): void {
-    this.navigationService.goToIncomeEditPage();
+    this.navigationService.goToIncomeEditPage(id);
   }
 
   public removeIncome(id: Income['id']): void {

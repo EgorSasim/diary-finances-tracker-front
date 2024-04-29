@@ -12,6 +12,7 @@ import { NotesPageComponent } from './modules/note/notes-page/notes-page.compone
 import { SpacesPageComponent } from './modules/space/spaces-page/spaces-page.component';
 import { UserEditPageComponent } from './modules/user/user-edit-page/user-edit-page.component';
 import { IncomesPageComponent } from './modules/income/incomes-page/incomes-page.component';
+import { IncomeEditPageComponent } from './modules/income/income-edit-page/income-edit-page.component';
 
 export const routes: Routes = [
   {
@@ -106,6 +107,14 @@ export const routes: Routes = [
           import('./modules/user/user-edit-page/user-edit-page.module').then(
             (m) => m.UserEditPageModule
           ),
+      },
+      {
+        path: `${ROUTE_PATH.incomeEditPage}/:id`,
+        component: IncomeEditPageComponent,
+        loadChildren: () =>
+          import(
+            './modules/income/income-edit-page/income-edit-page.module'
+          ).then((m) => m.IncomeEditPageModule),
       },
       {
         path: '**',
