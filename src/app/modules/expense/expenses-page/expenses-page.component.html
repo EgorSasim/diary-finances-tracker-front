@@ -1,0 +1,23 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      {{ "app.list" | translate }}
+    </ng-template>
+    <dft-expenses-page-list
+      class="dft-expenses-page__item"
+    ></dft-expenses-page-list>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>bar_chart</mat-icon>
+      {{ "app.chart" | translate }}
+    </ng-template>
+    <dft-expenses-page-chart
+      class="dft-expenses-page__item"
+    ></dft-expenses-page-chart>
+  </mat-tab>
+</mat-tab-group>
+<dft-create-tracker-entity-menu-button
+  class="dft-expenses-page__add-tracker-entity"
+></dft-create-tracker-entity-menu-button>

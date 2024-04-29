@@ -13,6 +13,8 @@ import { SpacesPageComponent } from './modules/space/spaces-page/spaces-page.com
 import { UserEditPageComponent } from './modules/user/user-edit-page/user-edit-page.component';
 import { IncomesPageComponent } from './modules/income/incomes-page/incomes-page.component';
 import { IncomeEditPageComponent } from './modules/income/income-edit-page/income-edit-page.component';
+import { ExpensesPageComponent } from './modules/expense/expenses-page/expenses-page.component';
+import { ExpenseEditPageComponent } from './modules/expense/expense-edit-page/expense-edit-page.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +72,14 @@ export const routes: Routes = [
               ),
           },
           {
+            path: ROUTE_PATH.expensesPage,
+            component: ExpensesPageComponent,
+            loadChildren: () =>
+              import(
+                './modules/expense/expenses-page/expenses-page.module'
+              ).then((m) => m.ExpensesPageModule),
+          },
+          {
             path: '**',
             pathMatch: 'full',
             redirectTo: ROUTE_PATH.home,
@@ -115,6 +125,14 @@ export const routes: Routes = [
           import(
             './modules/income/income-edit-page/income-edit-page.module'
           ).then((m) => m.IncomeEditPageModule),
+      },
+      {
+        path: `${ROUTE_PATH.expenseEditPage}/:id`,
+        component: ExpenseEditPageComponent,
+        loadChildren: () =>
+          import(
+            './modules/expense/expense-edit-page/expense-edit-page.module'
+          ).then((m) => m.ExpenseEditPageModule),
       },
       {
         path: '**',

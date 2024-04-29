@@ -1,0 +1,41 @@
+@if(formGroup?.controls) {
+<dft-edit-page
+  (back)="navigateBack()"
+  (reset)="resetFormValue()"
+  (save)="saveChanges()"
+>
+  <ng-container main
+    ><mat-form-field class="dft-expense-edit-page__amount-control">
+      <mat-label>{{ "app.amount" | translate }}</mat-label>
+      <input
+        #amountControl
+        matInput
+        type="number"
+        placeholder="0"
+        min="0"
+        [formControl]="formGroup.controls.amount"
+      />
+      <span matTextPrefix>$&nbsp;</span>
+      @if (formGroup.controls?.amount?.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls?.amount) }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="dft-expense-edit-page__two-sides-wrap">
+      <dft-expense-type-selector
+        class="dft-expense-edit-page__wrap-side"
+        [control]="formGroup?.controls?.type"
+      ></dft-expense-type-selector>
+      <dft-date-selector
+        class="dft-expense-edit-page__wrap-side"
+        [control]="formGroup?.controls?.date"
+      ></dft-date-selector>
+    </div>
+
+    <dft-text-area
+      [control]="formGroup.controls.comment"
+      [height]="textAreaHeight"
+    ></dft-text-area>
+  </ng-container>
+</dft-edit-page>
+}

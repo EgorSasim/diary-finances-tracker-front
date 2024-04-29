@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
 import { Income } from '../income/income.typings';
+import { Expense } from '../expense/expense.typings';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
@@ -47,6 +48,14 @@ export class NavigationService {
     ]);
   }
 
+  public goToExpansesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.expensesPage,
+    ]);
+  }
+
   public goToTaskEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
@@ -67,6 +76,14 @@ export class NavigationService {
     this.router.navigate([
       ROUTE_PATH.withHeader,
       ROUTE_PATH.incomeEditPage,
+      id,
+    ]);
+  }
+
+  public goToExpenseEditPage(id: Expense['id']): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.expenseEditPage,
       id,
     ]);
   }

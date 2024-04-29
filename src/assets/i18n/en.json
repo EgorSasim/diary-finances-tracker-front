@@ -1,4 +1,7 @@
 {
+  "app.expenses": "Expenses",
+  "app.expense.type": "Expense type",
+  "app.expense": "Expense",
   "app.noType": "No type",
   "app.incomes": "Incomes",
   "app.date": "Date",
@@ -125,5 +128,18 @@
   "note.noNotesFound": "Notes not found",
   "space.noSpacesFound": "Spaces not found",
   "income.type.salary": "Salary",
-  "income.noIncomesFound": "No incomes found"
+  "income.noIncomesFound": "No incomes found",
+  "expense.type.auto": "Auto",
+  "expense.type.bills": "Bills",
+  "expense.type.charges": "Charges",
+  "expense.type.food": "Food",
+  "expense.type.education": "Education",
+  "expense.type.gifts": "Gifts",
+  "expense.type.groceries": "Groceries",
+  "expense.type.health": "Health",
+  "expense.type.fitness": "Fitness",
+  "expense.type.kids": "Kids",
+  "expense.type.shopping": "Shopping",
+  "expense.type.transport": "Transport",
+  "expense.noExpensesFound": "No expenses found"
 }

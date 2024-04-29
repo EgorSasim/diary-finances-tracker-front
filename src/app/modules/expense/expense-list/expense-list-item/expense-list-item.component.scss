@@ -1,0 +1,21 @@
+.dft-expense-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.dft-expense-list-item__element {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+  &.mod-first {
+    justify-content: left;
+  }
+
+  &.mod-last:not(.mod-first) {
+    justify-content: right;
+  }
+}

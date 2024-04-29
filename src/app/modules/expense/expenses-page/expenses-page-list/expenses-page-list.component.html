@@ -1,0 +1,30 @@
+<div>
+  <mat-accordion
+    class="dft-expenses-page-list__filters"
+    [class.full-width]="expensePanel.expanded"
+  >
+    <mat-expansion-panel #expensePanel [expanded]="false">
+      <mat-expansion-panel-header>
+        {{ "app.filters" | translate }}
+      </mat-expansion-panel-header>
+      <dft-expense-search-panel
+        (searchParamsChange)="handleSearchParamsChange($event)"
+      ></dft-expense-search-panel>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  @if((expenses$ | async)?.length) {
+  <div>
+    <dft-expense-list
+      (editExpense)="goToExpenseEditPage($event)"
+      (removeExpense)="removeExpense($event)"
+      [expenseItems]="expenses$ | async"
+    ></dft-expense-list>
+  </div>
+
+  } @else {
+  <h1 class="dft-expenses-page-list__no-expenses">
+    {{ "expense.noExpensesFound" | translate }}
+  </h1>
+  }
+</div>

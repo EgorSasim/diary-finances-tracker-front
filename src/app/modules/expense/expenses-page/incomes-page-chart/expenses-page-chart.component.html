@@ -1,0 +1,27 @@
+<div class="dft-expenses-page-chart">
+  <ngx-charts-bar-vertical
+    [view]="expenseAmountChartOptions.chartSize"
+    [scheme]="expenseAmountChartOptions.colorScheme"
+    [results]="expensesAmountChartData$ | async"
+    [gradient]="expenseAmountChartOptions.gradient"
+    [xAxis]="expenseAmountChartOptions.showXAxis"
+    [yAxis]="expenseAmountChartOptions.showYAxis"
+    [xAxisLabel]="expenseAmountChartOptions.showXAxisLabel"
+    [yAxisLabel]="expenseAmountChartOptions.showYAxisLabel"
+  ></ngx-charts-bar-vertical>
+
+  <ngx-charts-pie-chart
+    class="dft-tasks-page-chart__top-charts-right"
+    [view]="expenseTypesPersentageChartOptions.chartSize"
+    [scheme]="expenseTypesPersentageChartOptions.colorScheme"
+    [results]="expenseTypeChartData$ | async"
+    [gradient]="expenseTypesPersentageChartOptions.gradient"
+    [legend]="expenseTypesPersentageChartOptions.showLegend"
+    [legendPosition]="expenseTypesPersentageChartOptions.legendPosition"
+    [labels]="true"
+    [maxLabelLength]="expenseTypesPersentageChartOptions.maxLabelLength"
+    [explodeSlices]="expenseTypesPersentageChartOptions.explodeSlices"
+    [tooltipText]="expenseTypesPersentageChartOptions.tooltipText"
+  >
+  </ngx-charts-pie-chart>
+</div>

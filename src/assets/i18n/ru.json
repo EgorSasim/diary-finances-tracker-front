@@ -1,4 +1,7 @@
 {
+  "app.expenses": "Расходы",
+  "app.expense.type": "Тип траты",
+  "app.expense": "Трата",
   "app.noType": "Нет типа",
   "app.incomes": "Доходы",
   "app.date": "Дата",
@@ -125,5 +128,18 @@
   "note.noNotesFound": "Записей не найдено",
   "space.noSpacesFound": "Пространств не найдено",
   "income.type.salary": "Зарплата",
-  "income.noIncomesFound": "Доходов не найдено"
+  "income.noIncomesFound": "Доходов не найдено",
+  "expense.type.auto": "Авто",
+  "expense.type.bills": "Налоги",
+  "expense.type.charges": "Сборы",
+  "expense.type.food": "Еда",
+  "expense.type.education": "Образование",
+  "expense.type.gifts": "Подарки",
+  "expense.type.groceries": "Продукты",
+  "expense.type.health": "Здоровье",
+  "expense.type.fitness": "Фитнес",
+  "expense.type.kids": "Дети",
+  "expense.type.shopping": "Шопинг",
+  "expense.type.transport": "Транспорт",
+  "expense.noExpensesFound": "Расходов не найдено"
 }

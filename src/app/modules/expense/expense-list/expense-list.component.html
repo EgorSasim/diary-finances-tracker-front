@@ -1,0 +1,15 @@
+@if(expenseItems?.length) {
+<dft-list [columnNames]="columnNames">
+  <ng-container items>
+    @for (item of expenseItems; track item.id) {
+    <mat-list-item>
+      <dft-expense-list-item
+        [expenseItem]="item"
+        (edit)="editExpenseEmit($event)"
+        (remove)="removeExpenseEmit($event)"
+      ></dft-expense-list-item>
+    </mat-list-item>
+    }
+  </ng-container>
+</dft-list>
+}

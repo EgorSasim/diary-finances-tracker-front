@@ -1,0 +1,29 @@
+@if (expenseItem; as item) {
+<div class="dft-expense-list-item">
+  <div class="dft-expense-list-item__element mod-first">
+    {{
+      item?.type
+        ? (getTranslatedTypeName(item?.type) | async)
+          ? (getTranslatedTypeName(item?.type) | async)
+          : item?.type
+        : "-"
+    }}
+  </div>
+  <div class="dft-expense-list-item__element">{{ item.amount }}</div>
+  <div class="dft-expense-list-item__element">{{ item.date }}</div>
+  <div class="dft-expense-list-item__element mod-last">
+    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+}
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="editExpense(expenseItem.id)">
+    {{ "app.edit" | translate }}
+  </button>
+  <button mat-menu-item (click)="removeExpense(expenseItem.id)">
+    {{ "app.remove" | translate }}
+  </button>
+</mat-menu>

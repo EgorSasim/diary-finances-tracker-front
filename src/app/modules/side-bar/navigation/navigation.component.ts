@@ -28,4 +28,8 @@ export class NavigationComponent {
   public goToIncomesPage(): void {
     this.navigationService.goToIncomesPage();
   }
+
+  public goToExpensesPage(): void {
+    this.navigationService.goToExpansesPage();
+  }
 }
