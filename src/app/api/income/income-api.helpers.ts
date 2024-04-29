@@ -4,5 +4,6 @@ export function getIncomeTruthyTypes(income: Partial<Income>): Partial<Income> {
   return {
     ...income,
     date: income.date ? new Date(income.date) : undefined,
+    amount: income.amount ? +income.amount : undefined,
   };
 }

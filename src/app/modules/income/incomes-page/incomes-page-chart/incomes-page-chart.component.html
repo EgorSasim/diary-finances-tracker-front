@@ -1,0 +1,27 @@
+<div class="dft-incomes-page-chart">
+  <ngx-charts-bar-vertical
+    [view]="incomeAmountChartOptions.chartSize"
+    [scheme]="incomeAmountChartOptions.colorScheme"
+    [results]="incomesAmountChartData$ | async"
+    [gradient]="incomeAmountChartOptions.gradient"
+    [xAxis]="incomeAmountChartOptions.showXAxis"
+    [yAxis]="incomeAmountChartOptions.showYAxis"
+    [xAxisLabel]="incomeAmountChartOptions.showXAxisLabel"
+    [yAxisLabel]="incomeAmountChartOptions.showYAxisLabel"
+  ></ngx-charts-bar-vertical>
+
+  <ngx-charts-pie-chart
+    class="dft-tasks-page-chart__top-charts-right"
+    [view]="incomeTypesPersentageChartOptions.chartSize"
+    [scheme]="incomeTypesPersentageChartOptions.colorScheme"
+    [results]="incomeTypeChartData$ | async"
+    [gradient]="incomeTypesPersentageChartOptions.gradient"
+    [legend]="incomeTypesPersentageChartOptions.showLegend"
+    [legendPosition]="incomeTypesPersentageChartOptions.legendPosition"
+    [labels]="true"
+    [maxLabelLength]="incomeTypesPersentageChartOptions.maxLabelLength"
+    [explodeSlices]="incomeTypesPersentageChartOptions.explodeSlices"
+    [tooltipText]="incomeTypesPersentageChartOptions.tooltipText"
+  >
+  </ngx-charts-pie-chart>
+</div>
