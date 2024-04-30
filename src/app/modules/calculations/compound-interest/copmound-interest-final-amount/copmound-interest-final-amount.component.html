@@ -1,62 +1,26 @@
 @if (formGroup?.controls) {
 <div class="dft-compound-interest-final-amount">
-  <mat-form-field>
-    <mat-label>{{ "compoundInterest.startUpCapital" | translate }}</mat-label>
-    <input
-      matInput
-      type="number"
-      [formControl]="formGroup.controls.startUpCapital"
-    />
-    <mat-error>{{
-      getErrorMessage(formGroup.controls.startUpCapital) | translate
-    }}</mat-error>
-  </mat-form-field>
+  <dft-compound-interest-start-up-capital-input
+    [control]="formGroup.controls.startUpCapital"
+  ></dft-compound-interest-start-up-capital-input>
   <div class="dft-compound-interest-final-amount__control-with-period">
-    <mat-form-field>
-      <mat-label>{{ "compoundInterest.investmentTerm" | translate }}</mat-label>
-      <input
-        matInput
-        type="number"
-        [formControl]="formGroup.controls.investmentTerm"
-      />
-      <mat-error>{{
-        getErrorMessage(formGroup.controls.investmentTerm) | translate
-      }}</mat-error>
-    </mat-form-field>
+    <dft-compound-interest-investment-term-input
+      [control]="formGroup.controls.investmentTerm"
+    ></dft-compound-interest-investment-term-input>
     <dft-compound-interest-investment-term-selector
       [control]="formGroup.controls.ivestmentTermType"
     ></dft-compound-interest-investment-term-selector>
   </div>
-  <mat-form-field>
-    <mat-label>{{ "compoundInterest.bid" | translate }}</mat-label>
-    <input
-      matInput
-      type="number"
-      [placeholder]="'app.yearPercent' | translate"
-      [formControl]="formGroup.controls.bid"
-    />
-    <mat-error>{{
-      getErrorMessage(formGroup.controls.bid) | translate
-    }}</mat-error>
-  </mat-form-field>
+  <dft-compound-interest-bid-input
+    [control]="formGroup.controls.bid"
+  ></dft-compound-interest-bid-input>
   <dft-compound-interest-reinvestment-period-selector
     [control]="formGroup.controls.reinvestmentPeriod"
   ></dft-compound-interest-reinvestment-period-selector>
-
   <div class="dft-compound-interest-final-amount__control-with-period">
-    <mat-form-field>
-      <mat-label>{{
-        "compoundInterest.extraInvestments" | translate
-      }}</mat-label>
-      <input
-        matInput
-        type="number"
-        [formControl]="formGroup.controls.extraInvestitions"
-      />
-      <mat-error>{{
-        getErrorMessage(formGroup.controls.extraInvestitions) | translate
-      }}</mat-error>
-    </mat-form-field>
+    <dft-compound-extra-investments-input
+      [control]="formGroup.controls.extraInvestitions"
+    ></dft-compound-extra-investments-input>
     <dft-compound-interest-extra-investments-period-selector
       [control]="formGroup.controls.extraInvestitionsType"
     ></dft-compound-interest-extra-investments-period-selector>

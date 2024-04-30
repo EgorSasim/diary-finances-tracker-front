@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   DestroyRef,
   EventEmitter,
@@ -31,10 +32,15 @@ export class CompoundInterestCalculationSelectorComponent implements OnInit {
     COMPOUND_INTEREST_CALCULATION_SELECTOR_ITEM_TO_TRANSLATION
   );
 
-  constructor(private destroyRef: DestroyRef) {}
+  constructor(
+    private destroyRef: DestroyRef,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   public ngOnInit(): void {
     this.handleControlValue();
+    this.control.setValue(CompoundInterestCalculationSelectorItem.FinalAmount);
+    this.changeDetectorRef.markForCheck();
   }
 
   private handleControlValue(): void {

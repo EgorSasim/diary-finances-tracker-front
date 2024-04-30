@@ -1,0 +1,5 @@
+<mat-form-field class="dft-compound-interest-investment-term-input">
+  <mat-label>{{ "compoundInterest.investmentTerm" | translate }}</mat-label>
+  <input matInput type="number" [formControl]="control" />
+  <mat-error>{{ getErrorMessage(control) | translate }}</mat-error>
+</mat-form-field>

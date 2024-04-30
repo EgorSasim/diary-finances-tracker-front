@@ -1,0 +1,10 @@
+<mat-form-field class="dft-compound-interest-bid-input">
+  <mat-label>{{ "compoundInterest.bid" | translate }}</mat-label>
+  <input
+    matInput
+    type="number"
+    [placeholder]="'app.yearPercent' | translate"
+    [formControl]="control"
+  />
+  <mat-error>{{ getErrorMessage(control) | translate }}</mat-error>
+</mat-form-field>
