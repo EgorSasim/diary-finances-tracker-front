@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DateSelectorModule } from '../../common/date-selector/date-selector.module';
-import { IncomeTypeSelectorModule } from '../../common/income-type-selector/income-type-selector.module';
+import { IncomeTypeSelectorModule } from '../../income-type/income-type-selector/income-type-selector.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 

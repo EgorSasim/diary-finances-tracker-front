@@ -86,18 +86,24 @@ export function getExpenseToIncomeLineChartData(
   incomes: Income[],
   translateService: TranslateService
 ): ExpenseToIncomeLineChartItem[] {
-  const expenseSeries: ExpenseToIncomeLineChartItemSerie[] = expenses.map(
-    (expense) => ({
+  const expenseSeries: ExpenseToIncomeLineChartItemSerie[] = expenses
+    .map((expense) => ({
       name: expense.date,
       value: +expense.amount,
-    })
-  );
-  const incomeSeries: ExpenseToIncomeLineChartItemSerie[] = incomes.map(
-    (income) => ({
+    }))
+    .sort(
+      (expense1, expense2) =>
+        new Date(expense1.name).getTime() - new Date(expense2.name).getTime()
+    );
+  const incomeSeries: ExpenseToIncomeLineChartItemSerie[] = incomes
+    .map((income) => ({
       name: income.date,
       value: +income.amount,
-    })
-  );
+    }))
+    .sort(
+      (income1, income2) =>
+        new Date(income1.name).getTime() - new Date(income2.name).getTime()
+    );
   const result = [
     {
       name: translateService.instant('app.incomes'),

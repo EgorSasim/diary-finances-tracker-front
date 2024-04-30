@@ -1,0 +1,19 @@
+@if (formGroup?.controls) {
+<dft-create-form
+  [height]="'6rem'"
+  [width]="'16rem'"
+  (close)="close()"
+  (create)="create()"
+>
+  <main main>
+    <mat-form-field class="dft-income-type-create-modal__title-control">
+      <mat-label>{{ "app.income.type" | translate }}</mat-label>
+      <input matInput [formControl]="formGroup.controls.name" />
+      @if (formGroup.controls?.name?.errors) {
+      <mat-error>{{ getErrorMessage(formGroup.controls?.name) }}</mat-error>
+      }
+    </mat-form-field>
+  </main>
+</dft-create-form>
+
+}

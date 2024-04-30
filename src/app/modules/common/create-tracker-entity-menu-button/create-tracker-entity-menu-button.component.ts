@@ -6,6 +6,11 @@ import { filter, switchMap } from 'rxjs';
 import { Income } from '../../../services/income/income.typings';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ExpenseCreateModalComponent } from '../../expense/expense-create-modal/expense-create-modal.component';
+import { ExpenseTypeCreateModalComponent } from '../../expense-type/expense-type-create-modal/expense-type-create-modal.component';
+import { Expense } from '../../../services/expense/expense.typings';
+import { ExpenseType } from '../../../services/expense-type/expense-type.typings';
+import { IncomeTypeCreateModalComponent } from '../../income-type/income-type-create-modal/income-type-create-modal.component';
+import { IncomeType } from '../../../services/income-type/income-type.typings';
 
 @Component({
   selector: 'dft-create-tracker-entity-menu-button',
@@ -35,14 +40,44 @@ export class CreateTrackerEntityMenuButtonComponent {
       .subscribe();
   }
 
+  public showIncomeTypeCreateModal(): void {
+    const dialogRef = this.matDialog.open(IncomeTypeCreateModalComponent);
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((incomeType) => !!incomeType),
+        switchMap((incomeType: IncomeType) =>
+          this.createTrackerEntityMenuButtonService.createIncomeType(incomeType)
+        ),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
+  }
+
   public showExpenseCreateModal(): void {
     const dialogRef = this.matDialog.open(ExpenseCreateModalComponent);
     dialogRef
       .afterClosed()
       .pipe(
-        filter((income) => !!income),
-        switchMap((income: Income) =>
-          this.createTrackerEntityMenuButtonService.createExpense(income)
+        filter((expense) => !!expense),
+        switchMap((expense: Expense) =>
+          this.createTrackerEntityMenuButtonService.createExpense(expense)
+        ),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
+  }
+
+  public showExpenseTypeCreateModal(): void {
+    const dialogRef = this.matDialog.open(ExpenseTypeCreateModalComponent);
+    dialogRef
+      .afterClosed()
+      .pipe(
+        filter((expenseType) => !!expenseType),
+        switchMap((expenseType: ExpenseType) =>
+          this.createTrackerEntityMenuButtonService.createExpenseType(
+            expenseType
+          )
         ),
         takeUntilDestroyed(this.destroyRef)
       )

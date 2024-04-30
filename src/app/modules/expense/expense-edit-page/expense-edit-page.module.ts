@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DateSelectorModule } from '../../common/date-selector/date-selector.module';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { ExpenseTypeSelectorModule } from '../expense-type-selector/expense-type-selector.module';
+import { ExpenseTypeSelectorModule } from '../../expense-type/expense-type-selector/expense-type-selector.module';
 
 @NgModule({
   declarations: [ExpenseEditPageComponent],

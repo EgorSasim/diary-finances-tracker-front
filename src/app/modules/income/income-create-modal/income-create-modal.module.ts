@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
-import { IncomeTypeSelectorModule } from '../../common/income-type-selector/income-type-selector.module';
+import { IncomeTypeSelectorModule } from '../../income-type/income-type-selector/income-type-selector.module';
 import { DateSelectorModule } from '../../common/date-selector/date-selector.module';
 import { MatInputModule } from '@angular/material/input';
 

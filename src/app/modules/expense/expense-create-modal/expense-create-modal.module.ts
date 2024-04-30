@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TextAreaModule } from '../../common/text-area/text-area.module';
 import { DateSelectorModule } from '../../common/date-selector/date-selector.module';
 import { MatInputModule } from '@angular/material/input';
-import { ExpenseTypeSelectorModule } from '../expense-type-selector/expense-type-selector.module';
+import { ExpenseTypeSelectorModule } from '../../expense-type/expense-type-selector/expense-type-selector.module';
 
 @NgModule({
   declarations: [ExpenseCreateModalComponent],

@@ -6,8 +6,16 @@
     <mat-icon>monetization_on</mat-icon>
     <span>{{ "app.income" | translate }}</span>
   </button>
+  <button mat-menu-item (click)="showIncomeTypeCreateModal()">
+    <mat-icon>monetization_on</mat-icon>
+    <span>{{ "app.income.type" | translate }}</span>
+  </button>
   <button mat-menu-item (click)="showExpenseCreateModal()">
     <mat-icon>money_off</mat-icon>
     <span>{{ "app.expense" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="showExpenseTypeCreateModal()">
+    <mat-icon>money_off</mat-icon>
+    <span>{{ "app.expense.type" | translate }}</span>
   </button>
 </mat-menu>
