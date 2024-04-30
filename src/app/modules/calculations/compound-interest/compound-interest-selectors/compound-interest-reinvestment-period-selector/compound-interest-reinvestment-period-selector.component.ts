@@ -5,12 +5,12 @@ import { CompoundInterestReinvestmentPeriod } from './compound-interest-reinvest
 import { FormErrorMessageService } from '../../../../../services/form-error-message/form-error-message.service';
 
 @Component({
-  selector: 'dft-compound-interest-reinvestment-period',
-  templateUrl: './compound-interest-reinvestment-period.component.html',
-  styleUrl: './compound-interest-reinvestment-period.component.scss',
+  selector: 'dft-compound-interest-reinvestment-period-selector',
+  templateUrl: './compound-interest-reinvestment-period-selector.component.html',
+  styleUrl: './compound-interest-reinvestment-period-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestReinvestmentPeriodComponent {
+export class CompoundInterestReinvestmentPeriodSelectorComponent {
   @Input() public control: FormControl<CompoundInterestReinvestmentPeriod>;
 
   public readonly compoundInterestReinvestmentPeriodToTranslate =

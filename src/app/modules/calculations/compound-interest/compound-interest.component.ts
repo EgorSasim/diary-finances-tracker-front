@@ -19,7 +19,6 @@ export class CompoundInterestComponent {
   ): void {
     this.currentCalculationType = type;
     this.changeDetectorRef.markForCheck();
-    console.log('currentCalculationType: ', this.currentCalculationType);
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}

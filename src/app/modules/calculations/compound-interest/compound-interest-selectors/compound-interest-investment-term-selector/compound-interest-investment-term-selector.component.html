@@ -1,5 +1,5 @@
 @if (control) {
-<mat-form-field class="dft-compound-interest-investment-term">
+<mat-form-field class="dft-compound-interest-investment-term-selector">
   <mat-select matInput [formControl]="control">
     @for (item of investmentTermTypeToTranslation; track item) {
     <mat-option [value]="item[0]">{{ item[1] | translate }}</mat-option>

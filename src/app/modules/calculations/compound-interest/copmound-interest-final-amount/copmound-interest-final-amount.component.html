@@ -23,9 +23,9 @@
         getErrorMessage(formGroup.controls.investmentTerm) | translate
       }}</mat-error>
     </mat-form-field>
-    <dft-compound-interest-investment-term
+    <dft-compound-interest-investment-term-selector
       [control]="formGroup.controls.ivestmentTermType"
-    ></dft-compound-interest-investment-term>
+    ></dft-compound-interest-investment-term-selector>
   </div>
   <mat-form-field>
     <mat-label>{{ "compoundInterest.bid" | translate }}</mat-label>
@@ -39,9 +39,9 @@
       getErrorMessage(formGroup.controls.bid) | translate
     }}</mat-error>
   </mat-form-field>
-  <dft-compound-interest-reinvestment-period
+  <dft-compound-interest-reinvestment-period-selector
     [control]="formGroup.controls.reinvestmentPeriod"
-  ></dft-compound-interest-reinvestment-period>
+  ></dft-compound-interest-reinvestment-period-selector>
 
   <div class="dft-compound-interest-final-amount__control-with-period">
     <mat-form-field>
@@ -57,9 +57,9 @@
         getErrorMessage(formGroup.controls.extraInvestitions) | translate
       }}</mat-error>
     </mat-form-field>
-    <dft-compound-interest-extra-investments-period
+    <dft-compound-interest-extra-investments-period-selector
       [control]="formGroup.controls.extraInvestitionsType"
-    ></dft-compound-interest-extra-investments-period>
+    ></dft-compound-interest-extra-investments-period-selector>
   </div>
 
   <button

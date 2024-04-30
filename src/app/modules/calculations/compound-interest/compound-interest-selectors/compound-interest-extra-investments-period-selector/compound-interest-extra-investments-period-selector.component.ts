@@ -5,12 +5,12 @@ import { COMPOUND_INTEREST_EXTRA_INVESTMENT_PERIOD_TO_TRANSLATE } from './compou
 import { FormErrorMessageService } from '../../../../../services/form-error-message/form-error-message.service';
 
 @Component({
-  selector: 'dft-compound-interest-extra-investments-period',
-  templateUrl: './compound-interest-extra-investments-period.component.html',
-  styleUrl: './compound-interest-extra-investments-period.component.scss',
+  selector: 'dft-compound-interest-extra-investments-period-selector',
+  templateUrl: './compound-interest-extra-investments-period-selector.component.html',
+  styleUrl: './compound-interest-extra-investments-period-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestExtraInvestmentsPeriodComponent {
+export class CompoundInterestExtraInvestmentsPeriodSelectorComponent {
   @Input() public control: FormControl<CompoundInterestExtraInvestmentPeriod>;
 
   public readonly compoundInterestExtraInvestmentsPeriodToTranslate =

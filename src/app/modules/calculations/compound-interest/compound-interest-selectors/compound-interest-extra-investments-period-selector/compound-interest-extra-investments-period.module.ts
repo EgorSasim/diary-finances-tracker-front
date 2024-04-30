@@ -4,10 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule } from '@ngx-translate/core';
-import { CompoundInterestExtraInvestmentsPeriodComponent } from './compound-interest-extra-investments-period.component';
+import { CompoundInterestExtraInvestmentsPeriodSelectorComponent } from './compound-interest-extra-investments-period-selector.component';
 
 @NgModule({
-  declarations: [CompoundInterestExtraInvestmentsPeriodComponent],
+  declarations: [CompoundInterestExtraInvestmentsPeriodSelectorComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -15,6 +15,6 @@ import { CompoundInterestExtraInvestmentsPeriodComponent } from './compound-inte
     MatInputModule,
     ReactiveFormsModule,
   ],
-  exports: [CompoundInterestExtraInvestmentsPeriodComponent],
+  exports: [CompoundInterestExtraInvestmentsPeriodSelectorComponent],
 })
 export class CompoundInterestExtraInvestmentsPeriodModule {}

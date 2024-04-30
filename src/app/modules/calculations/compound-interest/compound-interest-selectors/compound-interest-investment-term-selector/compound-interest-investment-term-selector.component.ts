@@ -5,12 +5,12 @@ import { InvestmentTermType } from './compound-interest-investment-term.typings'
 import { FormErrorMessageService } from '../../../../../services/form-error-message/form-error-message.service';
 
 @Component({
-  selector: 'dft-compound-interest-investment-term',
-  templateUrl: './compound-interest-investment-term.component.html',
-  styleUrl: './compound-interest-investment-term.component.scss',
+  selector: 'dft-compound-interest-investment-term-selector',
+  templateUrl: './compound-interest-investment-term-selector.component.html',
+  styleUrl: './compound-interest-investment-term-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestInvestmentTermComponent {
+export class CompoundInterestInvestmentTermSelectorComponent {
   @Input() public control: FormControl<InvestmentTermType>;
 
   public readonly investmentTermTypeToTranslation = Object.entries(

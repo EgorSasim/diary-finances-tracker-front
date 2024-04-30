@@ -6,9 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CompoundInterestReinvestmentPeriodModule } from '../compound-interest-selectors/compound-interest-reinvestment-period/compound-interest-reinvestment-period.module';
-import { CompoundInterestInvestmentTermModule } from '../compound-interest-selectors/compound-interest-investment-term/compound-interest-investment-term.module';
-import { CompoundInterestExtraInvestmentsPeriodModule } from '../compound-interest-selectors/compound-interest-extra-investments-period/compound-interest-extra-investments-period.module';
+import { CompoundInterestReinvestmentPeriodModule } from '../compound-interest-selectors/compound-interest-reinvestment-period-selector/compound-interest-reinvestment-period.module';
+import { CompoundInterestInvestmentTermModule } from '../compound-interest-selectors/compound-interest-investment-term-selector/compound-interest-investment-term.module';
+import { CompoundInterestExtraInvestmentsPeriodModule } from '../compound-interest-selectors/compound-interest-extra-investments-period-selector/compound-interest-extra-investments-period.module';
 
 @NgModule({
   declarations: [CopmoundInterestFinalAmountComponent],

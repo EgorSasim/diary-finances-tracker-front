@@ -4,10 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CompoundInterestInvestmentTermComponent } from './compound-interest-investment-term.component';
+import { CompoundInterestInvestmentTermSelectorComponent } from './compound-interest-investment-term-selector.component';
 
 @NgModule({
-  declarations: [CompoundInterestInvestmentTermComponent],
+  declarations: [CompoundInterestInvestmentTermSelectorComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -15,6 +15,6 @@ import { CompoundInterestInvestmentTermComponent } from './compound-interest-inv
     MatInputModule,
     ReactiveFormsModule,
   ],
-  exports: [CompoundInterestInvestmentTermComponent],
+  exports: [CompoundInterestInvestmentTermSelectorComponent],
 })
 export class CompoundInterestInvestmentTermModule {}

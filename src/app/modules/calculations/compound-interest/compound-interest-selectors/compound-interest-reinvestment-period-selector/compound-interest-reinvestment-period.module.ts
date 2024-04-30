@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompoundInterestReinvestmentPeriodComponent } from './compound-interest-reinvestment-period.component';
+import { CompoundInterestReinvestmentPeriodSelectorComponent } from './compound-interest-reinvestment-period-selector.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CompoundInterestReinvestmentPeriodComponent],
+  declarations: [CompoundInterestReinvestmentPeriodSelectorComponent],
   imports: [
     CommonModule,
     TranslateModule,
@@ -15,6 +15,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
   ],
-  exports: [CompoundInterestReinvestmentPeriodComponent],
+  exports: [CompoundInterestReinvestmentPeriodSelectorComponent],
 })
 export class CompoundInterestReinvestmentPeriodModule {}
