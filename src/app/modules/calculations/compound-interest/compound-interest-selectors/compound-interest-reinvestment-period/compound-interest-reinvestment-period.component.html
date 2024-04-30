@@ -1,0 +1,11 @@
+@if (control) {
+<mat-form-field class="dft-compound-interest-reinvestment-period-selector">
+  <mat-label>{{ "compoundInterest.reinvestmentPeriod" | translate }}</mat-label>
+  <mat-select matInput [formControl]="control">
+    @for (item of compoundInterestReinvestmentPeriodToTranslate; track item) {
+    <mat-option [value]="item[0]">{{ item[1] | translate }}</mat-option>
+    }
+  </mat-select>
+  <mat-error>{{ getErrorMessage(control) | translate }}</mat-error>
+</mat-form-field>
+}

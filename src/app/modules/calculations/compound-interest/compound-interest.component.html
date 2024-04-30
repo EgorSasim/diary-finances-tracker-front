@@ -1,0 +1,8 @@
+<dft-compound-interest-calculation-selector
+  (calculationChange)="changeCalculationType($event)"
+></dft-compound-interest-calculation-selector>
+<div class="dft-compound-interest__input-controls">
+  @switch (currentCalculationType) { @case ('FinalAmount') {
+  <dft-copmound-interest-final-amount></dft-copmound-interest-final-amount>
+  } }
+</div>

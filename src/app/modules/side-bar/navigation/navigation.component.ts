@@ -36,4 +36,8 @@ export class NavigationComponent {
   public goToBalancePage(): void {
     this.navigationService.goToBalancePage();
   }
+
+  public goToCalculationsPage(): void {
+    this.navigationService.goToCalculationsPage();
+  }
 }

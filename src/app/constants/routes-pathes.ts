@@ -15,4 +15,5 @@ export const ROUTE_PATH = {
   expensesPage: 'expenses-page',
   expenseEditPage: 'expense-edit-page',
   balancePage: 'balance-page',
+  calculationsPage: 'calculations-page',
 };

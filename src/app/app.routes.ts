@@ -16,6 +16,7 @@ import { IncomeEditPageComponent } from './modules/income/income-edit-page/incom
 import { ExpensesPageComponent } from './modules/expense/expenses-page/expenses-page.component';
 import { ExpenseEditPageComponent } from './modules/expense/expense-edit-page/expense-edit-page.component';
 import { BalancePageComponent } from './modules/balance-page/balance-page.component';
+import { CalculationsPageComponent } from './modules/calculations/calculations-page/calculations-page.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +88,14 @@ export const routes: Routes = [
               import('./modules/balance-page/balance-page.module').then(
                 (m) => m.BalancePageModule
               ),
+          },
+          {
+            path: ROUTE_PATH.calculationsPage,
+            component: CalculationsPageComponent,
+            loadChildren: () =>
+              import(
+                './modules/calculations/calculations-page/calculations-page.module'
+              ).then((m) => m.CalculationsPageModule),
           },
           {
             path: '**',
