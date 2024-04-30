@@ -1,7 +1,14 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { IncomeService } from '../../services/income/income.service';
 import { ExpenseService } from '../../services/expense/expense.service';
-import { Observable, combineLatest, map, startWith, switchMap } from 'rxjs';
+import {
+  Observable,
+  combineLatest,
+  map,
+  merge,
+  startWith,
+  switchMap,
+} from 'rxjs';
 import { Income } from '../../services/income/income.typings';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Expense } from '../../services/expense/expense.typings';
@@ -15,13 +22,15 @@ import {
   getExpenseToIncomeLineChartData,
   getIncomeToExpenseChartData,
 } from './balance-page.helpers';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class BalancePageService {
   constructor(
     private incomeService: IncomeService,
     private expenseService: ExpenseService,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    private translateService: TranslateService
   ) {}
 
   public handleBalance(): Observable<number> {
@@ -33,7 +42,7 @@ export class BalancePageService {
   public getIncomeToExpenseData(): Observable<IncomeToExpenseChartItem[]> {
     return combineLatest([this.handleExpenses(), this.handleIncomes()]).pipe(
       map(([expenses, incomes]) =>
-        getIncomeToExpenseChartData(expenses, incomes)
+        getIncomeToExpenseChartData(expenses, incomes, this.translateService)
       )
     );
   }
@@ -43,13 +52,20 @@ export class BalancePageService {
   > {
     return combineLatest([this.handleExpenses(), this.handleIncomes()]).pipe(
       map(([expenses, incomes]) =>
-        getExpenseToIncomeLineChartData(expenses, incomes)
+        getExpenseToIncomeLineChartData(
+          expenses,
+          incomes,
+          this.translateService
+        )
       )
     );
   }
 
   private handleIncomes(): Observable<Income[]> {
-    return this.incomeService.incomesChange$.pipe(
+    return merge(
+      this.incomeService.incomesChange$,
+      this.translateService.onLangChange
+    ).pipe(
       startWith(true),
       switchMap(() => this.incomeService.getIncomes()),
       takeUntilDestroyed(this.destroyRef)
@@ -57,7 +73,10 @@ export class BalancePageService {
   }
 
   private handleExpenses(): Observable<Expense[]> {
-    return this.expenseService.expensesChange$.pipe(
+    return merge(
+      this.expenseService.expensesChange$,
+      this.translateService.onLangChange
+    ).pipe(
       startWith(true),
       switchMap(() => this.expenseService.getExpenses()),
       takeUntilDestroyed(this.destroyRef)

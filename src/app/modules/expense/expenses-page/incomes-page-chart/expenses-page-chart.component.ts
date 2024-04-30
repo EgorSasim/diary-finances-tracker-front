@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ExpensesPageChartService } from './expenses-page-chart.service';
 import {
-  EXPENSES_TYPES_PERCENTAGE_CHART_OPTIONS,
   EXPENSE_AMOUNT_CHART_OPTIONS,
+  getExpensesTypesPercentageChartOptions,
 } from './expenses-page-chart.constants';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'dft-expenses-page-chart',
@@ -19,8 +20,11 @@ export class ExpensesPageChartComponent {
     EXPENSE_AMOUNT_CHART_OPTIONS;
   public expenseTypeChartData$ =
     this.expensesPageChartService.getExpenseTypesChartData();
-  public readonly expenseTypesPersentageChartOptions: typeof EXPENSES_TYPES_PERCENTAGE_CHART_OPTIONS =
-    EXPENSES_TYPES_PERCENTAGE_CHART_OPTIONS;
+  public readonly expenseTypesPersentageChartOptions =
+    getExpensesTypesPercentageChartOptions(this.translateService);
 
-  constructor(private expensesPageChartService: ExpensesPageChartService) {}
+  constructor(
+    private expensesPageChartService: ExpensesPageChartService,
+    private translateService: TranslateService
+  ) {}
 }

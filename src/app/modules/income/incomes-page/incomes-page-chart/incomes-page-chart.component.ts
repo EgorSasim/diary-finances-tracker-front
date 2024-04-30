@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IncomesPageChartService } from './incomes-page-chart.service';
 import {
-  INCOMES_TYPES_PERCENTAGE_CHART_OPTIONS,
   INCOME_AMOUNT_CHART_OPTIONS,
+  getIncomesTypesPercentageChartOptions,
 } from './incomes-page-chart.constants';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'dft-incomes-page-chart',
@@ -19,8 +20,11 @@ export class IncomesPageChartComponent {
     INCOME_AMOUNT_CHART_OPTIONS;
   public incomeTypeChartData$ =
     this.incomesPageChartService.getIncomeTypesChartData();
-  public readonly incomeTypesPersentageChartOptions: typeof INCOMES_TYPES_PERCENTAGE_CHART_OPTIONS =
-    INCOMES_TYPES_PERCENTAGE_CHART_OPTIONS;
+  public readonly incomeTypesPersentageChartOptions =
+    getIncomesTypesPercentageChartOptions(this.translateService);
 
-  constructor(private incomesPageChartService: IncomesPageChartService) {}
+  constructor(
+    private incomesPageChartService: IncomesPageChartService,
+    private translateService: TranslateService
+  ) {}
 }

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Expense } from '../../services/expense/expense.typings';
 import { Income } from '../../services/income/income.typings';
 import {
@@ -8,7 +9,8 @@ import {
 
 export function getIncomeToExpenseChartData(
   expenses: Expense[],
-  incomes: Income[]
+  incomes: Income[],
+  translateService: TranslateService
 ): IncomeToExpenseChartItem[] {
   const onlyExpensesValues: IncomeToExpenseChartItem[] = expenses
     .filter(
@@ -18,7 +20,7 @@ export function getIncomeToExpenseChartData(
       name: expense.date,
       series: [
         {
-          name: 'expense',
+          name: translateService.instant('app.expenses'),
           value: +expense.amount,
         },
       ],
@@ -31,7 +33,7 @@ export function getIncomeToExpenseChartData(
       name: income.date,
       series: [
         {
-          name: 'income',
+          name: translateService.instant('app.incomes'),
           value: +income.amount,
         },
       ],
@@ -44,11 +46,11 @@ export function getIncomeToExpenseChartData(
       name: income.date,
       series: [
         {
-          name: 'income',
+          name: translateService.instant('app.incomes'),
           value: +income.amount,
         },
         {
-          name: 'expense',
+          name: translateService.instant('app.expenses'),
           value:
             +(
               expenses.find(
@@ -81,7 +83,8 @@ export function getBalanceValue(
 
 export function getExpenseToIncomeLineChartData(
   expenses: Expense[],
-  incomes: Income[]
+  incomes: Income[],
+  translateService: TranslateService
 ): ExpenseToIncomeLineChartItem[] {
   const expenseSeries: ExpenseToIncomeLineChartItemSerie[] = expenses.map(
     (expense) => ({
@@ -97,14 +100,13 @@ export function getExpenseToIncomeLineChartData(
   );
   const result = [
     {
-      name: 'incomes',
+      name: translateService.instant('app.incomes'),
       series: incomeSeries,
     },
     {
-      name: 'expenses',
+      name: translateService.instant('app.expenses'),
       series: expenseSeries,
     },
   ];
-  console.log('result: ', result);
   return result;
 }
