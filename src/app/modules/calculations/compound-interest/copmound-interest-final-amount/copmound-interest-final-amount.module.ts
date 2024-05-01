@@ -13,6 +13,7 @@ import { CompoundInterestStartUpCapitalInputModule } from '../compound-interest-
 import { CompoundInterestInvestmentTermInputModule } from '../compound-interest-inputs/compound-interest-investment-term-input/compound-interest-investment-term-input.module';
 import { CompoundInterestBidInputModule } from '../compound-interest-inputs/compound-interest-bid-input/compound-interest-bid-input.module';
 import { CompoundExtraInvestmentsInputModule } from '../compound-interest-inputs/compound-extra-investments-input/compound-extra-investments-input.module';
+import { CompoundInterestAnalysisChartModule } from '../compound-interest-charts/compound-interest-analysis-chart/compound-interest-analysis-chart.module';
 
 @NgModule({
   declarations: [CopmoundInterestFinalAmountComponent],
@@ -30,6 +31,7 @@ import { CompoundExtraInvestmentsInputModule } from '../compound-interest-inputs
     CompoundInterestInvestmentTermInputModule,
     CompoundInterestBidInputModule,
     CompoundExtraInvestmentsInputModule,
+    CompoundInterestAnalysisChartModule,
   ],
   exports: [CopmoundInterestFinalAmountComponent],
 })

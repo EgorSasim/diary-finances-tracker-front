@@ -9,9 +9,30 @@ export interface CompoundInterestFinalAmount {
   ivestmentTermType: InvestmentTermType;
   bid: number;
   reinvestmentPeriod: CompoundInterestReinvestmentPeriod;
-  extraInvestitions: number;
-  extraInvestitionsType: CompoundInterestExtraInvestmentPeriod;
+  extraInvestment: number;
+  extraInvestmentType: CompoundInterestExtraInvestmentPeriod;
 }
 
 export type CompoundInterestFinalAmountForm =
   ConvertToForm<CompoundInterestFinalAmount>;
+
+export interface FinalAmounCalculationsResult {
+  startSum: number;
+  income: number;
+  resultSum: number;
+  replenishments: number;
+  yearsData: FinalAmounCalculationsResultYearData[];
+}
+
+export interface FinalAmounCalculationsResultYearData {
+  data: FinalAmounCalculationsResultPeriodData;
+  monthsData: FinalAmounCalculationsResultPeriodData[];
+}
+
+export interface FinalAmounCalculationsResultPeriodData {
+  serialNumber: number;
+  startSum: number;
+  percentageIncome: number;
+  investments: number;
+  resultSum: number;
+}

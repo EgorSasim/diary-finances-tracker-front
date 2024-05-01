@@ -16,3 +16,36 @@
   display: block;
   width: 100%;
 }
+
+.dft-compound-interest-final-amount__results {
+  padding: 4rem 2rem;
+}
+
+.dft-compound-interest-final-amount__results-header {
+  display: flex;
+  width: 100%;
+}
+
+.dft-compound-interest-final-amount__results-header-side {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  row-gap: 2rem;
+  flex: 1;
+
+  &.mod-left {
+    justify-content: left;
+  }
+
+  &.mod-right {
+    justify-content: right;
+  }
+}
+
+.dft-compound-interest-final-amount__results-label {
+  display: block;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}

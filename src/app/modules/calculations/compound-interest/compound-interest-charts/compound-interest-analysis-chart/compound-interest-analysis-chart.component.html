@@ -1,0 +1,11 @@
+@if (analysysChartData) {
+<ngx-charts-pie-chart
+  [view]="chartOptions.size"
+  [scheme]="chartOptions.colorScheme"
+  [gradient]="chartOptions.gradient"
+  [legend]="chartOptions.showLegend"
+  [legendPosition]="chartOptions.legendPosition"
+  [labels]="chartOptions.labels"
+  [results]="analysysChartData"
+></ngx-charts-pie-chart>
+}

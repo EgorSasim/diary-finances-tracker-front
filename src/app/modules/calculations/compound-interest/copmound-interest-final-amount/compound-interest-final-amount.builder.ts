@@ -7,8 +7,8 @@ export class CopmoundInterestFinalAmountBuilder {
   public createFormGroup(): FormGroup<CompoundInterestFinalAmountForm> {
     return new FormGroup<CompoundInterestFinalAmountForm>({
       bid: new FormControl(null, [Validators.required, Validators.min(1)]),
-      extraInvestitions: new FormControl(null, [Validators.min(0)]),
-      extraInvestitionsType: new FormControl('month'),
+      extraInvestment: new FormControl(null, [Validators.min(0)]),
+      extraInvestmentType: new FormControl('month'),
       reinvestmentPeriod: new FormControl('noReinvestment'),
       investmentTerm: new FormControl(null, [
         Validators.required,

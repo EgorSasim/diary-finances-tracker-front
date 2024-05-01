@@ -165,5 +165,9 @@
   "compoundInterest.replenishmentAmount": "Replenishment amount",
   "compoundInterest.investmentTerm": "Investment term",
   "compoundInterest.reinvestmentPeriod": "Reinvestment period",
-  "compoundInterest.extraInvestments": "Extra investments"
+  "compoundInterest.extraInvestments": "Extra investments",
+  "compoundInterest.startSum": "Start sum",
+  "copmoundInterest.replenishment": "Replenishment",
+  "copmoundInterest.allReplenishmentsSum": "All replenishments sum",
+  "copmoundInterest.resultSum": "Result sum"
 }

@@ -165,5 +165,9 @@
   "compoundInterest.replenishmentAmount": "Размер поплнений",
   "compoundInterest.investmentTerm": "Срок инвестирования",
   "compoundInterest.reinvestmentPeriod": "Период реинвестирования",
-  "compoundInterest.extraInvestments": "Дополнительные вложения"
+  "compoundInterest.extraInvestments": "Дополнительные вложения",
+  "compoundInterest.startSum": "Начальная сумма",
+  "copmoundInterest.replenishment": "Пополнения",
+  "copmoundInterest.allReplenishmentsSum": "Сумма всех пополнений",
+  "copmoundInterest.resultSum": "Итоговая сумма"
 }
