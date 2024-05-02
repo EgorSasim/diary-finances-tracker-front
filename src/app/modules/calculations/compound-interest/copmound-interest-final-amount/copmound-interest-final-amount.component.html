@@ -34,49 +34,51 @@
   >
     {{ "app.calculate" | translate }}
   </button>
-
-  @if (analysisChartData$ | async; as analysisChartData) {
-  <hr />
-  <div class="dft-compound-interest-final-amount__results">
-    <div class="dft-compound-interest-final-amount__results-header">
-      <div
-        class="dft-compound-interest-final-amount__results-header-side mod-left"
+</div>
+} @if (analysisChartData$ | async; as analysisChartData) {
+<hr />
+<div class="dft-compound-interest-final-amount__results">
+  <div class="dft-compound-interest-final-amount__results-header">
+    <div
+      class="dft-compound-interest-final-amount__results-header-side mod-left"
+    >
+      <span class="dft-compound-interest-final-amount__results-label"
+        >{{ "copmoundInterest.allReplenishmentsSum" | translate }}:</span
       >
-        <span class="dft-compound-interest-final-amount__results-label"
-          >{{ "copmoundInterest.allReplenishmentsSum" | translate }}:</span
-        >
-        <span class="dft-compound-interest-final-amount__results-label"
-          >{{ "app.income" | translate }}:</span
-        >
-        <span class="dft-compound-interest-final-amount__results-label"
-          >{{ "copmoundInterest.resultSum" | translate }}:</span
-        >
-      </div>
-      @if (finalCalculationsResult$ | async; as finalCalculationsResult) {
-      <div
-        class="dft-compound-interest-final-amount__results-header-side mod-right"
+      <span class="dft-compound-interest-final-amount__results-label"
+        >{{ "app.income" | translate }}:</span
       >
-        <span class="dft-compound-interest-final-amount__results-label"
-          ><b>{{
-            finalCalculationsResult.replenishments | number : "1.0-3"
-          }}</b></span
-        >
-        <span class="dft-compound-interest-final-amount__results-label"
-          ><b>{{ finalCalculationsResult.income | number : "1.0-3" }}</b></span
-        >
-        <span class="dft-compound-interest-final-amount__results-label"
-          ><b>{{
-            finalCalculationsResult.resultSum | number : "1.0-3"
-          }}</b></span
-        >
-      </div>
-      }
+      <span class="dft-compound-interest-final-amount__results-label"
+        >{{ "copmoundInterest.resultSum" | translate }}:</span
+      >
     </div>
-
-    <dft-compound-interest-analysis-chart
-      [analysysChartData]="analysisChartData"
-    ></dft-compound-interest-analysis-chart>
+    @if (finalCalculationsResult$ | async; as finalCalculationsResult) {
+    <div
+      class="dft-compound-interest-final-amount__results-header-side mod-right"
+    >
+      <span class="dft-compound-interest-final-amount__results-label"
+        ><b>{{
+          finalCalculationsResult.replenishments | number : "1.0-3"
+        }}</b></span
+      >
+      <span class="dft-compound-interest-final-amount__results-label"
+        ><b>{{ finalCalculationsResult.income | number : "1.0-3" }}</b></span
+      >
+      <span class="dft-compound-interest-final-amount__results-label"
+        ><b>{{ finalCalculationsResult.resultSum | number : "1.0-3" }}</b></span
+      >
+    </div>
+    }
   </div>
+
+  <dft-compound-interest-analysis-chart
+    [analysysChartData]="analysisChartData"
+  ></dft-compound-interest-analysis-chart>
+
+  @if ((growthChartData$ | async).length) {
+  <dft-compound-interest-growth-chart
+    [items]="growthChartData$ | async"
+  ></dft-compound-interest-growth-chart>
   }
 </div>
 }

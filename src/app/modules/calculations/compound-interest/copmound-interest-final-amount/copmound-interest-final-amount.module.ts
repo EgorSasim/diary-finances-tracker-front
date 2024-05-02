@@ -14,6 +14,7 @@ import { CompoundInterestInvestmentTermInputModule } from '../compound-interest-
 import { CompoundInterestBidInputModule } from '../compound-interest-inputs/compound-interest-bid-input/compound-interest-bid-input.module';
 import { CompoundExtraInvestmentsInputModule } from '../compound-interest-inputs/compound-extra-investments-input/compound-extra-investments-input.module';
 import { CompoundInterestAnalysisChartModule } from '../compound-interest-charts/compound-interest-analysis-chart/compound-interest-analysis-chart.module';
+import { CompoundInterestGrowthChartModule } from '../compound-interest-charts/compound-interest-growth-chart/compound-interest-growth-chart.module';
 
 @NgModule({
   declarations: [CopmoundInterestFinalAmountComponent],
@@ -32,6 +33,7 @@ import { CompoundInterestAnalysisChartModule } from '../compound-interest-charts
     CompoundInterestBidInputModule,
     CompoundExtraInvestmentsInputModule,
     CompoundInterestAnalysisChartModule,
+    CompoundInterestGrowthChartModule,
   ],
   exports: [CopmoundInterestFinalAmountComponent],
 })

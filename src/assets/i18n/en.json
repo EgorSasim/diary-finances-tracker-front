@@ -169,5 +169,6 @@
   "compoundInterest.startSum": "Start sum",
   "copmoundInterest.replenishment": "Replenishment",
   "copmoundInterest.allReplenishmentsSum": "All replenishments sum",
-  "copmoundInterest.resultSum": "Result sum"
+  "copmoundInterest.resultSum": "Result sum",
+  "copmoundInterest.percentageIncome": "Percentage income"
 }

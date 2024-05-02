@@ -1,1 +1,10 @@
-<p>compound-interest-growth-chart works!</p>
+<ngx-charts-line-chart
+  [view]="chartOptions.chartSize"
+  [xAxis]="chartOptions.showXAxis"
+  [yAxis]="chartOptions.showYAxis"
+  [gradient]="chartOptions.gradient"
+  [xAxisLabel]="chartOptions.showXAxisLabel"
+  [yAxisLabel]="chartOptions.showYAxisLabel"
+  [scheme]="chartOptions.colorScheme"
+  [results]="items"
+></ngx-charts-line-chart>

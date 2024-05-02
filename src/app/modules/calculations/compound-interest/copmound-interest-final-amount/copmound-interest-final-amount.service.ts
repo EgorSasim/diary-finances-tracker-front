@@ -3,11 +3,15 @@ import {
   CompoundInterestFinalAmount,
   FinalAmounCalculationsResult,
 } from './comound-interest-final-amount.typings';
-import { getFinalAmountWithNoReinvestment } from './copmound-interest-final-amount.helpers';
-import { Observable, forkJoin, map, startWith, switchMap } from 'rxjs';
+import {
+  getCompoundInterestGrowthChartData,
+  getFinalAmountWithNoReinvestment,
+} from './copmound-interest-final-amount.helpers';
+import { Observable, forkJoin, map, of, startWith, switchMap } from 'rxjs';
 import { CompoundInterestAnlysysChartItem } from '../compound-interest-charts/compound-interest-analysis-chart/compound-interest-analysis-chart.typings';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CompoundInterestGrowthChartItem } from '../compound-interest-charts/compound-interest-growth-chart/compound-interest-growth-chart.typings';
 
 @Injectable()
 export class CompoundInterestFinalAmountService {
@@ -49,6 +53,28 @@ export class CompoundInterestFinalAmountService {
         },
       ]),
       takeUntilDestroyed(this.destroyRef)
+    );
+  }
+
+  public getGrowthChartData(
+    calculationsResult: FinalAmounCalculationsResult
+  ): Observable<CompoundInterestGrowthChartItem[]> {
+    return this.translateService.onLangChange.pipe(
+      startWith(true),
+      switchMap(() => {
+        const growthChartData =
+          getCompoundInterestGrowthChartData(calculationsResult);
+        const translations = growthChartData.map((data) =>
+          this.translateService.get(data.name)
+        );
+        return forkJoin(translations);
+      }),
+      map((translations) => {
+        const growthChartData =
+          getCompoundInterestGrowthChartData(calculationsResult);
+        growthChartData.forEach((item, i) => (item.name = translations[i]));
+        return growthChartData;
+      })
     );
   }
 }

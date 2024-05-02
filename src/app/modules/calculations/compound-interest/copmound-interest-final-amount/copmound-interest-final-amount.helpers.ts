@@ -1,4 +1,5 @@
 import { MONTH_IN_YEAR } from '../../../../constants/date';
+import { CompoundInterestGrowthChartItem } from '../compound-interest-charts/compound-interest-growth-chart/compound-interest-growth-chart.typings';
 import { CompoundInterestExtraInvestmentPeriod } from '../compound-interest-selectors/compound-interest-extra-investments-period-selector/compound-interest-extra-investments-period.typings';
 import {
   CompoundInterestFinalAmount,
@@ -93,6 +94,61 @@ export function getAllExtraInvestmentsTotalSum(
   const investmentPeriodicity =
     extraInvestitionsPeriodityNameToNumber[investmentPeriod];
   return (totalPeriodInMonths / investmentPeriodicity) * investmentAmount;
+}
+
+export function getCompoundInterestGrowthChartData(
+  finalAmountCalculationsResult: FinalAmounCalculationsResult
+): CompoundInterestGrowthChartItem[] {
+  const percentageIncomeSeries = finalAmountCalculationsResult.yearsData.map(
+    (year, index) => ({
+      name: index + 1,
+      value: finalAmountCalculationsResult.yearsData.reduce((acc, year, i) => {
+        if (i <= index) {
+          acc += year.data.percentageIncome;
+        }
+        return acc;
+      }, 0),
+    })
+  );
+  const startSum = finalAmountCalculationsResult.yearsData.map(
+    (year, index) => ({
+      name: index + 1,
+      value: year.data.startSum,
+    })
+  );
+  const balanceSeries = finalAmountCalculationsResult.yearsData.map(
+    (year, index) => ({
+      name: index + 1,
+      value: year.data.resultSum,
+    })
+  );
+
+  startSum.unshift({
+    name: 0,
+    value: finalAmountCalculationsResult.yearsData[0].data.startSum,
+  });
+  percentageIncomeSeries.unshift({
+    name: 0,
+    value: 0,
+  });
+  balanceSeries.unshift({
+    name: 0,
+    value: finalAmountCalculationsResult.yearsData[0].data.startSum,
+  });
+  return [
+    {
+      name: 'copmoundInterest.percentageIncome',
+      series: percentageIncomeSeries,
+    },
+    {
+      name: 'compoundInterest.startSum',
+      series: startSum,
+    },
+    {
+      name: 'app.balance',
+      series: balanceSeries,
+    },
+  ];
 }
 
 function getYearsWithMonthsData(

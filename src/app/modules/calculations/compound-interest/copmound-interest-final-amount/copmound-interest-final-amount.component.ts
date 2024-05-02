@@ -20,9 +20,12 @@ import {
   forkJoin,
   startWith,
   switchMap,
+  tap,
 } from 'rxjs';
 import { CompoundInterestAnlysysChartItem } from '../compound-interest-charts/compound-interest-analysis-chart/compound-interest-analysis-chart.typings';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { getCompoundInterestGrowthChartData } from './copmound-interest-final-amount.helpers';
+import { CompoundInterestGrowthChartItem } from '../compound-interest-charts/compound-interest-growth-chart/compound-interest-growth-chart.typings';
 
 @Component({
   selector: 'dft-copmound-interest-final-amount',
@@ -39,6 +42,8 @@ export class CopmoundInterestFinalAmountComponent {
   public analysisChartData$: Observable<CompoundInterestAnlysysChartItem[]>;
   public finalCalculationsResult$: ReplaySubject<FinalAmounCalculationsResult> =
     new ReplaySubject(1);
+
+  public growthChartData$: Observable<CompoundInterestGrowthChartItem[]>;
   constructor(
     private copmoundInterestFinalAmountBuilder: CopmoundInterestFinalAmountBuilder,
     private formErrorMessageService: FormErrorMessageService,
@@ -61,13 +66,17 @@ export class CopmoundInterestFinalAmountComponent {
       this.compoundInterestFinalAmountService.calculateFinalAmount(
         this.formGroup.value as CompoundInterestFinalAmount
       );
+
     this.finalCalculationsResult$.next(finalCalculationsResult);
     this.analysisChartData$ =
       this.compoundInterestFinalAmountService.getAnalysisChartData(
         finalCalculationsResult
       );
 
-    console.log('final amount: ', finalCalculationsResult);
+    this.growthChartData$ =
+      this.compoundInterestFinalAmountService.getGrowthChartData(
+        finalCalculationsResult
+      );
   }
 
   private showRequiredFieldsSnack(): void {

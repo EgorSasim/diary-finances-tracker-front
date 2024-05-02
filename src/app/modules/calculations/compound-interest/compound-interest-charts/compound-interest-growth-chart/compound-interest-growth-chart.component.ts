@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CompoundInterestGrowthChartItem } from './compound-interest-growth-chart.typings';
+import { COMPOUND_INTEREST_GROWTH_CHART_OPTIONS } from './compound-interest-growth-chart.constants';
 
 @Component({
   selector: 'dft-compound-interest-growth-chart',
@@ -6,4 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './compound-interest-growth-chart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestGrowthChartComponent {}
+export class CompoundInterestGrowthChartComponent {
+  @Input() items: CompoundInterestGrowthChartItem[];
+
+  public readonly chartOptions: typeof COMPOUND_INTEREST_GROWTH_CHART_OPTIONS =
+    COMPOUND_INTEREST_GROWTH_CHART_OPTIONS;
+}

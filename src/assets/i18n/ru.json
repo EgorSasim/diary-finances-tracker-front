@@ -169,5 +169,6 @@
   "compoundInterest.startSum": "Начальная сумма",
   "copmoundInterest.replenishment": "Пополнения",
   "copmoundInterest.allReplenishmentsSum": "Сумма всех пополнений",
-  "copmoundInterest.resultSum": "Итоговая сумма"
+  "copmoundInterest.resultSum": "Итоговая сумма",
+  "copmoundInterest.percentageIncome": "Процентный доход"
 }
