@@ -1,4 +1,8 @@
 {
+  "app.number": "Число",
+  "app.percent": "Процент",
+  "app.from": "От",
+  "app.amountsTo": "Составляет от",
   "app.period": "Период",
   "app.fillAllRequiredFields": "Заполните все обязательные поля",
   "app.calculate": "Рассчитать",
@@ -171,5 +175,12 @@
   "copmoundInterest.replenishment": "Пополнения",
   "copmoundInterest.allReplenishmentsSum": "Сумма всех пополнений",
   "copmoundInterest.resultSum": "Итоговая сумма",
-  "copmoundInterest.percentageIncome": "Процентный доход"
+  "copmoundInterest.percentageIncome": "Процентный доход",
+  "interest.select.percentFromNumber": "Процент от числа",
+  "interest.select.percentOneNumberFromAnother": "Сколько процентов состовляет число от числа",
+  "interest.select.addPercentToNumber": "Прибавить процент к числу",
+  "interest.select.substractPercentFromNumber": "Вычесть процент из числа",
+  "interest.select.percentsOneNumberMoreAnother": "На сколько процентов одно число больше другого",
+  "interest.select.percentsOneNumberLessAnother": "На сколько процентов одно число меньше другого",
+  "interest.select.hundredPercents": "Найти 100 процентов"
 }

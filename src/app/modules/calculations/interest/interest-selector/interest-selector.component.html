@@ -1,0 +1,8 @@
+<mat-form-field class="dft-interest-selector">
+  <mat-label>{{ "app.chooseCalculation" | translate }}</mat-label>
+  <mat-select matInput [formControl]="control">
+    @for (item of interestSelectorToTranslations; track item) {
+    <mat-option [value]="item[0]">{{ item[1] | translate }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

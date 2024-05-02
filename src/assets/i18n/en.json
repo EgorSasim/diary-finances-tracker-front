@@ -1,4 +1,8 @@
 {
+  "app.number": "Number",
+  "app.percent": "Percent",
+  "app.from": "From",
+  "app.amountsTo": "Amounts to",
   "app.period": "Period",
   "app.fillAllRequiredFields": "Fill all required fields",
   "app.calculate": "Calculate",
@@ -171,5 +175,12 @@
   "copmoundInterest.replenishment": "Replenishment",
   "copmoundInterest.allReplenishmentsSum": "All replenishments sum",
   "copmoundInterest.resultSum": "Result sum",
-  "copmoundInterest.percentageIncome": "Percentage income"
+  "copmoundInterest.percentageIncome": "Percentage income",
+  "interest.select.percentFromNumber": "Percentage of a number",
+  "interest.select.percentOneNumberFromAnother": "What percent is one number of another number",
+  "interest.select.addPercentToNumber": "Add a percentage to a number",
+  "interest.select.substractPercentFromNumber": "Subtract a percentage from a number",
+  "interest.select.percentsOneNumberMoreAnother": "How much is one number greater than another in percent",
+  "interest.select.percentsOneNumberLessAnother": "How much is one number less than another (in percent)",
+  "interest.select.hundredPercents": "Find 100 percent"
 }

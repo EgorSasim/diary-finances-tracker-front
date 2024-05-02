@@ -1,0 +1,43 @@
+<div class="dft-interest">
+  <dft-interest-selector
+    (selectType)="interestCalculationTypeChange($event)"
+  ></dft-interest-selector>
+
+  <div class="dft-interst__inputs">
+    <mat-form-field>
+      <mat-label>{{ inputText[0] | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        [formControl]="formGroup.controls.control1"
+      />
+      <mat-error>{{
+        getErrorMessage(formGroup.controls.control1) | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    {{ inputText[1] | translate }}
+
+    <mat-form-field>
+      <mat-label>{{ inputText[2] | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        [formControl]="formGroup.controls.control2"
+      />
+      <mat-error>{{
+        getErrorMessage(formGroup.controls.control2) | translate
+      }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <button color="primary" mat-flat-button (click)="calculate()">
+    {{ "app.calculate" | translate }}
+  </button>
+
+  <hr />
+
+  <span
+    >Result: <b>{{ this.calculationsResult | number : "1.0-3" }}</b></span
+  >
+</div>
