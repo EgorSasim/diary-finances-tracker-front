@@ -6,3 +6,36 @@
 .dft-compound-interest-results-table__item-wrap {
   height: auto;
 }
+
+.dft-compound-interest-results-table__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 2rem;
+
+  &.mod-main-table-header {
+    padding: 0 2rem;
+    font-weight: bold;
+  }
+}
+
+.dft-compound-interest-results-table__item-header-element {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+  &.mod-first {
+    justify-content: left;
+  }
+
+  &.mod-last:not(.mod-first) {
+    justify-content: right;
+  }
+}
+
+.compound-interest-results-table__divider {
+  display: block;
+  width: 97%;
+  margin: 0 auto;
+}

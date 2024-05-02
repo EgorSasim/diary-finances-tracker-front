@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FinalAmounCalculationsResultYearData } from '../compound-interest-results-table.typings';
 import { ListColumnNames } from '../../../../common/list/list.typings';
 
@@ -13,20 +8,6 @@ import { ListColumnNames } from '../../../../common/list/list.typings';
   styleUrl: './compound-interest-results-table-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestResultsTableItemComponent implements OnChanges {
+export class CompoundInterestResultsTableItemComponent {
   @Input() public item: FinalAmounCalculationsResultYearData;
-
-  public readonly columnNames: ListColumnNames = [
-    'app.month',
-    'compoundInterest.startSum',
-    'copmoundInterest.percentageIncome',
-    'copmoundInterest.replenishment',
-    'copmoundInterest.resultSum',
-  ];
-
-  public ngOnChanges(): void {
-    if (this.item) {
-      console.log('item: ', this.item);
-    }
-  }
 }

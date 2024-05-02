@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { ListColumnNames } from './list.typings';
 
 @Component({
@@ -7,5 +7,6 @@ import { ListColumnNames } from './list.typings';
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
-  @Input() columnNames: ListColumnNames;
+  @Input() public columnNames: ListColumnNames;
+  @Input() public withHeader: boolean = true;
 }

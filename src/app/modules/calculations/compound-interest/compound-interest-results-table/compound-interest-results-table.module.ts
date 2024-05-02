@@ -5,6 +5,7 @@ import { CompoundInterestResultsTableItemModule } from './compound-interest-resu
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [CompoundInterestResultsTableComponent],
@@ -14,6 +15,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     MatDividerModule,
     MatExpansionModule,
+    TranslateModule,
   ],
   exports: [CompoundInterestResultsTableComponent],
 })

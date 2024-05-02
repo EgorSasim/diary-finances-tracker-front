@@ -15,9 +15,10 @@ export function getFinalAmount(
   finalAmountData: CompoundInterestFinalAmount
 ): FinalAmounCalculationsResult {
   const monthsData = getFinalAmounMonthsData(finalAmountData);
-
+  console.log('monthsData: ', monthsData);
   const yearsData: FinalAmounCalculationsResultYearData[] =
     getYearsWithMonthsData(monthsData);
+
   const replenishments = getAllExtraInvestmentsTotalSum(
     finalAmountData.extraInvestmentType,
     finalAmountData.extraInvestment,
@@ -51,7 +52,6 @@ function getFinalAmounMonthsData(
   const reinvestmentPeriodity: number =
     reinvestmentPeriodityNameToNumber[finalAmounData.reinvestmentPeriod];
 
-  console.log('reinvestmentPeriodity: ', reinvestmentPeriodity);
   const monthsData: FinalAmounCalculationsResultPeriodData[] = [];
   let resultMonthSum: number = finalAmounData.startUpCapital;
   let startMonthSum: number = finalAmounData.startUpCapital;
@@ -87,7 +87,7 @@ function getFinalAmounMonthsData(
     }
   }
 
-  return JSON.parse(JSON.stringify(monthsData));
+  return monthsData;
 }
 
 export function getAllExtraInvestmentsTotalSum(
@@ -158,6 +158,7 @@ export function getCompoundInterestGrowthChartData(
 function getYearsWithMonthsData(
   months: FinalAmounCalculationsResultPeriodData[]
 ): FinalAmounCalculationsResultYearData[] {
+  console.log('income months: ', months);
   const years: FinalAmounCalculationsResultYearData[] = new Array(
     Math.ceil(months.length / MONTH_IN_YEAR)
   );
@@ -174,18 +175,21 @@ function getYearsWithMonthsData(
 
   for (let i = 0; i < years.length; ++i) {
     const year = years[i];
-    year.data = year.monthsData.reduce(
-      (acc: FinalAmounCalculationsResultPeriodData, month) => {
-        acc.percentageIncome =
-          (acc.percentageIncome || 0) + month.percentageIncome;
-        acc.investments = (acc.investments || 0) + month.investments;
-        return acc;
-      }
-    );
+    let yearPercentageIncome = 0;
+    let yearInvestments = 0;
+    const monthData = year.monthsData;
+    for (let i = 0; i < monthData.length; ++i) {
+      yearPercentageIncome += monthData[i].percentageIncome;
+      yearInvestments += monthData[i].investments;
+    }
+    year.data.investments = yearInvestments;
+    year.data.percentageIncome = yearPercentageIncome;
     year.data.resultSum = year.monthsData.at(-1)?.resultSum || 0;
     year.data.serialNumber = i + 1;
     year.data.startSum = year.monthsData[0].startSum;
   }
+  console.log('output months: ', months);
+
   return years;
 }
 

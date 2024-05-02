@@ -1,11 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FinalAmounCalculationsResultYearData } from './compound-interest-results-table.typings';
+import { ListColumnNames } from '../../../common/list/list.typings';
 
 @Component({
   selector: 'dft-compound-interest-results-table',
@@ -13,12 +8,13 @@ import { FinalAmounCalculationsResultYearData } from './compound-interest-result
   styleUrl: './compound-interest-results-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompoundInterestResultsTableComponent implements OnChanges {
+export class CompoundInterestResultsTableComponent {
   @Input() public yearsData: FinalAmounCalculationsResultYearData[];
-
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (this.yearsData) {
-      console.log('years Data: ', this.yearsData);
-    }
-  }
+  public readonly columnNames: ListColumnNames = [
+    'app.period',
+    'compoundInterest.startSum',
+    'copmoundInterest.percentageIncome',
+    'copmoundInterest.replenishment',
+    'copmoundInterest.resultSum',
+  ];
 }

@@ -1,4 +1,5 @@
 {
+  "app.period": "Period",
   "app.fillAllRequiredFields": "Fill all required fields",
   "app.calculate": "Calculate",
   "app.noReinvestment": "No reinvestment",
