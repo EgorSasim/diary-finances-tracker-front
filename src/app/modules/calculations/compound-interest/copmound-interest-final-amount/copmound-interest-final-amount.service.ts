@@ -5,7 +5,7 @@ import {
 } from './comound-interest-final-amount.typings';
 import {
   getCompoundInterestGrowthChartData,
-  getFinalAmountWithNoReinvestment,
+  getFinalAmount,
 } from './copmound-interest-final-amount.helpers';
 import { Observable, forkJoin, map, of, startWith, switchMap } from 'rxjs';
 import { CompoundInterestAnlysysChartItem } from '../compound-interest-charts/compound-interest-analysis-chart/compound-interest-analysis-chart.typings';
@@ -23,7 +23,7 @@ export class CompoundInterestFinalAmountService {
   public calculateFinalAmount(
     finalAmountData: CompoundInterestFinalAmount
   ): FinalAmounCalculationsResult {
-    return getFinalAmountWithNoReinvestment(finalAmountData);
+    return getFinalAmount(finalAmountData);
   }
 
   public getAnalysisChartData(

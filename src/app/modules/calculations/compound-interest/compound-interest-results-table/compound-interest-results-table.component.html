@@ -1,0 +1,19 @@
+<mat-list>
+  @for (item of yearsData; track $index; let last = $last) {
+  <mat-list-item class="dft-compound-interest-results-table__item-wrap">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>{{
+          item.data.serialNumber
+        }}</mat-expansion-panel-header>
+        <dft-compound-interest-results-table-item
+          class="dft-compound-interest-results-table__item"
+          [item]="item"
+        ></dft-compound-interest-results-table-item>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-list-item>
+  @if (!last) {
+  <mat-divider></mat-divider>
+  } }
+</mat-list>

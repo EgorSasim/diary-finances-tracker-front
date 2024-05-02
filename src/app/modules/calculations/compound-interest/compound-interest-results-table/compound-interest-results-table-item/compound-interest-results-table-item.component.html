@@ -1,0 +1,31 @@
+<dft-list [columnNames]="columnNames">
+  <ng-container items>
+    @for (item of item.monthsData; track $index; let last = $last) {
+    <mat-list-item>
+      <div class="dft-compound-interest-result-table-item__lit-item">
+        <div
+          class="dft-compound-interest-result-table-item__lit-item-element mod-first"
+        >
+          {{ item.serialNumber | number : "1.0-3" }}
+        </div>
+        <div class="dft-compound-interest-result-table-item__lit-item-element">
+          {{ item.startSum | number : "1.0-3" }}
+        </div>
+        <div class="dft-compound-interest-result-table-item__lit-item-element">
+          {{ item.percentageIncome | number : "1.0-3" }}
+        </div>
+        <div class="dft-compound-interest-result-table-item__lit-item-element">
+          {{ item.investments | number : "1.0-3" }}
+        </div>
+        <div
+          class="dft-compound-interest-result-table-item__lit-item-element mod-last"
+        >
+          {{ item.resultSum | number : "1.0-3" }}
+        </div>
+      </div>
+    </mat-list-item>
+    @if (!last) {
+    <mat-divider></mat-divider>
+    } }
+  </ng-container>
+</dft-list>

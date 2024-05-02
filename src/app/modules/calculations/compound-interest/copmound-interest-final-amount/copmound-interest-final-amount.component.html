@@ -35,7 +35,7 @@
     {{ "app.calculate" | translate }}
   </button>
 </div>
-} @if (analysisChartData$ | async; as analysisChartData) {
+} @if (finalCalculationsResult$ | async; as finalCalculationsResult) {
 <hr />
 <div class="dft-compound-interest-final-amount__results">
   <div class="dft-compound-interest-final-amount__results-header">
@@ -52,7 +52,7 @@
         >{{ "copmoundInterest.resultSum" | translate }}:</span
       >
     </div>
-    @if (finalCalculationsResult$ | async; as finalCalculationsResult) {
+
     <div
       class="dft-compound-interest-final-amount__results-header-side mod-right"
     >
@@ -68,11 +68,10 @@
         ><b>{{ finalCalculationsResult.resultSum | number : "1.0-3" }}</b></span
       >
     </div>
-    }
   </div>
 
   <dft-compound-interest-analysis-chart
-    [analysysChartData]="analysisChartData"
+    [analysysChartData]="analysisChartData$ | async"
   ></dft-compound-interest-analysis-chart>
 
   @if ((growthChartData$ | async).length) {
@@ -80,5 +79,9 @@
     [items]="growthChartData$ | async"
   ></dft-compound-interest-growth-chart>
   }
+
+  <dft-compound-interest-results-table
+    [yearsData]="(finalCalculationsResult$ | async).yearsData"
+  ></dft-compound-interest-results-table>
 </div>
 }

@@ -1,23 +1,20 @@
 import { MONTH_IN_YEAR } from '../../../../constants/date';
 import { CompoundInterestGrowthChartItem } from '../compound-interest-charts/compound-interest-growth-chart/compound-interest-growth-chart.typings';
+import {
+  FinalAmounCalculationsResultPeriodData,
+  FinalAmounCalculationsResultYearData,
+} from '../compound-interest-results-table/compound-interest-results-table.typings';
 import { CompoundInterestExtraInvestmentPeriod } from '../compound-interest-selectors/compound-interest-extra-investments-period-selector/compound-interest-extra-investments-period.typings';
+import { CompoundInterestReinvestmentPeriod } from '../compound-interest-selectors/compound-interest-reinvestment-period-selector/compound-interest-reinvestment-period.typings';
 import {
   CompoundInterestFinalAmount,
   FinalAmounCalculationsResult,
-  FinalAmounCalculationsResultPeriodData,
-  FinalAmounCalculationsResultYearData,
 } from './comound-interest-final-amount.typings';
 
-export function getFinalAmountWithNoReinvestment(
+export function getFinalAmount(
   finalAmountData: CompoundInterestFinalAmount
 ): FinalAmounCalculationsResult {
-  const investmentPeriodsAmount =
-    finalAmountData.ivestmentTermType === 'month'
-      ? finalAmountData.investmentTerm / MONTH_IN_YEAR
-      : finalAmountData.investmentTerm;
-
-  const monthsData =
-    getFinalAmountWithNoReinvestmentsMonthsData(finalAmountData);
+  const monthsData = getFinalAmounMonthsData(finalAmountData);
 
   const yearsData: FinalAmounCalculationsResultYearData[] =
     getYearsWithMonthsData(monthsData);
@@ -32,7 +29,7 @@ export function getFinalAmountWithNoReinvestment(
     (acc: number, year) => (acc += year.data.percentageIncome),
     0
   );
-  const resultSum = (yearsData.at(-1)?.data.resultSum || 0) - replenishments;
+  const resultSum = yearsData.at(-1)?.data.resultSum || 0;
   return {
     startSum: finalAmountData.startUpCapital,
     income,
@@ -42,7 +39,7 @@ export function getFinalAmountWithNoReinvestment(
   };
 }
 
-export function getFinalAmountWithNoReinvestmentsMonthsData(
+function getFinalAmounMonthsData(
   finalAmounData: CompoundInterestFinalAmount
 ): FinalAmounCalculationsResultPeriodData[] {
   const investmentPeriodsAmountInMonths =
@@ -51,25 +48,28 @@ export function getFinalAmountWithNoReinvestmentsMonthsData(
       : finalAmounData.investmentTerm * MONTH_IN_YEAR;
   const extraInvestitionsPeriodity: number =
     extraInvestitionsPeriodityNameToNumber[finalAmounData.extraInvestmentType];
+  const reinvestmentPeriodity: number =
+    reinvestmentPeriodityNameToNumber[finalAmounData.reinvestmentPeriod];
 
+  console.log('reinvestmentPeriodity: ', reinvestmentPeriodity);
   const monthsData: FinalAmounCalculationsResultPeriodData[] = [];
   let resultMonthSum: number = finalAmounData.startUpCapital;
   let startMonthSum: number = finalAmounData.startUpCapital;
-  const extraInvestition: number = finalAmounData.extraInvestment;
+  const extraInvestment: number = finalAmounData.extraInvestment;
+  const bid = finalAmounData.bid;
 
   for (let i = 0; i < investmentPeriodsAmountInMonths; ++i) {
-    const percentageIncome =
-      startMonthSum * (finalAmounData.bid / MONTH_IN_YEAR / 100);
+    const percentageIncome = startMonthSum * (bid / MONTH_IN_YEAR / 100);
     resultMonthSum +=
       percentageIncome +
       ((i + 1) % extraInvestitionsPeriodity === 0
-        ? extraInvestition
-          ? extraInvestition
+        ? extraInvestment
+          ? extraInvestment
           : 0
         : 0);
     monthsData.push({
       investments:
-        (i + 1) % extraInvestitionsPeriodity === 0 ? extraInvestition : 0,
+        (i + 1) % extraInvestitionsPeriodity === 0 ? extraInvestment : 0,
       percentageIncome: percentageIncome,
       resultSum: resultMonthSum,
       serialNumber: i + 1,
@@ -77,13 +77,17 @@ export function getFinalAmountWithNoReinvestmentsMonthsData(
     });
     startMonthSum +=
       (i + 1) % extraInvestitionsPeriodity === 0
-        ? extraInvestition
-          ? extraInvestition
+        ? extraInvestment
+          ? extraInvestment
           : 0
         : 0;
+    if (reinvestmentPeriodity) {
+      startMonthSum =
+        (i + 1) % reinvestmentPeriodity === 0 ? resultMonthSum : startMonthSum;
+    }
   }
 
-  return monthsData;
+  return JSON.parse(JSON.stringify(monthsData));
 }
 
 export function getAllExtraInvestmentsTotalSum(
@@ -192,5 +196,16 @@ const extraInvestitionsPeriodityNameToNumber: Record<
   halfYear: 6,
   month: 1,
   quarter: 3,
+  year: 12,
+};
+
+const reinvestmentPeriodityNameToNumber: Record<
+  CompoundInterestReinvestmentPeriod,
+  number
+> = {
+  noReinvestment: 0,
+  month: 1,
+  quarter: 3,
+  halfYear: 6,
   year: 12,
 };
