@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../constants/routes-pathes';
 import { Income } from '../income/income.typings';
 import { Expense } from '../expense/expense.typings';
+import { ExpenseType } from '../expense-type/expense-type.typings';
+import { IncomeType } from '../income-type/income-type.typings';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
@@ -72,6 +74,22 @@ export class NavigationService {
     ]);
   }
 
+  public goToExpenseTypesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.expenseTypesPage,
+    ]);
+  }
+
+  public goToIncomeTypesPage(): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.withSideBar,
+      ROUTE_PATH.incomeTypesPage,
+    ]);
+  }
+
   public goToTaskEditPage(id: number): void {
     this.router.navigate([ROUTE_PATH.withHeader, ROUTE_PATH.taskEditPage, id]);
   }
@@ -100,6 +118,22 @@ export class NavigationService {
     this.router.navigate([
       ROUTE_PATH.withHeader,
       ROUTE_PATH.expenseEditPage,
+      id,
+    ]);
+  }
+
+  public goToExpenseTypeEditPage(id: ExpenseType['id']): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.expenseTypeEditPage,
+      id,
+    ]);
+  }
+
+  public goToIncomeTypeEditPage(id: IncomeType['id']): void {
+    this.router.navigate([
+      ROUTE_PATH.withHeader,
+      ROUTE_PATH.incomeTypeEditPage,
       id,
     ]);
   }

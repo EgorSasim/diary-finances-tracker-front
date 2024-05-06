@@ -1,0 +1,12 @@
+<div class="dft-expense-types-page">
+  @if ((expenseTypes$ | async)?.length) {
+  <dft-expense-type-list
+    [expenseTypeItems]="expenseTypes$ | async"
+    (editExpenseType)="editExpenseType($event)"
+    (removeExpenseType)="removeExpenseType($event)"
+  ></dft-expense-type-list>
+  }
+</div>
+<dft-create-tracker-entity-menu-button
+  class="dft-expense-types-page__add-tracker-entity"
+></dft-create-tracker-entity-menu-button>

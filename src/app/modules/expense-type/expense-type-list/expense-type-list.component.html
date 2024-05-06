@@ -1,0 +1,15 @@
+@if (expenseTypeItems?.length) {
+<dft-list [columnNames]="columnNames">
+  <ng-container items>
+    @for (item of expenseTypeItems; track item.id) {
+    <mat-list-item
+      ><dft-expense-type-list-item
+        [item]="item"
+        (editExpenseType)="editExpenseTypeEmit($event)"
+        (removeExpenseType)="removeExpenseTypeEmit($event)"
+      ></dft-expense-type-list-item
+    ></mat-list-item>
+    }
+  </ng-container>
+</dft-list>
+}

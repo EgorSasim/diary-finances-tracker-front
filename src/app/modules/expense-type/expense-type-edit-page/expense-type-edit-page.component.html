@@ -1,0 +1,15 @@
+@if(formGroup?.controls) {
+<dft-edit-page
+  (back)="navigateBack()"
+  (reset)="resetFormValue()"
+  (save)="saveChanges()"
+>
+  <ng-container main>
+    <mat-form-field class="dft-expense-type-edit-page__control">
+      <mat-label>{{ "app.title" | translate }}</mat-label>
+      <input matInput [formControl]="formGroup.controls.name" />
+      <mat-error>{{ getErrorMessage(formGroup?.controls?.name) }}</mat-error>
+    </mat-form-field>
+  </ng-container>
+</dft-edit-page>
+}

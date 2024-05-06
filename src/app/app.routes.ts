@@ -17,6 +17,10 @@ import { ExpensesPageComponent } from './modules/expense/expenses-page/expenses-
 import { ExpenseEditPageComponent } from './modules/expense/expense-edit-page/expense-edit-page.component';
 import { BalancePageComponent } from './modules/balance-page/balance-page.component';
 import { CalculationsPageComponent } from './modules/calculations/calculations-page/calculations-page.component';
+import { ExpenseTypesPageComponent } from './modules/expense-type/expense-types-page/expense-types-page.component';
+import { ExpenseTypeEditPageComponent } from './modules/expense-type/expense-type-edit-page/expense-type-edit-page.component';
+import { IncomeTypeEditPageComponent } from './modules/income-type/income-type-edit-page/income-type-edit-page.component';
+import { IncomeTypesPageComponent } from './modules/income-type/income-types-page/income-types-page.component';
 
 export const routes: Routes = [
   {
@@ -98,6 +102,22 @@ export const routes: Routes = [
               ).then((m) => m.CalculationsPageModule),
           },
           {
+            path: ROUTE_PATH.expenseTypesPage,
+            component: ExpenseTypesPageComponent,
+            loadChildren: () =>
+              import(
+                './modules/expense-type/expense-types-page/expense-types-page.module'
+              ).then((m) => m.ExpenseTypesPageModule),
+          },
+          {
+            path: ROUTE_PATH.incomeTypesPage,
+            component: IncomeTypesPageComponent,
+            loadChildren: () =>
+              import(
+                './modules/income-type/income-types-page/income-types-page.module'
+              ).then((m) => m.IncomeTypesPageModule),
+          },
+          {
             path: '**',
             pathMatch: 'full',
             redirectTo: ROUTE_PATH.home,
@@ -151,6 +171,22 @@ export const routes: Routes = [
           import(
             './modules/expense/expense-edit-page/expense-edit-page.module'
           ).then((m) => m.ExpenseEditPageModule),
+      },
+      {
+        path: `${ROUTE_PATH.expenseTypeEditPage}/:id`,
+        component: ExpenseTypeEditPageComponent,
+        loadChildren: () =>
+          import(
+            './modules/expense-type/expense-type-edit-page/expense-type-edit-page.module'
+          ).then((m) => m.ExpenseTypeEditPageModule),
+      },
+      {
+        path: `${ROUTE_PATH.incomeTypeEditPage}/:id`,
+        component: IncomeTypeEditPageComponent,
+        loadChildren: () =>
+          import(
+            './modules/income-type/income-type-edit-page/income-type-edit-page.module'
+          ).then((m) => m.IncomeTypeEditPageModule),
       },
       {
         path: '**',

@@ -29,8 +29,16 @@ export class NavigationComponent {
     this.navigationService.goToIncomesPage();
   }
 
+  public goToIncomeTypesPage(): void {
+    this.navigationService.goToIncomeTypesPage();
+  }
+
   public goToExpensesPage(): void {
     this.navigationService.goToExpansesPage();
+  }
+
+  public goToExpenseTypesPage(): void {
+    this.navigationService.goToExpenseTypesPage();
   }
 
   public goToBalancePage(): void {

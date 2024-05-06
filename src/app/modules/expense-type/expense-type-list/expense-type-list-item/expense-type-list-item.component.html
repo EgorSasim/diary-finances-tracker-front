@@ -1,0 +1,21 @@
+@if (item) {
+<div class="expense-type-list-item">
+  <div>{{ getTranslatedTypeName(item.name) | async | titlecase }}</div>
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+}
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="editExpenseTypeEmit(item.id)">
+    <mat-icon>edit</mat-icon>
+    <span>{{ "app.edit" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="removeExpenseTypeEmit(item.id)">
+    <mat-icon>delete</mat-icon>
+    <span>{{ "app.remove" | translate }}</span>
+  </button>
+</mat-menu>

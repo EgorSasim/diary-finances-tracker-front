@@ -1,0 +1,12 @@
+<div class="dft-income-types-page">
+  @if ((incomeTypes$ | async)?.length) {
+  <dft-income-type-list
+    [incomeTypeItems]="incomeTypes$ | async"
+    (editIncomeType)="editIncomeType($event)"
+    (removeIncomeType)="removeIncomeType($event)"
+  ></dft-income-type-list>
+  }
+</div>
+<dft-create-tracker-entity-menu-button
+  class="dft-income-types-page__add-tracker-entity"
+></dft-create-tracker-entity-menu-button>

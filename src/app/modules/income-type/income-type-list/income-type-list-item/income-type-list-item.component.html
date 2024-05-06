@@ -1,0 +1,21 @@
+@if (item) {
+<div class="income-type-list-item">
+  <div>{{ getTranslatedTypeName(item.name) | async | titlecase }}</div>
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+}
+
+<mat-menu #menu>
+  <button mat-menu-item (click)="editIncomeTypeEmit(item.id)">
+    <mat-icon>edit</mat-icon>
+    <span>{{ "app.edit" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="removeIncomeTypeEmit(item.id)">
+    <mat-icon>delete</mat-icon>
+    <span>{{ "app.remove" | translate }}</span>
+  </button>
+</mat-menu>
