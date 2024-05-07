@@ -15,7 +15,6 @@ export function getFinalAmount(
   finalAmountData: CompoundInterestFinalAmount
 ): FinalAmounCalculationsResult {
   const monthsData = getFinalAmounMonthsData(finalAmountData);
-  console.log('monthsData: ', monthsData);
   const yearsData: FinalAmounCalculationsResultYearData[] =
     getYearsWithMonthsData(monthsData);
 

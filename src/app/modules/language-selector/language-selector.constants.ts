@@ -1,9 +1,33 @@
 export enum Languages {
   En = 'en',
   Ru = 'ru',
+  Spa = 'spa',
+  Ara = 'ara',
+  Fre = 'fre',
+  Por = 'por',
+  Jpn = 'jpn',
+  Tur = 'tur',
+  Ger = 'ger',
+  Kor = 'kor',
+  Ita = 'ita',
+  Pol = 'pol',
+  Hin = 'hin',
+  Per = 'per',
 }
 
 export const LANG_NAME_TO_TRANSLATION_KEY: { [key in Languages]: string } = {
   [Languages.En]: 'app.language.en',
   [Languages.Ru]: 'app.language.ru',
+  [Languages.Spa]: 'app.language.spa',
+  [Languages.Ara]: 'app.language.ara',
+  [Languages.Fre]: 'app.language.fre',
+  [Languages.Por]: 'app.language.por',
+  [Languages.Jpn]: 'app.language.jpn',
+  [Languages.Tur]: 'app.language.tur',
+  [Languages.Ger]: 'app.language.ger',
+  [Languages.Kor]: 'app.language.kor',
+  [Languages.Ita]: 'app.language.ita',
+  [Languages.Pol]: 'app.language.pol',
+  [Languages.Hin]: 'app.language.hin',
+  [Languages.Per]: 'app.language.per',
 };
